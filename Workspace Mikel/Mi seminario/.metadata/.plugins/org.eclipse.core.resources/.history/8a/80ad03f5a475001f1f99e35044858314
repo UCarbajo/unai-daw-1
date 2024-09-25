@@ -1,0 +1,22 @@
+package view;
+
+import model.Cancion;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		/*String nombre = "Mikel";
+		int edad = 38;
+		System.out.println(":) Te llamas "+nombre+" y tienes "+edad);
+		*/
+		//Crear objetos: NombreClase nombreObjeto = new NombreClase
+		Cancion c1 = new Cancion();
+		c1.nombre = "Alehop";
+		c1.letra = "Ale hop hop hop blablabla...";
+		c1.duracion = 150;
+		
+		
+	}
+
+}

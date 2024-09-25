@@ -1,0 +1,28 @@
+package model;
+// Comentarios
+
+public class Cancion {
+	//Atributos /variables -estas son las caracteristicas que tienen todos los objetos-
+		//TipoDato NombreVariable [= Valor];
+	
+		public String nombre; 
+		public String letra; // La letra completa
+		public int duracion; // Segundos
+	
+		
+	//Constructores (NombreClase (args .. )
+		public Cancion() {
+			System.out.println("Objeto construido");
+		}
+		public Cancion(String nombre,int duracion, String letra) {
+			this.nombre=nombre;
+		}
+		
+	//Comportamientos / metodos
+		//visibilidad retorno NombreMetodo ([argumentos])
+		public void mostrarLetra() {
+			System.out.println("Mostrando letra de la cancion");
+		}
+	
+
+}

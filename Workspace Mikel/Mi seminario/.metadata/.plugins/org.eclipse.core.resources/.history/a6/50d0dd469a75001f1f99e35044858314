@@ -1,0 +1,15 @@
+package prueba;
+
+public class App {
+
+	public static void main(String[] args) {
+		// Los numeros no necesitan "comilla"
+		
+		String nombre = "Mikel";
+		int edad = 38;
+		
+		
+		System.out.println("Mikel Linares");
+	}
+
+}
