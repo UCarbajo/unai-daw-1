@@ -21,7 +21,7 @@ public class Main {
 		float n5 = entrada.nextFloat();
 		float media = (n1 + n2 + n3 + n4 + n5) / 5;
 
-		if (media >= 5) {
+		if (n1 >= 5 && n2 >= 5 && n3 >= 5 && n4 >= 5 && n5>= 5) {
 			System.out.println("El alumno " + nombre + " tiene una media de " + media + " y es apto");
 		} else {
 			System.out.println("El alumno " + nombre + " tiene una media de " + media + " y no es apto");
