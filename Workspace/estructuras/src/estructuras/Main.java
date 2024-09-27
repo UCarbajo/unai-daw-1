@@ -57,7 +57,7 @@ public class Main {
 		default:
 			System.out.println("Dia no valido");
 		}
-		// Repetitivas - bucles (for, while, do..while)
+		// Repetitivas - bucles (for - cuando , while, do..while)
 		// for(iniciaalizacion (variables);condicion;cadaVuelta)
 		for (int i = 0; i < 10; i++) {
 			System.out.println("Mensaje " + i);
@@ -83,14 +83,25 @@ public class Main {
 		while (true) {
 			System.out.println("Introduce un numero");
 			int numeroUsuario = entrada.nextInt();
-			
+
 			if (numeroUsuario == numeroOculto) {
 				System.out.println("Has ganado");
 				break;
 			}
 		}
 
-		}
+		// do..while 1..n
+		int numeroUsuario = 0;
+		do {
+			System.out.println("Introduce un numero");
+			numeroUsuario = entrada.nextInt();
+		} while (numeroUsuario != numeroOculto);
+		
+		System.out.println("Has ganado");
 
+		System.out.println("Fin del programa");
+		
+		entrada.close();
 	}
 
+}
