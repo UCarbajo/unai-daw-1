@@ -16,6 +16,6 @@ public class Main {
 			if (i % numero == 0) {
 				System.out.println(i);
 			}
-		}
+		}entrada.close();
 	}
 }
