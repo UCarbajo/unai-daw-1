@@ -1,0 +1,20 @@
+package view;
+
+import model.Coche;
+import model.Persona;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		Coche c1 = new Coche("Porshe", "GT2 RS", 100, 80, 60);
+		Persona p1 = new Persona("Vicente", 39,175, new Coche("Porshe", "GT2 RS", 100, 80, 60));
+					
+		
+		p1.arrancar();
+		c1.chocar();
+		p1.coche.chocar();
+		
+	}
+
+}
