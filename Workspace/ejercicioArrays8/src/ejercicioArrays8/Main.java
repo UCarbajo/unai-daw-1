@@ -14,7 +14,7 @@ public class Main {
 				numero[i][j] = (int) (Math.random() * 100) + 1;
 			}
 		}
-		int numeroAlto = 0;
+		int numeroAlto = numero[0][0];
 		
 		for (int i = 0; i < numero.length; i++) {
 			for (int j = 0; j < numero.length; j++) {
@@ -24,7 +24,17 @@ public class Main {
 				System.out.println("Numeros de " + i + " es " + numero[i][j]);
 			}
 		}
-		System.out.println("Numero alto " + numeroAlto);
+		System.out.println("El numero mas alto es " + numeroAlto);
+		
+		int numeroBajo = numero[0][0];
+		for (int i = 0; i < numero.length; i++) {
+			for (int j = 0; j < numero.length; j++) {
+				if (numeroBajo > numero[i][j]) {
+					numeroBajo = numero[i][j];
+				}
+			}
+		}
+		System.out.println("El numero mas bajo es " + numeroBajo);
 	}
 
 }
