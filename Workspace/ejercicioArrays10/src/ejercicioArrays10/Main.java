@@ -10,9 +10,9 @@ public class Main {
 		for (int i = 0; i < numero.length; i++) {
 			for (int j = 0; j < numero.length; i++) {
 				int aux = 0;
-				aux = numero[j][i];
-				numero[j][i] = numero[i][j];
-				numero[i][j] = aux;
+				aux = numero[j][i+1];
+				numero[j][i+1] = numero[i+1][j];
+				numero[i+1][j] = aux;
 			}
 		}
 	}
