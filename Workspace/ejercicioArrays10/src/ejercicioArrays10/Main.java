@@ -3,17 +3,32 @@ package ejercicioArrays10;
 public class Main {
 
 	public static void main(String[] args) {
-		int[][] numero = {  { 1, 2, 3 }, 
-							{ 4, 5, 6 }, 
-							{ 7, 8, 9 } };
+		int[][] numero = {  { 1, 2, 3, 11 }, 
+							{ 4, 5, 6, 12}, 
+							{ 7, 8, 9, 13} };
 
-		for (int i = 0; i < numero.length; i++) {
-			for (int j = 0; j < numero.length; i++) {
-				int aux = 0;
-				aux = numero[j][i+1];
-				numero[j][i+1] = numero[i+1][j];
-				numero[i+1][j] = aux;
+		//for (int i = 0; i < numero.length; i++) {
+			//for (int j = 0; j < numero.length; j++) {
+				//int aux = 0;
+				//aux = numero[j][i];
+				//numero[j][i] = numero[i][j];
+				//numero[i][j] = aux;
+			//}
+		//}
+		
+		int[][] aux = new int [numero[0].length][numero.length];
+		
+		for(int i = 0; i < numero.length; i++) {
+			for( int j = 0; j < numero[0].length; j++) {
+				aux[j][i] = numero[i][j];
 			}
+		}
+		
+		for (int i = 0; i < aux.length; i++) {
+			for (int j = 0; j < aux[0].length; j++) {
+				System.out.print(aux[i][j] + " ");
+			}
+			System.out.println();
 		}
 	}
 
