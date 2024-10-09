@@ -1,12 +1,12 @@
 package model;
 
 public class Coche {
-	public String marca;
-	String modelo;
-	int vida;
-	int fuerza;
-	int capacidadDeposito, combustible;
-	public Coche(String marca, String modelo, int vida, int fuerza, int capacidadDeposito) {
+	 public String marca;
+	 public String modelo;
+	 private int vida;
+	 private int fuerza;
+	 public int capacidadDeposito, combustible;
+	 public Coche(String marca, String modelo, int vida, int fuerza, int capacidadDeposito) {
 		
 		super();
 		this.marca = marca;
@@ -16,7 +16,18 @@ public class Coche {
 		this.capacidadDeposito = capacidadDeposito;
 		this.combustible=capacidadDeposito; //Empieza con el tanque lleno
 	}
+	 
+	public int getFuerza() {
+		return fuerza;
+	}
 
+	public void setFuerza(int fuerza) {
+		if (fuerza < 0 ) {
+			this.fuerza=50;
+		}
+		this.fuerza=fuerza;
+		
+	}
 	public void chocar(){
 		
 	}

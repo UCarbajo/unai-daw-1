@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="model.Cancion"/>
+    <fullyQualifiedTypeName name="model.Futbolista"/>
+    <fullyQualifiedTypeName name="model.Persona"/>
+    <fullyQualifiedTypeName name="model.Piloto"/>
+    <fullyQualifiedTypeName name="model.Vendedor"/>
+    <fullyQualifiedTypeName name="model.Cliente"/>
 </qualifiedTypeNameHistroy>

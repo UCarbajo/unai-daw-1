@@ -36,6 +36,7 @@ public class Persona {
 	 */
 	public void chocar(Persona otraPersona) {
 		//this.coche.chocar(otraPersona.coche);
+		
 		this.coche.vida=this.coche.vida-otraPersona.coche.fuerza;
 		otraPersona.coche.vida=otraPersona.coche.vida-this.coche.fuerza;
 		

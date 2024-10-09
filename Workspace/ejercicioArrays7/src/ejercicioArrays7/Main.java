@@ -15,6 +15,13 @@ public class Main {
 			}
 		}
 
+		for (int i = 0; i < numero.length; i++) {
+			for (int j = 0; j < numero.length; j++) {
+				System.out.println(numero[i][j] + " ");
+			}
+			System.out.println();
+		}
+
 		int[] sumaFila = new int[3];
 		int[] sumaColumna = new int[3];
 
@@ -30,7 +37,7 @@ public class Main {
 			}
 			System.out.println("Las suma de la columna " + i + " es " + sumaColumna[i]);
 		}
-			
+
 	}
 
 }
