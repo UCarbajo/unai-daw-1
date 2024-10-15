@@ -14,8 +14,8 @@ public class MatrizTemperaturas {
         int[][] matrizTemperaturas = new int[filas][columnas];
         
         // Rellenar la matriz con valores aleatorios de temperaturas entre 0 y 100
-        for (int i = 0; i <= filas; i++) {
-            for (int j = 0; j <= columnas; j++) {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
                 matrizTemperaturas[i][j] = (int) (Math.random() * 100);
             }
         }
@@ -29,8 +29,8 @@ public class MatrizTemperaturas {
         int minTemp = 100;
         double sumaTemp = 0;
         
-        for (int i = 0; i <= matrizTemperaturas.length; i++) {
-            for (int j = 0; j <= matrizTemperaturas[0].length; j++) {
+        for (int i = 0; i < matrizTemperaturas.length; i++) {
+            for (int j = 0; j < matrizTemperaturas[0].length; j++) {
                 int tempActual = matrizTemperaturas[i][j];
                 sumaTemp += tempActual;
                 
@@ -48,8 +48,8 @@ public class MatrizTemperaturas {
     }
     
     public static void mostrarMatriz(int[][] matriz) {
-        for (int i = 0; i <= matriz.length; i++) {
-            for (int j = 0; j <= matriz[0].length; j++) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
                 System.out.print(matriz[i][j] + " ");
             }
             System.out.println();

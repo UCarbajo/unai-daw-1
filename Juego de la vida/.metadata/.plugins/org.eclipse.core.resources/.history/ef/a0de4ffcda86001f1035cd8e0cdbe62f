@@ -1,0 +1,25 @@
+package juegoDeLaVida;
+
+public class Main {
+
+	public static void main(String[] args) {
+		byte[][] tabla = new byte {{0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},
+								  {0,0,0,0,0,0,0,0,0,0},};
+
+		for (int i = 0; i < tabla.length; i++) {
+			for (int j = 0; j < tabla.length; j++) {
+				System.out.print(tabla[0][j] + " ");
+			}
+			System.out.println(tabla[i][0] + " ");
+		}
+	}
+
+}
