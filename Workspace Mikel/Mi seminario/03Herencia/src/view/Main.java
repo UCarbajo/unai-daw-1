@@ -18,7 +18,7 @@ public class Main {
 		
 		Persona personita = new Futbolista();
 		//Futbolista fut = new Persona();
-		
+		personita.saludar();
 		
 	}
 

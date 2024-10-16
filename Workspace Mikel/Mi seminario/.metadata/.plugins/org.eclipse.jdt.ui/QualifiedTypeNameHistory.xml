@@ -6,4 +6,5 @@
     <fullyQualifiedTypeName name="model.Piloto"/>
     <fullyQualifiedTypeName name="model.Vendedor"/>
     <fullyQualifiedTypeName name="model.Cliente"/>
+    <fullyQualifiedTypeName name="model.Producto"/>
 </qualifiedTypeNameHistroy>

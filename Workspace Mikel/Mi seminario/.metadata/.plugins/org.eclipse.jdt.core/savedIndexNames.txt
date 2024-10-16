@@ -1,6 +1,5 @@
-INDEX VERSION 1.131+D:\Unai\Programacion\unai-daw-1\Workspace Mikel\Mi seminario\.metadata\.plugins\org.eclipse.jdt.core
-3857475083.index
-1959479894.index
-1296046756.index
+INDEX VERSION 1.131+G:\DAW\Programacion\unai-daw-1\Workspace Mikel\Mi seminario\.metadata\.plugins\org.eclipse.jdt.core
 3710268763.index
 2628534571.index
+1959479894.index
+1296046756.index

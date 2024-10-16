@@ -63,3 +63,4 @@
 <3>WSL (10) ERROR: CreateProcessEntryCommon:505: execvpe /bin/bash failed 2
 <3>WSL (10) ERROR: CreateProcessEntryCommon:508: Create process not expected to return
 '
+2024-10-15 16:10:18,683 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
