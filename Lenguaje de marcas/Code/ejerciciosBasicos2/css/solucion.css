@@ -1,0 +1,67 @@
+.patrick-hand-regular {
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+body{
+    background-color: #250C0F;
+}
+h1{
+    color: white;
+    text-align: center;
+}
+h1 span{
+    color: #A67D03;
+}
+#foto {
+    text-align: center;
+    
+}
+#preparacion{
+    margin-left: 23em;
+}
+#preparacion #ingredientes{
+    float: left;
+    width: 30%;
+    position: relative;
+    padding-right: 1em;
+}
+#preparacion #elaboracion{
+    float: left;
+    width: 30%;
+    position: relative;
+    
+}
+#ingredientes{
+    background-color: #9FCE64;
+    
+}
+#ingredientes h2{
+    color: #250C0F;
+    text-align: center;
+}
+#lista_ingredientes{
+    list-style: none;
+}
+#alino{
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+#ingredientes .impar{
+    background-color: #237803;
+    color: white;
+}
+#elaboracion{
+    background-color: #B08500;
+    color: #fff;
+
+}
+#elaboracion h2{
+    text-align: center;
+}
+#elaboracion ol{
+}
+.imparE{
+    background-color: #250C0F;
+}

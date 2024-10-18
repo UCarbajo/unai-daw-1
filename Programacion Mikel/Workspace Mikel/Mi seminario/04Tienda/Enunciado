@@ -1,0 +1,8 @@
+TIENDA
+--------
+
+Clientes y clientes Oro
+
+El cliente puede comprar productos.
+Si es cliente Oro se le aplica un 15% de descuento
+La compra siempre va asociada a un vendedor.

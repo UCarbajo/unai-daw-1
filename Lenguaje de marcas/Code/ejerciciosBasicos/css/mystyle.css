@@ -1,0 +1,79 @@
+/*
+selector {
+    propiedad: valor;
+}
+tipos de lecetroes principales:
+    etiqueta: dar estilos a todas las etiquetas del mismo nombre
+    classes: me permite dar estilos a todos los elementos que tengan esa clase asociada
+    indentificativos: dar estilos a un elemento concreto de la pagina
+propiedades: color, borde, tipografia
+valores: #fffff, 5%, ...
+*/
+body {
+  background-color: #061673;
+  text-align: center;
+}
+h1 { /*seleccionamos etiqueta*/
+    background-color: #2165BF;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+/* seleccionamos un unico elemento*/
+#destacado {
+    text-decoration: none; /*quitamos el subrayado que tiene por defecto el enlace*/
+    text-transform: uppercase; /*pongo todo el texto en mayusculas*/
+    font-size: 2em;/*aumento el tamaño del texto*/
+}
+.comic-neue-light {
+    font-family: "Comic Neue", cursive;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .comic-neue-regular {
+    font-family: "Comic Neue", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .comic-neue-bold {
+    font-family: "Comic Neue", cursive;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .comic-neue-light-italic {
+    font-family: "Comic Neue", cursive;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .comic-neue-regular-italic {
+    font-family: "Comic Neue", cursive;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .comic-neue-bold-italic {
+    font-family: "Comic Neue", cursive;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+/*seleccionamos varios elementos*/
+.even {
+    background-color: #F2F2F2;
+}
+.odd {
+    background-color: #BFBFBF;    
+}
+#letraBlanca {
+  color: #fff;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+a{
+  text-decoration: none;
+}

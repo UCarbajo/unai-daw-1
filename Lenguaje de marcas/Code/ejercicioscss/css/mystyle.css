@@ -1,0 +1,20 @@
+.colorOscuro {
+    background-color: black;
+    color: white;
+}
+.mayusculaCentrado{
+    text-transform: uppercase;
+    text-align: center;
+}
+.letraBlanca{
+    color: white;
+}
+.letraVerde {
+    color: #7FFF00;
+}
+p::first-letter{
+    color: red;
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -1,0 +1,63 @@
+body { /*pongo tipografia a toda la pagina*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ul{ 
+    /* Quito el punto a todas las listas desordenadas (unordered)*/
+   list-style: none; 
+}
+ul li{
+    display: inline;
+    margin: 1%;
+}
+/*vamos a cambiar el aspecto de las opciones del menú al hacer :hover... es decir, al pasar por encima*/
+ul li:hover{
+    font-size: 1.25em; 
+    color:#650298
+}
+h3{
+    color: #650298;
+    text-transform: uppercase;
+    letter-spacing: 1em;
+    font-size: 1em;
+}
+p{
+    text-indent: 4%;
+}
+header{
+    text-align: center; /* Todas las cajas que esten dentro del header estarán centradas.*/
+    position: sticky; 
+    top:0;
+    background-color: #fff;
+}
+#seccion1, #seccion3{
+    background-color: #C3C3C3;
+    /*margin-top: 1em;
+    margin-bottom: 3em;*/
+    /*margin es el espaciado exterior*/
+    margin: 3em 0em;
+    /*padding es el espaciado interior*/
+    padding: 3em 2em;
+    text-align: justify;
+    border-top: 4px dashed black;
+    border-right: 4px solid black;
+    border-bottom: 4px double black;
+    border-left: 4px dotted black;
+}
+#seccion2{
+    border:4px black solid;
+    margin: 3em 1em;
+}
+/*Vamos a poner las secciones a 3 columnas usando position: relative*/
+/*pasos:
+1.- reducimos anchura de las cajas
+2.- metemos las 3 cajas en una mas grande que las contenga
+3.- indicamos a las cajas que su position sea relative y que floten hacia la izquierda/derecha...*/
+section{
+    position: relative;
+    float: left;
+    width: 27%;
+}
+/*Si queremos que las cajas de alrededor no intenten ocupar el sitio de las position: relative*/
+footer{
+    clear: both;
+}
