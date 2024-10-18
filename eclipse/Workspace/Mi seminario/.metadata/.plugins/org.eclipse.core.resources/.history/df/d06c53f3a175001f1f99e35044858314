@@ -1,0 +1,9 @@
+package prueba;
+// Comentarios
+
+public class Cancion {
+	//Atributos (estas son las caracteristicas que tienen todos los objetos)
+	String nombre;
+	
+
+}

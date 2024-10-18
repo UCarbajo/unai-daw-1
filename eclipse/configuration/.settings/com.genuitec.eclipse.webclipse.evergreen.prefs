@@ -1,0 +1,8 @@
+devstyle.manifest.check.timestamp=1726646878154
+eclipse.preferences.version=1
+manifest.devstyle.download.cache={"updates"\:{"release-version"\:"2024.2.0.202406171634","eclipse-version"\:"[4.5.0,5.0.0)","release-notes"\:{"id"\:"ci20240617","delivery-log-url"\:"https\:\\/\\/www.genuitec.com\\/products\\/devstyle\\/deliverylog\\/","release-label"\:"CI 2024.2.0","updates"\:[{"heading"\:"Fixes for the Latest Eclipse Versions","message"\:"Fixes various compatibility issues in Eclipse 2024-06 including a critical break which could stop certain views from opening. If you observe anything else, please reach out\!","bullet"\:{"padding"\:"tiny","overlayicon"\:"ionicons\:ios-moon","color"\:"blue","overlayscale"\:"xlarge","icon"\:"fontawesome\:square","scale"\:"full","type"\:"overlayed","overlaycolor"\:"black","size"\:"32x32","position"\:"center"},"show-if"\:{"bundles"\:["com.genuitec.eclipse.theming.ui"]}}]},"eclipse-roots"\:[{"id"\:"com.genuitec.eclipse.theming.core.feature.feature.group","version"\:"2024.2.0.202406171634"},{"id"\:"com.genuitec.eclipse.theming.feature.feature.group","version"\:"2024.2.0.202406171634"},{"id"\:"com.genuitec.eclipse.theming.designer.feature.feature.group","version"\:"2024.2.0.202406171634"}],"binary-roots"\:[],"repository-url"\:"https\:\\/\\/edge.codetogether.com\\/downloads\\/products\\/devstyle\\/updates\\/ds20240618","check-interval"\:28800000,"notify-updated"\:14400000},"notifications"\:[],"notifications2"\:[]}
+manifest.devstyle.download.etag="6671797b-50d"
+manifest.devstyle.download.modified.date=Tue, 18 Jun 2024 12\:11\:39 GMT
+manifest.devstyle.download.url=https\://devstyle.codetogether.io/devstyle.json
+new-release-notes-ids=ci20240617
+webclipse.installed-release=2024.2.0.202406171634

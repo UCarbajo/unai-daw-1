@@ -1,0 +1,16 @@
+package view;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		sumar(2,5);
+	}
+	
+	public void sumar(int primerNumero, int segundoNumero) {
+		
+		System.out.println("Resultado "+primerNumero+segundoNumero);
+		
+	}
+
+}
