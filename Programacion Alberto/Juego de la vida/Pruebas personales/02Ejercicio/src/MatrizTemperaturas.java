@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class MatrizTemperaturas {
@@ -8,15 +9,27 @@ public class MatrizTemperaturas {
         // Solicitar el tamaño de la matriz
         System.out.println("Introduce el número de filas de la matriz:");
         int filas = scanner.nextInt();
+        while (filas <= 0) {
+        	System.out.println("Lo siento, introduce un numero positivo");
+        	filas = scanner.nextInt();
+        }
         System.out.println("Introduce el número de columnas de la matriz:");
         int columnas = scanner.nextInt();
+        while (columnas <= 0) {
+        	System.out.println("Lo siento, introduce un valor positivo");
+        	columnas = scanner.nextInt();
+        }
         
         int[][] matrizTemperaturas = new int[filas][columnas];
         
+        Random random = new Random();
+        int min = -30;
+        int max = 50; 
+        
         // Rellenar la matriz con valores aleatorios de temperaturas entre 0 y 100
         for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < columnas; j++) {
-                matrizTemperaturas[i][j] = (int) (Math.random() * 100);
+            for (int j = 0; j < columnas; j++) {           
+                matrizTemperaturas[i][j] = random.nextInt((max - min) + 1) + min;
             }
         }
         
@@ -25,8 +38,8 @@ public class MatrizTemperaturas {
         mostrarMatriz(matrizTemperaturas);
         
         // Calcular la temperatura máxima, mínima y el promedio
-        int maxTemp = 0;
-        int minTemp = 100;
+        int maxTemp = matrizTemperaturas[0][0];
+        int minTemp = matrizTemperaturas[0][0];
         double sumaTemp = 0;
         
         for (int i = 0; i < matrizTemperaturas.length; i++) {
