@@ -7,6 +7,7 @@ span{
 }
 .menu{
     display: flex;
+    width: 100%;
     justify-content: center;
 }
 ul{
@@ -17,17 +18,28 @@ li{
     background-color: #527BB9;
     color: #fff;
     padding: 2em;
-    margin-inline: 0.5%;
+    margin-left: 0.5em;
 }
 .contenido{
     display: flex;
     flex-wrap: wrap;
-    padding: 0%;
-    align-items: baseline;
+    margin-left: 5%;
+    margin-right: 5%;
+    
 }
 .uno{
-    width: 50%;
+    width: 48%;
+    margin: 1%;
+    border-right: 2px solid;
+    border-color: #527BB9;
+}
+.dos{
+    width: 48%;
 }
 .destacado{
-    background-color: #527BB9;
+    background-color: #B0C4DE;
+    width: 100%;
+}
+.destacado h2{
+    color: #527BB9;
 }

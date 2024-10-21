@@ -1,24 +1,43 @@
 package herencia;
 
 public class Persona {
-
+	
 	private String nombre;
 	private String apellidos;
 	private String dni;
 	private String email;
-	private String numeroTelefono;
+	private String numTel;
+	private int altura;
 	
-	public Persona(String nombre, String apellidos, String dni, String email, String numeroTelefono) {
+	/*public Persona() {}
+	
+	public Persona(String dni, String email) {
+		
+	}
+	
+	public Persona(String nombre, int altura) {
+		
+	}
+	
+	public Persona(int altura, String apellido) {
+		
+	}*/
+	public Persona() {}
+	
+	public Persona(String nombre, String apellidos, String dni, String email, String numTel, int altura) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.dni = dni;
 		this.email = email;
-		this.numeroTelefono = numeroTelefono;
+		this.numTel = numTel;
+		this.altura = altura;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -40,15 +59,15 @@ public class Persona {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getNumeroTelefono() {
-		return numeroTelefono;
+	public String getNumTel() {
+		return numTel;
 	}
-	public void setNumeroTelefono(String numeroTelefono) {
-		this.numeroTelefono = numeroTelefono;
+	public void setNumTel(String numTel) {
+		this.numTel = numTel;
 	}
 	
 	public void saludar() {
-		System.out.println("Buenos dias!");
+		System.out.print("Buenos dias!");
 	}
-	
+
 }
