@@ -6,9 +6,9 @@ public class Cancion {
 	// objetos-
 	// TipoDato NombreVariable [= Valor];
 
-	public String nombre;
-	public String letra; // La letra completa
-	public int duracion; // Segundos
+	private String nombre;
+	private String letra; // La letra completa
+	private int duracion; // Segundos
 
 	// Constructores (NombreClase (args .. )
 	public Cancion() {
@@ -30,6 +30,7 @@ public class Cancion {
 		}
 		this.duracion = duracion;
 	}
+	
 	
 
 	public String getNombre() {
