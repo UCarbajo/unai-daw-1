@@ -6,18 +6,89 @@
     font-family: "Creepster", system-ui;
     font-weight: 400;
     font-style: normal;
-  }  
+  }
+body{
+    margin: 0.2em;
+}  
 header{
     background-color: #800080;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
+header h1{
+    padding: 1%;
+}
+#inicio img{
+    width: 25%;
+}
 #inicio h1{
     color: white;
-    font-size: 120%;
+    font-size: 150%;
 }
 .negro, .naranja {
     font-family: "Creepster";
     color: #FCC901;
+    font-size: 200%;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+}
+nav ul li{
+    background-color: #000000;
+    padding: 2%;
+    margin-inline: 0.5%;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-family: "Creepster";
+}
+nav ul li a:hover{
+    color: #FCC901;
+}
+#content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+#quienes-somos{
+    align-content: center;
+    border-width: 8px;
+    border-style: dotted;
+    border-color: #800080;
+    background-color: #F4E8F4;
+    display: flex;
+    width: 100%;
+}
+.centrarImg{
+    width: 15%;
+}
+.texto{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.texto h2{
+    font-family: "Creepster";
+    color: black;
+    margin-bottom: 3%;
+}
+.texto p{
+    margin-bottom: 1%;
+}
+#que-hacemos, #donde-estamos{
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+}
+#que-hacemos, #donde-estamos{
+    border-width: 8px;
+    border-style: dotted;
+    border-color: #FFCC00;
+    background-color: #FFF8DC;
 }
