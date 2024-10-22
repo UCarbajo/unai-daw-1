@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.creepster-regular {
+    font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }  
+header{
+    background-color: #800080;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#inicio h1{
+    color: white;
+    font-size: 120%;
+}
+.negro, .naranja {
+    font-family: "Creepster";
+    color: #FCC901;
+}

@@ -1,5 +1,16 @@
+/*inicializamos estilos*/
+*, *::after, *::before{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box; /*con esto le estamos diciendo a la hoja de estilos que aunque una caja tenga padding, su tamaño va a ser fijo*/
+    text-decoration: none;
+}
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.container{
+    width: 75%;
+    margin: 0 auto;
 }
 .cabecera{
     text-align: center;
@@ -25,8 +36,6 @@ li{
 .contenido{
     display: flex;
     justify-content: center;
-    margin-left: 15%;
-    margin-right: 15%;
 }
 h2::first-letter{
     color: #BA1211;
@@ -45,6 +54,7 @@ h2::first-letter{
     padding: 1em;
 }
 .pie{
-    display: flex;
-    justify-content: end;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
