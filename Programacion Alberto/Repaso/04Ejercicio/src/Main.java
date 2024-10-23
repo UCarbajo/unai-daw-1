@@ -1,4 +1,5 @@
 
+import java.math.BigInteger;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -7,15 +8,29 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 		System.out.println("De cuantas posiciones quieres crear tu array?");
-		int longitud = entrada.nextInt();
+		int longitud = 0;
+
+		while (true) {
+			if (entrada.hasNextInt()) {
+				longitud = entrada.nextInt();
+				if (longitud > 0) {
+					break;
+				} else {
+					System.out.println("Introduce un valor mayor a 0");
+				}
+			} else {
+				System.out.println("Introduce un numero correcto");
+				entrada.next();
+			}
+		}
+
+		int[] array = new int[longitud];
 
 		System.out.println("Como quieres inicializar tu array");
 		System.out.println("1.- Con ceros");
 		System.out.println("2.- Con números aleatorios del 1 al 100");
 		System.out.println("3.- Insertando los números manualmente.");
 		String respuesta = entrada.next();
-
-		int[] array = new int[longitud];
 
 		while (!"1".equals(respuesta) && !"2".equals(respuesta) && !"3".equals(respuesta)) {
 			System.out.println("Respuesta no valida, seleccione una de las siguientes");
@@ -54,6 +69,8 @@ public class Main {
 		System.out.println("0.- Salir");
 		String segundaRespuesta = entrada.next();
 
+		System.out.println("");
+
 		switch (segundaRespuesta) {
 		case "1":
 			for (int i = 0; i < array.length; i++) {
@@ -69,14 +86,22 @@ public class Main {
 			mostrarArray(array);
 			break;
 		case "3":
-			System.out.println("Estas seguro que equieres eliminar los numeros del array? (S/N)");
+			System.out.println("Estas seguro que quieres eliminar los numeros del array? (S/N)");
 			String borradoRespuesta = entrada.next();
-			if ("S".equals(borradoRespuesta))
+
+			while (!"S".equals(borradoRespuesta.toUpperCase()) && !"N".equals(borradoRespuesta.toUpperCase())) {
+				System.out.println("No lo he entendido, quieres eliminar los numeros del array? (S/N)");
+				borradoRespuesta = entrada.next();
+			}
+			if ("S".equals(borradoRespuesta.toUpperCase())) {
 				for (int i = 0; i < array.length; i++) {
 					array[i] = 0;
-					mostrarArray(array);
-					break;
 				}
+				mostrarArray(array);
+			} else if ("N".equals(borradoRespuesta.toUpperCase())) {
+				System.out.println("Adios...");
+			}
+			break;
 		case "4":
 			mostrarArray(array);
 			break;
@@ -85,33 +110,40 @@ public class Main {
 			for (int i = 0; i < array.length; i++) {
 				suma += array[i];
 			}
-			System.out.println("La suma de todo el array es " + suma);
+			System.out.println("La suma del array es " + suma);
 			break;
 		case "6":
 			int multiplicar = 0;
 			for (int i = 0; i < array.length; i++) {
 				multiplicar *= array[i];
 			}
-			System.out.println("La suma de todo el array es " + multiplicar);
+			System.out.println("La multiplicación del array es " + multiplicar);
 			break;
 		case "7":
 			int sumaMedia = 0;
 			for (int i = 0; i < array.length; i++) {
 				sumaMedia += array[i];
 			}
-			System.out.println("La suma de todo el array es " + (sumaMedia/longitud));
+			System.out.println("La media del array es " + (sumaMedia / longitud));
 			break;
 		case "8":
-			mostrarArray(array);
+			for (int i = 0; i < array.length; i++) {
+				BigInteger factorial;
+				factorial = BigInteger.valueOf(1);
+				for (int j = 1; j <= array[i]; j++) {
+					factorial = factorial.multiply(BigInteger.valueOf(j));
+				}
+				System.out.println("El factorial numero " + array[i] + " es " + factorial);
+			}
 			break;
 		case "9":
 			int menor = 0;
-			for(int i = 0; i < array.length; i++) {
-				for(int j = i; j < array.length; j++) {
-				if (array[i] > array[j]) {
-					menor = array[i];
-					array[i] = array[j];
-					array[j] = menor;
+			for (int i = 0; i < array.length; i++) {
+				for (int j = i; j < array.length; j++) {
+					if (array[i] > array[j]) {
+						menor = array[i];
+						array[i] = array[j];
+						array[j] = menor;
 					}
 				}
 			}
@@ -119,21 +151,21 @@ public class Main {
 			break;
 		case "10":
 			int mayor = 0;
-			for(int i = 0; i < array.length; i++) {
-				for(int j = i; j < array.length; j++) {
-				if (array[i] < array[j]) {
-					menor = array[i];
-					array[i] = array[j];
-					array[j] = menor;
+			for (int i = 0; i < array.length; i++) {
+				for (int j = i; j < array.length; j++) {
+					if (array[i] < array[j]) {
+						mayor = array[i];
+						array[i] = array[j];
+						array[j] = mayor;
 					}
 				}
 			}
 			mostrarArray(array);
 			break;
 		case "0":
+			System.out.println("Adios...");
 			break;
 		}
-
 	}
 
 	private static void mostrarArray(int[] array) {
