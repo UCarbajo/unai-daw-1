@@ -28,7 +28,7 @@ public class Main {
 		if ("2".equals(respuesta)) {
 			Random rand = new Random();
 			for(int i = 0; i < array.length; i++) {
-				array[i] = rand.nextInt(100);
+				array[i] = rand.nextInt(100)+1;
 			}
 		} else if("3".equals(respuesta)) {
 			for(int i = 0; i < array.length; i++) {

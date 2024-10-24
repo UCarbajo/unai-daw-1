@@ -28,7 +28,7 @@ public class Main {
 		if ("2".equals(respuesta)) {
 			Random rand = new Random();
 			for (int i = 0; i < array.length; i++) {
-				array[i] = rand.nextInt(100);
+				array[i] = rand.nextInt(100) + 1;
 			}
 		} else if ("3".equals(respuesta)) {
 			for (int i = 0; i < array.length; i++) {
@@ -36,48 +36,54 @@ public class Main {
 				array[i] = entrada.nextInt();
 			}
 		}
-
+		
+		entrada.close();
 		mostrarArray(array);
 		System.out.println();
 
-		System.out.println("¿Qué quieres hacer con tu array?");
-		System.out.println("1.- Cambiar valores de todo el array");
-		System.out.println("2.- Cambiar un valor del array");
-		System.out.println("3.- Reiniciar el array");
-		System.out.println("4.- Mostrar Array");
-		System.out.println("0.- Salir");
-		String segundaRespuesta = entrada.next();
+		String segundaRespuesta;
 
-		switch (segundaRespuesta) {
-		case "1":
-			for (int i = 0; i < array.length; i++) {
-				array[i] = entrada.nextInt();
-			}
-			mostrarArray(array);
-			break;
-		case "2":
-			System.out.println("Que posicion del array quieres cambiar");
-			int posicion = entrada.nextInt();
-			System.out.println("Introduce el numero para la posicion " + posicion);
-			array[posicion - 1] = entrada.nextInt();
-			mostrarArray(array);
-			break;
-		case "3":
-			System.out.println("Estas seguro que equieres eliminar los numeros del array? (S/N)");
-			String borradoRespuesta = entrada.next();
-			if ("S".equals(borradoRespuesta))
+		do {
+			System.out.println("¿Qué quieres hacer con tu array?");
+			System.out.println("1.- Cambiar valores de todo el array");
+			System.out.println("2.- Cambiar un valor del array");
+			System.out.println("3.- Reiniciar el array");
+			System.out.println("4.- Mostrar Array");
+			System.out.println("0.- Salir");
+			segundaRespuesta = entrada.next();
+
+			switch (segundaRespuesta) {
+			case "1":
 				for (int i = 0; i < array.length; i++) {
-					array[i] = 0;
-					mostrarArray(array);
-					break;
+					array[i] = entrada.nextInt();
 				}
-		case "4":
-			mostrarArray(array);
-			break;
-		case "0":
-			break;
-		}
+				break;
+			case "2":
+				System.out.println("Que posicion del array quieres cambiar");
+				int posicion = entrada.nextInt();
+				System.out.println("Introduce el numero para la posicion " + posicion);
+				array[posicion - 1] = entrada.nextInt();
+				break;
+			case "3":
+				//array = new int[longitud];
+				System.out.println("Estas seguro que equieres eliminar los numeros del array? (S/N)");
+				String borradoRespuesta = entrada.next();
+				if ("S".equals(borradoRespuesta.toUpperCase())) {
+					for (int i = 0; i < array.length; i++) {
+						array[i] = 0;
+					}
+				}
+				break;
+			case "4":
+				mostrarArray(array);
+				System.out.println();
+				break;
+			default:	
+				System.out.println("Opcion no valida");
+			}
 
+		} while (!"0".equals(segundaRespuesta));
+		System.out.println("Adios . . . .");
 	}
 
 	private static void mostrarArray(int[] array) {

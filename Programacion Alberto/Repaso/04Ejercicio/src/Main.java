@@ -1,5 +1,8 @@
 
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,7 +26,6 @@ public class Main {
 				entrada.next();
 			}
 		}
-
 		int[] array = new int[longitud];
 
 		System.out.println("Como quieres inicializar tu array");
@@ -43,7 +45,7 @@ public class Main {
 		if ("2".equals(respuesta)) {
 			Random rand = new Random();
 			for (int i = 0; i < array.length; i++) {
-				array[i] = rand.nextInt(100);
+				array[i] = rand.nextInt(100)+1;
 			}
 		} else if ("3".equals(respuesta)) {
 			for (int i = 0; i < array.length; i++) {
@@ -55,6 +57,9 @@ public class Main {
 		mostrarArray(array);
 		System.out.println();
 
+		String segundaRespuesta;
+		do {
+		
 		System.out.println("¿Qué quieres hacer con tu array?");
 		System.out.println("1.- Cambiar valores de todo el array");
 		System.out.println("2.- Cambiar un valor del array");
@@ -67,7 +72,7 @@ public class Main {
 		System.out.println("9.- Ordenar de menor a mayor");
 		System.out.println("10.- Ordenar de mayor a menor");
 		System.out.println("0.- Salir");
-		String segundaRespuesta = entrada.next();
+		segundaRespuesta = entrada.next();
 
 		System.out.println("");
 
@@ -86,20 +91,13 @@ public class Main {
 			mostrarArray(array);
 			break;
 		case "3":
-			System.out.println("Estas seguro que quieres eliminar los numeros del array? (S/N)");
+			//array = new int[longitud];
+			System.out.println("Estas seguro que equieres eliminar los numeros del array? (S/N)");
 			String borradoRespuesta = entrada.next();
-
-			while (!"S".equals(borradoRespuesta.toUpperCase()) && !"N".equals(borradoRespuesta.toUpperCase())) {
-				System.out.println("No lo he entendido, quieres eliminar los numeros del array? (S/N)");
-				borradoRespuesta = entrada.next();
-			}
 			if ("S".equals(borradoRespuesta.toUpperCase())) {
 				for (int i = 0; i < array.length; i++) {
 					array[i] = 0;
 				}
-				mostrarArray(array);
-			} else if ("N".equals(borradoRespuesta.toUpperCase())) {
-				System.out.println("Adios...");
 			}
 			break;
 		case "4":
@@ -113,7 +111,7 @@ public class Main {
 			System.out.println("La suma del array es " + suma);
 			break;
 		case "6":
-			int multiplicar = 0;
+			int multiplicar = 1;
 			for (int i = 0; i < array.length; i++) {
 				multiplicar *= array[i];
 			}
@@ -137,6 +135,7 @@ public class Main {
 			}
 			break;
 		case "9":
+			//Arrays.short(array);
 			int menor = 0;
 			for (int i = 0; i < array.length; i++) {
 				for (int j = i; j < array.length; j++) {
@@ -147,7 +146,6 @@ public class Main {
 					}
 				}
 			}
-			mostrarArray(array);
 			break;
 		case "10":
 			int mayor = 0;
@@ -160,12 +158,14 @@ public class Main {
 					}
 				}
 			}
-			mostrarArray(array);
 			break;
-		case "0":
-			System.out.println("Adios...");
-			break;
+		default:
+			if (!"0".equals(segundaRespuesta))
+			System.out.println("Opcion no valida");
+			System.out.println();
 		}
+		} while (!"0".equals(segundaRespuesta));
+		System.out.println("Adios . . . .");
 	}
 
 	private static void mostrarArray(int[] array) {
