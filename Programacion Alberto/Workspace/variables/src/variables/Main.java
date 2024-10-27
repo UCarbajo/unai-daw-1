@@ -9,7 +9,7 @@ public class Main {
 		 short
 		 long
 		 double
-		 float
+		 float 
 		 char
 		 byte
 		 boolean
@@ -33,6 +33,7 @@ public class Main {
 		int numero = 3;
 		Double numero2 = 3.0;
 		String cadena = "Alberto";
+		System.out.println(cadena.length());
 		
 		for(int index=0;index<cadena.length();index++) {
 		System.out.println(cadena.charAt(index));

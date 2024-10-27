@@ -23,6 +23,7 @@ public class App {
 		listaCanciones.add(new Cancion("Macarena3", "Dale a tu cuerpo", 130));
 		listaCanciones.add(new Cancion("Macarena4", "Dale a tu cuerpo", 130));
 		listaCanciones.add(new Cancion("Macarena5", "Dale a tu cuerpo", 130));
+		Cancion c1 = new Cancion("Paull", "Si dale a", 120);
 		
 		for(int i = 0; i < listaCanciones.size(); i++) {
 			Cancion c = listaCanciones.get(i);
@@ -32,7 +33,6 @@ public class App {
 		for (Cancion c: listaCanciones) {
 			System.out.println(c);
 		}
-		
 		
 		/*boolean[] reproducidas = new boolean[listaCanciones.size()];
 		int cancionesRestantes = listaCanciones.size();
