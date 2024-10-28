@@ -14,10 +14,10 @@ public class Main {
 		int suma = 1;
 		switch (opcion) {
 		case 1:
-			for (int i = 0; i <= arrayPrincipal.length ; i++) {
+			for (int i = 0; i < arrayPrincipal.length ; i++) {
 				int[] arrayAltura = new int[altura];
 				int[] arrayLongitud = new int[suma];
-				for (int j = 0; j < arrayAltura.length; j++) {
+				for (int j = 0; j < arrayAltura.length-1; j++) {
 					if (0 == arrayAltura[j]) {
 						System.out.print(" ");
 					}
@@ -26,17 +26,17 @@ public class Main {
 					if (0 == arrayLongitud[j]) {
 						System.out.print("*");
 					}
-				}
+				} 
 				System.out.println();
 				suma += 2;
 				altura -= 1;
 			}
 			break;
 		case 2:
-			for (int i = 0; i <= arrayPrincipal.length ; i++) {
+			for (int i = 0; i < arrayPrincipal.length ; i++) {
 				int[] arrayAltura = new int[altura];
 				int[] arrayLongitud = new int[suma];
-				for (int j = 0; j < arrayAltura.length; j++) {
+				for (int j = 0; j < arrayAltura.length-1; j++) {
 					if (0 == arrayAltura[j]) {
 						System.out.print(" ");
 					}
