@@ -94,6 +94,9 @@ public class Main {
 		//!
 		System.out.println(!(1 < 0)); //true
 		System.out.println(!(1 < 1)); //false
+		
+		System.out.println(1 != 0);
+		
 	}
 
 }

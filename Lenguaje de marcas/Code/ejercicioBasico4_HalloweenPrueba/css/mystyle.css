@@ -1,0 +1,77 @@
+.creepster-regular {
+    font-family: "Creepster", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+header{
+    background-color: #800080;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#inicio img{
+    width: 400px; /* Ajusta el tamaño que prefieras */
+    height: auto;
+}
+#inicio h1{
+    color: white;
+    font-size: 300%;
+}
+.naranja{
+    font-family: "Creepster", system-ui;
+    color: #FFCC00;
+    font-size: 150%;
+}
+#main{
+    display: flex;
+    flex-direction: column;
+}
+#main a{
+    text-decoration: none;
+    color: white;
+}
+#main a:hover{
+    color: #FFCC00;
+}
+.encabezado{
+    position: sticky;
+    top: 0;
+}
+#main ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+#main li{
+    background-color: #000000;
+    padding: 30px;
+    margin-inline: 10px;
+    font-family: "Creepster", system-ui;
+    font-size: 25px;
+}
+#content {
+    background-color: antiquewhite;
+}
+#quienes-somos{
+    background-color: #F4E8F4; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-width: 10px;
+    border-style: dotted;
+    border-color: #800080;
+    font-size: 23px;
+}
+.centrarImgA{
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+.centrarImgA img{
+    width: 300px;
+}
+#quienes-somos h2{
+    font-family: "Creepster", system-ui;
+    font-size: 40px;
+}
