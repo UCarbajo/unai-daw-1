@@ -1,0 +1,111 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.hero{
+    background-color: white;
+}
+#inicio{
+    display: flex;
+    background-color: #00252E;
+    width: 100%;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+}
+#inicio a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+#inicio h2{
+    margin: 0;
+}
+#inicio nav{
+    display: flex;
+    list-style: none;
+    align-items: flex-end;
+}
+#inicio nav li{
+    font-weight: bold;
+    margin-inline: 8px;
+}
+.hero__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero__texts{
+    align-items: center;
+}
+.hero__title{
+    font-size: 250%;
+}
+.hero__paragraph{
+    text-align: center;
+}
+.hero__mockup{
+    margin: 0;
+    text-align: center;
+    margin-top: 5%;
+}
+.hero__mockup img{
+    margin: 0;
+    width: 80%;
+}
+.hero__numbers{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 8%;
+    text-align: center;
+}
+.hero__subtitle{
+    margin: 0;
+    font-size: 300%;
+}
+.hero__description{
+    margin: 0;
+}
+.container{
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #F5FAFF;
+    padding: 5%;
+}
+.main__picture{
+    width: 50%;
+    margin: 0;
+}
+.main__picture img{
+    width: 80%;
+}
+.main__content__texts{
+    width: 50%;
+    padding: 5%;
+}
+.main__subtitle{
+    font-size: 30px;
+}
+.container2{
+    display: flex;
+    background-color: #FEFEFF;
+}
+.section__texts{
+    text-align: center;
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+footer{
+    background-color: #00252E;
+    color: white;
+    display: flex;
+    width: 100%;
+}
+.footer__section{
+    order: 1;
+}
+.footer__social{
+    order: 0;
+}
+.footer .footer__bottom{
+    order: 2;
+}
