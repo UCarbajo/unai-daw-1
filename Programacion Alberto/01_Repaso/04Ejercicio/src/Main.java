@@ -16,10 +16,10 @@ public class Main {
 		while (true) {
 			if (entrada.hasNextInt()) {
 				longitud = entrada.nextInt();
-				if (longitud > 0) {
+				if (longitud > 1 ) {
 					break;
 				} else {
-					System.out.println("Introduce un valor mayor a 0");
+					System.out.println("Introduce un valor mayor o igual a 2");
 				}
 			} else {
 				System.out.println("Introduce un numero correcto");

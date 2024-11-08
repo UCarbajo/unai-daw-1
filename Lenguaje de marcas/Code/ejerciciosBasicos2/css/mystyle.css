@@ -24,19 +24,15 @@ h2{
 }
 #preparacion{
     display: flex;
+    margin: 0;
     justify-content: center;
 }
 #ingredientes{
     color: #250C0F;
     background-color: #9FCE64;
-    float: left;
-    width: 20em;
 }
 #lista_ingredientes{
     list-style: none;
-    padding-right: 2em;
-    padding-bottom: 1em;
-    margin-top: 3em;
 }
 .impar{
     background-color: #237803;
@@ -50,10 +46,6 @@ h2{
 #elaboracion{
     background-color: #B08500;
     color: #fff;
-    padding-right: 2em;
-    padding-bottom: 1em;
-    float: left;
-    width: 20em;
 }
 ol{
     margin-top: 3em;
