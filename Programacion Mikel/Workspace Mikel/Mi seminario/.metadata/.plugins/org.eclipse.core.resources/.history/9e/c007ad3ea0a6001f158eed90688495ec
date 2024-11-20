@@ -1,6 +1,0 @@
-package model;
-
-public interface IVehiculo {
-	public static final int velocidad = 0;
-	public static final String modelo = "";
-}

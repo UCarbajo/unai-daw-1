@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+D:\Unai\unai-daw-1\Programacion Alberto\Repaso\.metadata\.plugins\org.eclipse.jdt.core
+4202946885.index
+3857475083.index
+480913921.index
+408943164.index
+4154298626.index

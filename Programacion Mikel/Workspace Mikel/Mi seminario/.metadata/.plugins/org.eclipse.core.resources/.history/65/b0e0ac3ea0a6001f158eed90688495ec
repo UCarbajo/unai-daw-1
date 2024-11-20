@@ -1,9 +1,0 @@
-package model;
-
-public class Acuatico implements IVehiculo{
-
-	public double eslora;
-	public static void arrancar() {
-		
-	}
-}

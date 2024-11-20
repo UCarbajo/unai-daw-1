@@ -1,8 +1,0 @@
-INDEX VERSION 1.131+D:\DAW\unai-daw-1\Programacion Mikel\Workspace Mikel\Mi seminario\.metadata\.plugins\org.eclipse.jdt.core
-2628534571.index
-522590410.index
-3710268763.index
-1296046756.index
-1959479894.index
-2665473914.index
-2761590058.index
