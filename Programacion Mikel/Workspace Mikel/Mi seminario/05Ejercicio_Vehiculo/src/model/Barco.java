@@ -1,5 +1,11 @@
 package model;
 
-public class Barco {
+public class Barco implements IAcuatico {
 
+	@Override
+	public void arrancar() {
+		System.out.println("Brrrr soy un barco");
+		
+	}
+	
 }
