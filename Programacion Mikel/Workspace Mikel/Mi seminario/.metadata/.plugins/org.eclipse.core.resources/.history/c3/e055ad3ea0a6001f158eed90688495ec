@@ -1,0 +1,9 @@
+package model;
+
+public class Terrestre implements IVehiculo {
+	
+	public int ruedas;
+	public static void arrancar() {
+		
+	}
+}

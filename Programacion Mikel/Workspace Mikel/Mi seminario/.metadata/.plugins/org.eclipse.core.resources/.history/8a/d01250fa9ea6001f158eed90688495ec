@@ -1,0 +1,6 @@
+package model;
+
+public class Vehiculo {
+	public int velocidad;
+	public String modelo;
+}

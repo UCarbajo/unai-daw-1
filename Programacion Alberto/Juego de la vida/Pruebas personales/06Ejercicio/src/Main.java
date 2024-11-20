@@ -7,8 +7,8 @@ public class Main {
 		System.out.println("Introduce una frase");
 		String frase = entrada.nextLine();
 		
-		String fraseSinEspacios = frase.replace(" ", "");
-		System.out.println(fraseSinEspacios);
+		frase = frase.replace(" ", "");
+		System.out.println(frase);
 		
 	
 	}
