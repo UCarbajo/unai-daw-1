@@ -1,39 +1,46 @@
 
 public class Fecha {
-	private int año = 0;
-	private int mes = 1;
-	private int dia = 1;
+	private int ano;
+	private int mes;
+	private int dia;
 
 	public static final int MESES_AÑO = 12;
 
-	public static boolean esBisiesto(int año);
 
-	public Fecha();
+	public Fecha(int ano, int mes, int dia) {
+		this.ano = ano;
+        this.mes = mes;
+        this.dia = dia;
+	}
 
-	public Fecha(int año, int mes, int dia);
+	
+	public int getAno() {
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
 
-	public Fecha(Fecha f);
+	public int getMes() {
+		return mes;
+	}
+	public void setMes(int mes) {
+		this.mes = mes;
+	}
 
-	public boolean esBisiesto();
+	public int getDia() {
+		return dia;
+	}
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
 
-	public void setAño(int año);
 
-	public int getAño();
+	@Override
+	public String toString() {
+		return + this.ano + "/" + this.mes + "/" +  this.dia;
+	}
 
-	public void setMes(int mes);
-
-	public int getMes();
-
-	public void setDia(int dia);
-
-	public int getDia();
-
-	public void set(int año, int mes, int dia);
-
-	public void set(Fecha f);
-
-	public String toString();
-
-	public boolean equals(Object o);
+	
 
 }
