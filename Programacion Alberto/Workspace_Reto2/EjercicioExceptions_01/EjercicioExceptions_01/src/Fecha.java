@@ -1,3 +1,5 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Fecha {
 	private int ano = 0;
@@ -11,9 +13,9 @@ public class Fecha {
 	}
 
 	public Fecha(int ano, int mes, int dia) {
-		if(mes <= 0 || mes > 12) {
+		if (mes <= 0 || mes > 12) {
 			throw new FechaException("La fecha es incorrecta");
-        }
+		}
 		this.ano = ano;
 		this.mes = mes;
 		this.dia = dia;
@@ -22,7 +24,7 @@ public class Fecha {
 	public Fecha(Fecha f) throws FechaException {
 		this.ano = f.getAno();
 		this.mes = f.getMes();
-		this.dia = f.getMes();
+		this.dia = f.getDia();
 	}
 
 	public int getAno() {
@@ -38,6 +40,9 @@ public class Fecha {
 	}
 
 	public void setMes(int mes) {
+		if (mes <= 0 || mes > 12) {
+			throw new FechaException("La fecha es incorrecta");
+		}
 		this.mes = mes;
 	}
 
@@ -46,6 +51,10 @@ public class Fecha {
 	}
 
 	public void setDia(int dia) {
+		Calendar calendario = new GregorianCalendar(this.ano, this.mes - 1, 1);
+		if (dia <= 0 || dia > calendario.getActualMaximum(Calendar.DAY_OF_MONTH)) {
+			throw new FechaException("La fecha es incorrecta");
+		}
 		this.dia = dia;
 	}
 
@@ -67,33 +76,36 @@ public class Fecha {
 	}
 
 	public void set(int ano, int mes, int dia) {
+		if(mes <= 0 || mes > 12) {
+			throw new FechaException("La fecha es incorrecta");
+        }
 		this.ano = ano;
 		this.mes = mes;
 		this.dia = dia;
 	}
 
 	public void set(Fecha f) {
-		f.setAno(this.ano);
-		f.setMes(this.mes);
-		f.setDia(this.dia);
+		this.ano = f.getAno();
+		this.mes = f.getMes();
+		this.dia = f.getDia();
 	}
 
 	public boolean equals(Object o) {
 		Fecha f = (Fecha) o;
-			if(this.ano == f.getAno()) {
-				if(this.mes == f.getMes()) {
-					if(this.dia == f.getDia()) {
-						return true;
-					}
+		if (this.ano == f.getAno()) {
+			if (this.mes == f.getMes()) {
+				if (this.dia == f.getDia()) {
+					return true;
 				}
 			}
+		}
 		return false;
 
 	}
 
 	@Override
 	public String toString() {
-		return +this.ano + "/" + this.mes + "/" + this.dia;
+		return this.ano + "/" + this.mes + "/" + this.dia;
 	}
 
 }
