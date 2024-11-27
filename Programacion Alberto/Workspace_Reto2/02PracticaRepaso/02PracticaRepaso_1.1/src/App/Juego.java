@@ -1,6 +1,7 @@
+package App;
 
 public class Juego {
-	private int vidas = 3;
+	public int vidas = 3;
 	
 	public Juego (int vidas) {
 		super();
