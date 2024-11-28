@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("De cuantas posiciones quieres crear tu array?");
+		
+		System.out.println("Como quieres inicializar tu array");
+		System.out.println("1.- Con ceros");
+		System.out.println("2.- Con números aleatorios del 1 al 100");
+		System.out.println("Insertando los números manualmente.");
+		String respuesta = entrada.next();
+		
+		int longitud = entrada.nextInt();
+		int[] array = new int[longitud];
+		
+		if (respuesta == "1") {
+			System.out.print("El array esta compuesto por ");
+			for (int i = 0; i < array.length; i++) {
+				System.out.print(array[i] + ", ");
+		}
+
+		System.out.print("El array esta compuesto por ");
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + ", ");
+
+		}
+	}
+	}
+}

@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
 	<section name="NewWizardAction">
 	</section>
+=======
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 	<section name="SmartImportWizard">
 		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+<<<<<<< HEAD
 			<item value="D:\DAW\unai-daw-1\Programacion Mikel\Workspace Mikel\Mi seminario\05Ejercicio_Vehiculo"/>
+=======
+			<item value="D:\Unai\unai-daw-1\Programacion Mikel\Workspace Mikel\Mi seminario\05Ejercicio_Vehiculo"/>
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 		</list>
 	</section>
 </section>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 !SESSION 2024-11-04 15:11:26.034 -----------------------------------------------
+=======
+!SESSION 2024-11-26 10:17:09.057 -----------------------------------------------
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 eclipse.buildId=4.19.0.I20210303-1800
 java.version=15.0.2
 java.vendor=Oracle Corporation
@@ -6,15 +10,25 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 2 0 2024-11-04 15:11:49.523
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2024-11-04 15:11:49.523
+=======
+!ENTRY org.eclipse.jface 2 0 2024-11-26 10:17:44.837
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2024-11-26 10:17:44.837
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 !MESSAGE A conflict occurred for CTRL+SHIFT+T:
 Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
 		Open a type in a Java editor,
 		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@cbea0df,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4fcb796f,
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
@@ -22,11 +36,16 @@ Binding(CTRL+SHIFT+T,
 	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
 		,
 		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@396f3bf2,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1483c738,
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.ui.navigator 2 0 2024-11-04 15:11:55.866
 !MESSAGE Can't find Navigator Content Descriptor with id: org.eclipse.jst.servlet.ui.EnhancedJavaRendering
 
@@ -36,11 +55,26 @@ Binding(CTRL+SHIFT+T,
 !ENTRY org.eclipse.egit.ui 2 0 2024-11-04 15:11:55.996
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\unai-'. If this is
+=======
+!ENTRY org.eclipse.ui.navigator 2 0 2024-11-26 10:18:04.022
+!MESSAGE Can't find Navigator Content Descriptor with id: org.eclipse.jst.servlet.ui.EnhancedJavaRendering
+
+!ENTRY org.eclipse.ui.navigator 2 0 2024-11-26 10:18:04.023
+!MESSAGE Can't find Navigator Content Descriptor with id: org.eclipse.jst.servlet.ui.EnhancedJavaRendering
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-11-26 10:18:04.839
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Alumno'. If this is
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.ui.ide 4 4 2024-11-04 15:12:02.509
+=======
+!ENTRY org.eclipse.ui.ide 4 4 2024-11-26 10:18:11.264
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 !MESSAGE Not properly disposed SWT resource
 !STACK 0
 java.lang.Error: SWT Resource was not properly disposed
@@ -89,7 +123,11 @@ java.lang.Error: SWT Resource was not properly disposed
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.ui.ide 4 4 2024-11-04 15:12:02.511
+=======
+!ENTRY org.eclipse.ui.ide 4 4 2024-11-26 10:18:11.309
+>>>>>>> 8cc044651b8680132bdc06f977bf2417fd4f6f7e
 !MESSAGE Not properly disposed SWT resource
 !STACK 0
 java.lang.Error: SWT Resource was not properly disposed
