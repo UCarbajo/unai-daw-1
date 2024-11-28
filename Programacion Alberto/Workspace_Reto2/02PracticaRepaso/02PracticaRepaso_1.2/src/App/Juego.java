@@ -29,7 +29,7 @@ public class Juego {
 		}
 	}
 	
-	public void reinicaPartida() {
+	public void reiniciarPartida() {
 		this.vidas = vidasIniciales;
 	}
 	

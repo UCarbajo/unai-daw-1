@@ -11,8 +11,8 @@ public class Aplicacion {
 		Random ramon = new Random();
 	
 		JuegoAdivinaNumero jAdivinar = new JuegoAdivinaNumero(3, ramon.nextInt(11));
-		JuegoAdivinaPar jPar = new JuegoAdivinaPar(3, ramon.nextInt(11));
-		JuegoAdivinaImpar jImpar = new JuegoAdivinaImpar(3, ramon.nextInt(11));
+		JuegoAdivinaPar jPar = new JuegoAdivinaPar(3, 6);
+		JuegoAdivinaImpar jImpar = new JuegoAdivinaImpar(3, 3);
 		
 		jAdivinar.juega();
 		jPar.juega();

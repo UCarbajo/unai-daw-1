@@ -13,7 +13,7 @@ public class Aplicacion {
 		
 		juego1.quitaVida();
 		juego1.muestraVidasRestantes();
-		juego1.reinicaPartida();
+		juego1.reiniciarPartida();
 		juego1.muestraVidasRestantes();
 		juego1.actualizaRecord();
 		juego2.actualizaRecord();

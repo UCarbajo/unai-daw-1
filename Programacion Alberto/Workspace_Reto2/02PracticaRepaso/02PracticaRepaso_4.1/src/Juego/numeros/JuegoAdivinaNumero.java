@@ -21,7 +21,7 @@ public class JuegoAdivinaNumero extends Juego implements IJugable {
 
 	@Override
 	public void juega() {
-		reinicaPartida();
+		reiniciarPartida();
 
 		while (true) {
 			System.out.println("Adivina el numero entre el 0 y el 10");
