@@ -14,16 +14,16 @@ public class ColorFondo {
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setLayout(null);
 		
-		JButton btbRojo = new JButton("Calcular");
-		btbRojo.setBounds(50, 120, 100, 30);
+		JButton btbRojo = new JButton("Fondo Rojo");
+		btbRojo.setBounds(20, 120, 120, 30);
 		ventana.add(btbRojo);
 		
-		JButton btbVerde = new JButton("Calcular");
-		btbVerde.setBounds(150, 120, 100, 30);
+		JButton btbVerde = new JButton("Fondo Verde");
+		btbVerde.setBounds(140, 120, 120, 30);
 		ventana.add(btbVerde);
 		
-		JButton btbAzul = new JButton("Calcular");
-		btbAzul.setBounds(250, 120, 100, 30);
+		JButton btbAzul = new JButton("Fondo Azul");
+		btbAzul.setBounds(240, 120, 120, 30);
 		ventana.add(btbAzul);
 		
 		btbRojo.addActionListener(new ActionListener() {

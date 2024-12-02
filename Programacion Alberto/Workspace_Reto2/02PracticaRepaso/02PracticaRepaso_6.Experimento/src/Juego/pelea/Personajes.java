@@ -14,21 +14,6 @@ public class Personajes {
 		this.defensa = defensa;
 	}
 
-	public void atacar(Personajes enemigo) {
-	    int daño = this.ataque/enemigo.getDefensa();
-	    if (daño <= 0) {
-	        daño = 1;
-	    }
-	    
-	    enemigo.setSalud(enemigo.getSalud() - daño);
-	    
-	    System.out.println(this.nombre + " atacó a " + enemigo.getNombre() + " causando " + daño + " de daño.");
-	}
-	
-	void defensa (int ataque, int salud, int defensa) {
-		
-	}
-
 	public int getSalud() {
 		return salud;
 	}

@@ -7,10 +7,11 @@ import Juego.excepciones.JuegoException;
 import Juego.interfaces.IJugable;
 import Juego.pelea.Personajes;
 
-public class JuegoPelea extends Juego implements IJugable {
+public class JuegoPelea extends Juego implements IJugable, IComportamientoPelea {
 
 	Scanner entrada = new Scanner(System.in);
 	private Personajes clase;
+	private Personajes enemigo;
 
 	public JuegoPelea(int vidas) {
 		super(vidas);
@@ -25,6 +26,8 @@ public class JuegoPelea extends Juego implements IJugable {
 		Personajes humano = new Personajes("Humano", 100, 8, 15);
 
 		while (true) {
+			
+			enemigo = humano;
 			System.out.println("Elige el personaje con el que quieres jugar");
 			System.out.println("1. Elfo");
 			System.out.println("2. Enano");
@@ -42,17 +45,12 @@ public class JuegoPelea extends Juego implements IJugable {
 				clase = humano;
 				break;
 			}
-
-			clase.atacar(enano);
-			System.out.println(enano.getSalud());
-			System.out.println(clase.getSalud());
 		}
 
 	}
 
 	@Override
 	public void muestraVidasRestantes() {
-		// TODO Auto-generated method stub
 		super.muestraVidasRestantes();
 	}
 
@@ -65,6 +63,31 @@ public class JuegoPelea extends Juego implements IJugable {
 	public void muestraInfo() {
 		System.out.println("Pelea contra varios enemigos y derrotalos");
 
+	}
+
+	@Override
+	public void atacar() {
+		    int daño = clase.getAtaque()/enemigo.getDefensa();
+		    if (daño <= 0) {
+		        daño = 1;
+		    }
+		    
+		    enemigo.setSalud(enemigo.getSalud() - daño);
+		    
+		    System.out.println(clase.getNombre() + " atacó a " + enemigo.getNombre() + " causando " + daño + " de daño.");
+		
+	}
+
+	@Override
+	public void defensa() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void ataqueEspecial() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
