@@ -1,4 +1,4 @@
-
+ventasclientecliente
 INSERT INTO cliente (id_cliente, nombre, apellido1, apellido2, ciudad, categoria)
 VALUES 
 	(1, 'Aarón', 'River', 'Gómez', 'Almería', 100),

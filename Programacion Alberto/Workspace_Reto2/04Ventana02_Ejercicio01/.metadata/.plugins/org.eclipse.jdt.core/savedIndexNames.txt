@@ -1,0 +1,18 @@
+INDEX VERSION 1.131+D:\Unai\unai-daw-1\Programacion Alberto\Workspace_Reto2\04Ventana02_Ejercicio01\.metadata\.plugins\org.eclipse.jdt.core
+929861775.index
+1958052226.index
+407922544.index
+4026166881.index
+1995653083.index
+1970793397.index
+79787597.index
+3908290237.index
+79370696.index
+4169158233.index
+3988574264.index
+3967728143.index
+2683631147.index
+1882783024.index
+1912248071.index
+648298250.index
+3983856052.index

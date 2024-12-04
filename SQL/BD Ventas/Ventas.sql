@@ -25,6 +25,3 @@ CREATE TABLE IF NOT EXISTS Pedido (
 	FOREIGN KEY(id_Cliente) REFERENCES Cliente (id_Cliente),
 	FOREIGN KEY(id_Comercial) REFERENCES Comercial (id_Comercial)
 );
-
-ALTER TABLE pedido
-DROP column cant_unid;
