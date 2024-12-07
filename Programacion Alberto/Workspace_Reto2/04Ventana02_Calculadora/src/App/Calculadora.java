@@ -1,4 +1,5 @@
 package App;
+
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -163,7 +164,9 @@ public class Calculadora {
 						}
 					} catch (StringIndexOutOfBoundsException e) {
 						txtResultado.setText("0");
-						usoBotonNumero = false;
+						if (operacionSeleccionada == "") {
+							usoBotonNumero = false;
+						}
 					}
 				}
 				if (usoBotonComa == true) {
@@ -267,7 +270,38 @@ public class Calculadora {
 			public void actionPerformed(ActionEvent event) {
 
 				try {
-					calcularOperacion(txtResultado);
+					if (usoBotonNumero == true) {
+						if (usoBotonOperacion == true) {
+							if (usoBotonIgual == false) {
+								switch (operacionSeleccionada) {
+								case "suma":
+									resultado += Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								case "resta":
+									resultado -= Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								case "multiplicar":
+									resultado *= Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								case "dividir":
+									resultado /= Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								}
+							}
+						}
+					}
 
 					if (usoBotonIgual == false) {
 						if (usoBotonOperacion == false) {
@@ -318,7 +352,38 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent event) {
 				try {
-					calcularOperacion(txtResultado);
+					if (usoBotonNumero == true) {
+						if (usoBotonOperacion == true) {
+							if (usoBotonIgual == false) {
+								switch (operacionSeleccionada) {
+								case "suma":
+									resultado += Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								case "resta":
+									resultado -= Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								case "multiplicar":
+									resultado *= Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								case "dividir":
+									resultado /= Integer.parseInt(txtResultado.getText());
+									txtResultado.setText(String.valueOf(resultado));
+									usoBotonIgual = true;
+									operacionSeleccionada = "";
+									break;
+								}
+							}
+						}
+					}
 
 					if (usoResultado == false) {
 						resultado = Integer.parseInt(txtResultado.getText());
@@ -348,12 +413,12 @@ public class Calculadora {
 						break;
 					}
 				}
-				
-				if(usoBotonNumero == false) {
+
+				if (usoBotonNumero == false) {
 					txtResultado.setText("0,");
 					usoBotonComa = true;
 				}
-				
+
 				if (usoBotonComa == false && usoBotonNumero == true) {
 					txtResultado.setText(txtResultado.getText() + ",");
 					usoBotonComa = true;

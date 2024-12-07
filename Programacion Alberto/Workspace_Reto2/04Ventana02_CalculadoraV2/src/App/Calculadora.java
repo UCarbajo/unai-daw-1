@@ -10,7 +10,7 @@ import javax.swing.SwingConstants;
 
 import Metodos.metodosCalculadora;
 
-public class CalculadoraFinal {
+public class Calculadora {
 
 	public static int resultado = 0;
 	public static boolean usoBotonNumero = false;

@@ -124,7 +124,13 @@ public class metodosCalculadora {
 				if (usoBotonOperacion == false) {
 					usoBotonOperacion = true;
 					usoBotonNumero = false;
-					resultado += Double.parseDouble(txtResultado.getText());
+					if (esPrimeraOperacion == true) {
+						resultado = Double.parseDouble(txtResultado.getText());
+						usoBotonIgual = true;
+						esPrimeraOperacion = false;
+					} else {
+						resultado += Double.parseDouble(txtResultado.getText());
+					}
 					txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
 					operacionSeleccionada = "suma";
 				}
@@ -147,6 +153,7 @@ public class metodosCalculadora {
 					usoBotonNumero = false;
 					if (esPrimeraOperacion == true) {
 						resultado = Double.parseDouble(txtResultado.getText());
+						usoBotonIgual = true;
 						esPrimeraOperacion = false;
 					} else {
 						resultado -= Double.parseDouble(txtResultado.getText());
@@ -173,6 +180,7 @@ public class metodosCalculadora {
 					usoBotonNumero = false;
 					if (esPrimeraOperacion == true) {
 						resultado = 1;
+						usoBotonIgual = true;
 						esPrimeraOperacion = false;
 					}
 					resultado *= Double.parseDouble(txtResultado.getText());
@@ -190,6 +198,10 @@ public class metodosCalculadora {
 
 	public static void usoBotonDividir(JTextField txtResultado) {
 		try {
+			if (txtResultado.getText().equals("0")) {
+				throw new ArithmeticException("División por cero");
+			}
+
 			calcularOperacion(txtResultado);
 
 			if (usoBotonIgual == false) {
@@ -198,6 +210,7 @@ public class metodosCalculadora {
 					usoBotonNumero = false;
 					if (esPrimeraOperacion == true) {
 						resultado = Double.parseDouble(txtResultado.getText());
+						usoBotonIgual = true;
 						esPrimeraOperacion = false;
 					} else {
 						resultado /= Double.parseDouble(txtResultado.getText());
@@ -301,6 +314,9 @@ public class metodosCalculadora {
 					operacionSeleccionada = "";
 					break;
 				case "dividir":
+					if (txtResultado.getText().equals("0")) {
+						throw new ArithmeticException("División por cero");
+					}
 					resultado /= Double.parseDouble(txtResultado.getText());
 					txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
 					usoBotonIgual = true;
