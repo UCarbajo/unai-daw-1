@@ -7,7 +7,7 @@ public class metodosCalculadora {
 	private static double resultado = 0;
 	private static boolean usoBotonNumero = false;
 	private static boolean usoBotonOperacion = false;
-	private static boolean usoBotonIgual = false;
+	private static boolean usoBotonIgual = true;
 	private static boolean usoBotonPunto = false;
 	private static boolean esPrimeraOperacion = true;
 	private static String operacionSeleccionada = "";
@@ -139,7 +139,11 @@ public class metodosCalculadora {
 			usoBotonNumero = false;
 			operacionSeleccionada = "suma";
 		} catch (ArithmeticException e) {
-			reinicioPorError(txtResultado, e);
+			txtResultado.setText("Error: División por cero");
+			reinicioPorError(txtResultado);
+		} catch (NumberFormatException e) {
+			txtResultado.setText("Error: Valores introducidos incorrectos");
+			reinicioPorError(txtResultado);
 		}
 	}
 
@@ -166,7 +170,11 @@ public class metodosCalculadora {
 			usoBotonNumero = false;
 			operacionSeleccionada = "resta";
 		} catch (ArithmeticException e) {
-			reinicioPorError(txtResultado, e);
+			txtResultado.setText("Error: División por cero");
+			reinicioPorError(txtResultado);
+		} catch (NumberFormatException e) {
+			txtResultado.setText("Error: Valores introducidos incorrectos");
+			reinicioPorError(txtResultado);
 		}
 	}
 
@@ -192,38 +200,41 @@ public class metodosCalculadora {
 			usoBotonNumero = false;
 			operacionSeleccionada = "multiplicar";
 		} catch (ArithmeticException e) {
-			reinicioPorError(txtResultado, e);
+			txtResultado.setText("Error: División por cero");
+			reinicioPorError(txtResultado);
+		} catch (NumberFormatException e) {
+			txtResultado.setText("Error: Valores introducidos incorrectos");
+			reinicioPorError(txtResultado);
 		}
 	}
 
 	public static void usoBotonDividir(JTextField txtResultado) {
 		try {
-			if (txtResultado.getText().equals("0")) {
-				throw new ArithmeticException("División por cero");
-			}
 
 			calcularOperacion(txtResultado);
 
-			if (usoBotonIgual == false) {
-				if (usoBotonOperacion == false) {
-					usoBotonOperacion = true;
-					usoBotonNumero = false;
-					if (esPrimeraOperacion == true) {
-						resultado = Double.parseDouble(txtResultado.getText());
-						usoBotonIgual = true;
-						esPrimeraOperacion = false;
-					} else {
-						resultado /= Double.parseDouble(txtResultado.getText());
-					}
-					txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
-					operacionSeleccionada = "dividir";
+			if (usoBotonIgual == false && usoBotonOperacion == false) {
+				usoBotonOperacion = true;
+				usoBotonNumero = false;
+				if (esPrimeraOperacion == true) {
+					resultado = Double.parseDouble(txtResultado.getText());
+					usoBotonIgual = true;
+					esPrimeraOperacion = false;
+				} else {
+					resultado /= Double.parseDouble(txtResultado.getText());
 				}
+				txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
+				operacionSeleccionada = "dividir";
 			}
 			usoBotonOperacion = true;
 			usoBotonNumero = false;
 			operacionSeleccionada = "dividir";
 		} catch (ArithmeticException e) {
-			reinicioPorError(txtResultado, e);
+			txtResultado.setText("Error: División por cero");
+			reinicioPorError(txtResultado);
+		} catch (NumberFormatException e) {
+			txtResultado.setText("Error: Valores introducidos incorrectos");
+			reinicioPorError(txtResultado);
 		}
 	}
 
@@ -247,22 +258,33 @@ public class metodosCalculadora {
 				usoBotonIgual = true;
 			}
 		} catch (ArithmeticException e) {
-			reinicioPorError(txtResultado, e);
+			txtResultado.setText("Error: División por cero");
+			reinicioPorError(txtResultado);
+		} catch (NumberFormatException e) {
+			txtResultado.setText("Error: Valores introducidos incorrectos");
+			reinicioPorError(txtResultado);
 		}
 	}
 
 	public static void usoBotonEliminar(JTextField txtResultado) {
-		String contenido = "";
-		for (int i = 0; i < txtResultado.getText().length() - 1; i++) {
-			contenido += txtResultado.getText().charAt(i);
-		}
-		txtResultado.setText(contenido);
-		if (txtResultado.getText().length() == 1 && txtResultado.getText().charAt(0) == '0') {
+		if (usoBotonIgual == false) {
+			String contenido = "";
+			for (int i = 0; i < txtResultado.getText().length() - 1; i++) {
+				contenido += txtResultado.getText().charAt(i);
+			}
+			txtResultado.setText(contenido);
+			if (txtResultado.getText().length() == 1 && txtResultado.getText().charAt(0) == '0') {
+				usoBotonPunto = false;
+				usoBotonNumero = false;
+			}
+			if (txtResultado.getText().length() == 0) {
+				txtResultado.setText("0");
+				usoBotonNumero = false;
+			}
+		} else {
 			usoBotonNumero = false;
-		}
-		if (txtResultado.getText().length() == 0) {
-			txtResultado.setText("0");
-			usoBotonNumero = false;
+			usoBotonOperacion = false;
+			operacionSeleccionada = "";
 		}
 	}
 
@@ -290,53 +312,100 @@ public class metodosCalculadora {
 		}
 	}
 
-	public static void calcularOperacion(JTextField txtResultado) throws ArithmeticException {
-
-		if (usoBotonOperacion == true) {
-			if (usoBotonIgual == false) {
-				switch (operacionSeleccionada) {
-				case "suma":
-					resultado += Double.parseDouble(txtResultado.getText());
-					txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
-					usoBotonIgual = true;
-					operacionSeleccionada = "";
-					break;
-				case "resta":
-					resultado -= Double.parseDouble(txtResultado.getText());
-					txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
-					usoBotonIgual = true;
-					operacionSeleccionada = "";
-					break;
-				case "multiplicar":
-					resultado *= Double.parseDouble(txtResultado.getText());
-					txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
-					usoBotonIgual = true;
-					operacionSeleccionada = "";
-					break;
-				case "dividir":
-					if (txtResultado.getText().equals("0")) {
-						throw new ArithmeticException("División por cero");
-					}
-					resultado /= Double.parseDouble(txtResultado.getText());
-					txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
-					usoBotonIgual = true;
-					operacionSeleccionada = "";
-					break;
+	public static void usoBotonPositivoNegativo(JTextField txtResultado) {
+		if (usoBotonNumero == true) {
+			if (txtResultado.getText().charAt(0) != '-') {
+				txtResultado.setText("-" + txtResultado.getText());
+			} else if (txtResultado.getText().charAt(0) == '-') {
+				String contenido = "";
+				for (int i = 1; i < txtResultado.getText().length(); i++) {
+					contenido += txtResultado.getText().charAt(i);
 				}
+				txtResultado.setText(contenido);
 			}
 		}
 	}
 
-	public static void reinicioPorError(JTextField txtResultado, Exception e) {
-		establecerValoresIniciales();
-		txtResultado.setText("Error: " + e.getMessage());
+	// TODO Falta comprobar comportamiento + fallos.
+	public static void usoBotonAlCuadrado(JTextField txtResultado) {
+		if (usoBotonOperacion == true) {
+			double cuadrado = Double.parseDouble(txtResultado.getText()) * Double.parseDouble(txtResultado.getText());
+			txtResultado.setText(ComprobarDecimal(cuadrado));
+		} else {
+			resultado = Double.parseDouble(txtResultado.getText()) * Double.parseDouble(txtResultado.getText());
+			txtResultado.setText(ComprobarDecimal(resultado));
+			usoBotonNumero = false;
+		}
 	}
 
-	public static String ComprobarDecimal(double numero) {
-		if (numero == (long) numero) {
-			return String.valueOf((long) numero);
+	// TODO Falta comprobar comportamiento + fallos.
+	public static void usoBotonRaizCuadrada(JTextField txtResultado) {
+		if (usoBotonOperacion == true) {
+			double cuadrado = Math.sqrt(Double.parseDouble(txtResultado.getText()));
+			txtResultado.setText(ComprobarDecimal(cuadrado));
 		} else {
-			return String.valueOf(numero);
+			resultado = Math.sqrt(Double.parseDouble(txtResultado.getText()));
+			txtResultado.setText(ComprobarDecimal(resultado));
+			usoBotonNumero = false;
+		}
+	}
+
+	// TODO Falta comprobar comportamiento + fallos.
+	public static void usoBotonUnaFraccion(JTextField txtResultado) {
+		if (usoBotonOperacion == true) {
+			double fraccion = 1 / Double.parseDouble(txtResultado.getText());
+			txtResultado.setText(ComprobarDecimal(fraccion));
+		} else {
+			resultado = 1 / Double.parseDouble(txtResultado.getText());
+			txtResultado.setText(ComprobarDecimal(resultado));
+			usoBotonNumero = false;
+		}
+	}
+
+	public static void calcularOperacion(JTextField txtResultado) throws ArithmeticException, NumberFormatException {
+
+		if (usoBotonOperacion == true && usoBotonIgual == false) {
+			switch (operacionSeleccionada) {
+			case "suma":
+				resultado += Double.parseDouble(txtResultado.getText());
+				txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
+				usoBotonIgual = true;
+				operacionSeleccionada = "";
+				break;
+			case "resta":
+				resultado -= Double.parseDouble(txtResultado.getText());
+				txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
+				usoBotonIgual = true;
+				operacionSeleccionada = "";
+				break;
+			case "multiplicar":
+				resultado *= Double.parseDouble(txtResultado.getText());
+				txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
+				usoBotonIgual = true;
+				operacionSeleccionada = "";
+				break;
+			case "dividir":
+				if (txtResultado.getText().equals("0")) {
+					throw new ArithmeticException();
+				}
+				resultado /= Double.parseDouble(txtResultado.getText());
+				txtResultado.setText(String.valueOf(ComprobarDecimal(resultado)));
+				usoBotonIgual = true;
+				operacionSeleccionada = "";
+				break;
+			}
+		}
+	}
+
+	public static void reinicioPorError(JTextField txtResultado) {
+		establecerValoresIniciales();
+	}
+
+	public static String ComprobarDecimal(double resultado) {
+		if (resultado == (long) resultado) {
+			return String.valueOf((long) resultado);
+		} else {
+			return String.valueOf(resultado);
 		}
 	}
 
@@ -344,7 +413,7 @@ public class metodosCalculadora {
 		resultado = 0;
 		usoBotonNumero = false;
 		usoBotonPunto = false;
-		usoBotonIgual = false;
+		usoBotonIgual = true;
 		usoBotonOperacion = false;
 		esPrimeraOperacion = true;
 		operacionSeleccionada = "";
