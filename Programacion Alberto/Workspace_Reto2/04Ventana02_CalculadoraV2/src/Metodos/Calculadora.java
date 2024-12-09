@@ -2,7 +2,7 @@ package Metodos;
 
 import javax.swing.JTextField;
 
-public class metodosCalculadora {
+public class Calculadora {
 
 	private static double resultado = 0;
 	private static boolean usoBotonNumero = false;
@@ -300,6 +300,7 @@ public class metodosCalculadora {
 
 		if (usoBotonNumero == false) {
 			txtResultado.setText("0.");
+			usoBotonIgual = false;
 			usoBotonPunto = true;
 		}
 

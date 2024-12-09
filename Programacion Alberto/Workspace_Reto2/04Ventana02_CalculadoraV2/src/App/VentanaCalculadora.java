@@ -8,17 +8,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-import Metodos.metodosCalculadora;
+import Metodos.Calculadora;
 
-public class Calculadora {
-
-	public static int resultado = 0;
-	public static boolean usoBotonNumero = false;
-	public static boolean usoBotonOperacion = false;
-	public static boolean usoBotonIgual = false;
-	public static boolean usoBotonComa = false;
-	public static boolean usoResultado = false;
-	public static String operacionSeleccionada = "";
+public class VentanaCalculadora {
 
 	public static void main(String[] args) {
 		
@@ -48,7 +40,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 				
-				metodosCalculadora.usoBotonUno(txtResultado);
+				Calculadora.usoBotonUno(txtResultado);
 			}
 		});
 
@@ -62,7 +54,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonDos(txtResultado);
+				Calculadora.usoBotonDos(txtResultado);
 			}
 
 		});
@@ -77,7 +69,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonTres(txtResultado);
+				Calculadora.usoBotonTres(txtResultado);
 			}
 		});
 
@@ -91,7 +83,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonCuatro(txtResultado);
+				Calculadora.usoBotonCuatro(txtResultado);
 			}
 		});
 
@@ -105,7 +97,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonCinco(txtResultado);
+				Calculadora.usoBotonCinco(txtResultado);
 			}
 		});
 
@@ -119,7 +111,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonSeis(txtResultado);
+				Calculadora.usoBotonSeis(txtResultado);
 			}
 		});
 
@@ -133,7 +125,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonSiete(txtResultado);
+				Calculadora.usoBotonSiete(txtResultado);
 			}
 		});
 
@@ -147,7 +139,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonOcho(txtResultado);
+				Calculadora.usoBotonOcho(txtResultado);
 			}
 		});
 
@@ -162,7 +154,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent e) {
 
-				metodosCalculadora.usoBotonNueve(txtResultado);
+				Calculadora.usoBotonNueve(txtResultado);
 			}
 		});
 
@@ -176,7 +168,7 @@ public class Calculadora {
 
 			public void actionPerformed(ActionEvent event) {
 
-				metodosCalculadora.usoBotonCero(txtResultado);
+				Calculadora.usoBotonCero(txtResultado);
 			}
 		});
 
@@ -189,7 +181,7 @@ public class Calculadora {
 		btnSumar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				metodosCalculadora.usoBotonSuma(txtResultado);
+				Calculadora.usoBotonSuma(txtResultado);
 			}
 
 		});
@@ -203,7 +195,7 @@ public class Calculadora {
 		btnRestar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				metodosCalculadora.usoBotonResta(txtResultado);
+				Calculadora.usoBotonResta(txtResultado);
 			}
 
 		});
@@ -217,7 +209,7 @@ public class Calculadora {
 		btnMultiplicar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				metodosCalculadora.usoBotonMultiplicar(txtResultado);
+				Calculadora.usoBotonMultiplicar(txtResultado);
 			}
 
 		});
@@ -231,7 +223,7 @@ public class Calculadora {
 		btnDividir.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				metodosCalculadora.usoBotonDividir(txtResultado);
+				Calculadora.usoBotonDividir(txtResultado);
 			}
 
 		});
@@ -245,7 +237,7 @@ public class Calculadora {
 		btnReinicio.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				metodosCalculadora.usoBotonReiniciar(txtResultado);
+				Calculadora.usoBotonReiniciar(txtResultado);
 
 			}
 		});
@@ -259,7 +251,7 @@ public class Calculadora {
 		btnResultado.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				metodosCalculadora.usoBotonResultado(txtResultado);
+				Calculadora.usoBotonResultado(txtResultado);
 			}
 
 		});
@@ -273,7 +265,7 @@ public class Calculadora {
 		btnEliminar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				metodosCalculadora.usoBotonEliminar(txtResultado);
+				Calculadora.usoBotonEliminar(txtResultado);
 			}
 
 		});
@@ -287,7 +279,7 @@ public class Calculadora {
 		btnComa.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				metodosCalculadora.usoBotonPunto(txtResultado);
+				Calculadora.usoBotonPunto(txtResultado);
 			}
 			
 		});
@@ -301,7 +293,7 @@ public class Calculadora {
 		btnPositivoNegativo.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				metodosCalculadora.usoBotonPositivoNegativo(txtResultado);
+				Calculadora.usoBotonPositivoNegativo(txtResultado);
 			}
 		});
 		
@@ -314,7 +306,7 @@ public class Calculadora {
 		btnAlCuadrado.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				metodosCalculadora.usoBotonAlCuadrado(txtResultado);
+				Calculadora.usoBotonAlCuadrado(txtResultado);
 			}
 		});
 		
@@ -327,7 +319,7 @@ public class Calculadora {
 		btnRaizCuadrada.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				metodosCalculadora.usoBotonRaizCuadrada(txtResultado);
+				Calculadora.usoBotonRaizCuadrada(txtResultado);
 			}
 		});
 		
@@ -341,7 +333,7 @@ public class Calculadora {
 		btnUnaFraccion.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				metodosCalculadora.usoBotonUnaFraccion(txtResultado);
+				Calculadora.usoBotonUnaFraccion(txtResultado);
 			}
 		});
 		
