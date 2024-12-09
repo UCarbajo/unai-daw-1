@@ -1,0 +1,23 @@
+Ejercicio 1
+
+Calculadora de suma
+Numero 1 [ txt ]
+Numero 2 [ txt ]
+
+[btbSumar]
+
+Resultado: xx
+
+Ejercicio 2
+
+Cambiar color de fondo
+[ btnRojo ][ btnVerde ][ btnAzul ]
+
+Ejercicio 3
+
+Validar numero
+
+Escribir numero [ txt ]
+[btnValidar]
+
+Resultado: No es numero/es un numero.

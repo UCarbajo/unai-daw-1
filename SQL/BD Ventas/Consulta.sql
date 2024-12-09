@@ -1,27 +1,13 @@
-CREATE DATABASE IF NOT EXISTS VENTAS;
-use VENTAS;
-
-CREATE TABLE IF NOT EXISTS Cliente (
-	id_Cliente int(8) NOT NULL PRIMARY KEY,
-	Nombre VARCHAR(100),
-	Apellido1 VARCHAR(100),
-	Apellido2 VARCHAR(100),
-	Ciudad VARCHAR(100),
-	Categoria INT
-);
-CREATE TABLE if NOT EXISTS Comercial (
-	id_Comercial INT(8) NOT NULL PRIMARY KEY,
-	Nombre VARCHAR(100),
-	Apellido1 VARCHAR(100),
-	Apellido2 VARCHAR(100),
-	Comision FLOAT
-);
-CREATE TABLE IF NOT EXISTS Pedido (
-	id_Cliente int(8) NOT NULL,
-	id_Comercial INT(8)  NOT NULL,
-	Total DOUBLE,
-	Fecha DATE,
-	PRIMARY KEY(id_Cliente, id_Comercial),
-	FOREIGN KEY(id_Cliente) REFERENCES Cliente (id_Cliente),
-	FOREIGN KEY(id_Comercial) REFERENCES Comercial (id_Comercial)
-);
+ventasclientecliente
+INSERT INTO cliente (id_cliente, nombre, apellido1, apellido2, ciudad, categoria)
+VALUES 
+	(1, 'Aarón', 'River', 'Gómez', 'Almería', 100),
+	(2, 'Adela', 'Salas', 'Díaz', 'Granada', 200),
+	(3, 'Adolfo', 'Rubio', 'Flores', 'Sevilla', NULL),
+	(4, 'Adrián', 'Suárez', NULL, 'Jaén', 300),
+	(5, 'Marcos', 'Loyola', 'Méndez', 'Almería', 200),
+	(6, 'María', 'Santana', 'Moreno', 'Cádiz', 100),
+	(7, 'Pilar', 'Ruiz', NULL, 'Sevilla', 300),
+	(8, 'Pepe', 'Ruiz', 'Santana', 'Huelva', 200),
+	(9, 'Guillermo','López', 'Gómez', 'Granada', 225),
+	(10, 'Daniel', 'Santana', 'Loyola', 'Sevilla', 125);
