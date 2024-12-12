@@ -2,7 +2,7 @@ package Enum_listaClases;
 
 public enum Clases {
 
-	HUMANO,
-	ELFO,
-	ENANO
+	GUERRERO,
+	MAGO,
+	ASESINO
 }
