@@ -3,6 +3,8 @@ package text;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class App {
@@ -28,14 +30,39 @@ public class App {
 			st = con.createStatement();
 		
 			//3.Consulta unidireccional
-			st.executeUpdate("INSERT INTO coches (marca, modelo, color) VALUES ('Renault', 'Clio', 'Azul');");
-			System.out.println("Coche introducido correctamente");
+			//st.executeUpdate("INSERT INTO coches (marca, modelo, color) VALUES ('Renault', 'Clio', 'Azul');");
+			//System.out.println("Coche introducido correctamente");
 			
+			//3b. Consulta bidireccional
+			// ojo, NO ES SEGURO
+			String sql = "SELECT * from coches";
+			rs = st.executeQuery(sql);
 			
-		}catch (Exception e) {
-			System.out.println(e.getMessage());
+			mostrarRegistros(rs);
+		}catch (Exception e){
+			System.out.println("La hemos liado...");
 		}
 
+	}
+
+	private static void mostrarRegistros(ResultSet rs) throws SQLException {
+		//Cotillear el resulset mediante ResultSetMetadata
+		ResultSetMetaData rsm = rs.getMetaData();
+		int numColumnas = rsm.getColumnCount();
+		System.out.println(numColumnas);
+		
+		//Imprimir cabecera
+		String cabecera = "";
+		for(int i = 1; i <= numColumnas; i++) {
+			cabecera += rsm.getCatalogName(i); 
+		}
+		System.out.println(cabecera);
+		
+		//Imprimir cuerpo
+		String linea = "";
+		while(rs.next()) {
+			
+		}
 	}
 
 }
