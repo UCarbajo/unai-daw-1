@@ -8,6 +8,7 @@ import Constructor_Personajes.GestorEnemigos;
 import Constructor_Personajes.GestorPersonajes;
 import Constructor_Personajes.Personaje;
 import Enum_listaClases.Clases;
+import Partida.JugarPartida;
 
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -43,14 +44,10 @@ public class EleccionClaseUI extends JFrame {
 		btnPelear.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				Random rand = new Random();
-				GestorPersonajes clase = new GestorPersonajes();
-				GestorEnemigos enemigo = new GestorEnemigos();
-				
-				JuegoUI juego = new JuegoUI(clase.getClases().get(comboBox.getSelectedIndex()), enemigo.getEnemigo().get(rand.nextInt(5)));
-				juego.setVisible(true);
+				JugarPartida.empezarPartida(comboBox);
 				
 			}
+
 		});
 	}
 }

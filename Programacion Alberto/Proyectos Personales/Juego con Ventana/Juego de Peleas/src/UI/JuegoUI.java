@@ -9,14 +9,18 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
 import Constructor_Personajes.Personaje;
+import Partida.JugarPartida;
+
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class JuegoUI extends JFrame{
 	
 	public JuegoUI(Personaje clase, Personaje enemigo) {
 		
-		setName("Pelea");
+		setTitle("Pelea");
 		setBounds(150, 150, 475, 475);
 		getContentPane().setLayout(null);
 		
@@ -25,21 +29,6 @@ public class JuegoUI extends JFrame{
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblTitulo.setBounds(106, 11, 240, 20);
 		getContentPane().add(lblTitulo);
-		
-		JButton btnAtaque = new JButton("Ataque");
-		btnAtaque.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnAtaque.setBounds(10, 350, 140, 75);
-		getContentPane().add(btnAtaque);
-		
-		JButton btnPocion = new JButton("Usar poci\u00F3n");
-		btnPocion.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnPocion.setBounds(309, 350, 140, 75);
-		getContentPane().add(btnPocion);
-		
-		JButton btnDefensa = new JButton("Defensa");
-		btnDefensa.setFont(new Font("Tahoma", Font.BOLD, 17));
-		btnDefensa.setBounds(160, 350, 140, 75);
-		getContentPane().add(btnDefensa);
 		
 		JTextArea InformacionCombate = new JTextArea();
 		InformacionCombate.setEditable(false);
@@ -137,6 +126,30 @@ public class JuegoUI extends JFrame{
 		JLabel lblDefensaEnemigo_Total = new JLabel(String.valueOf(enemigo.getDefensa()));
 		lblDefensaEnemigo_Total.setBounds(309, 121, 140, 14);
 		getContentPane().add(lblDefensaEnemigo_Total);
+		
+
+		JButton btnAtaque = new JButton("Ataque");
+		btnAtaque.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnAtaque.setBounds(10, 350, 140, 75);
+		getContentPane().add(btnAtaque);
+		btnAtaque.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				int daño = JugarPartida.atacar(clase, enemigo);
+				InformacionCombate.setText("Has atacado y has hecho " + daño + " de daño.");
+			}
+		});
+		
+		JButton btnPocion = new JButton("Usar poci\u00F3n");
+		btnPocion.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnPocion.setBounds(309, 350, 140, 75);
+		getContentPane().add(btnPocion);
+		
+		JButton btnDefensa = new JButton("Defensa");
+		btnDefensa.setFont(new Font("Tahoma", Font.BOLD, 17));
+		btnDefensa.setBounds(160, 350, 140, 75);
+		getContentPane().add(btnDefensa);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
