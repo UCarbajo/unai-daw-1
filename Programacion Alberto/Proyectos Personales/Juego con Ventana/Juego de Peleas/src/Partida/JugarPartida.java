@@ -38,24 +38,8 @@ public class JugarPartida {
 		juego.setVisible(true);
 	}
 
-	public static void valoresInicialesJugador(Personaje jugador) {
-		saludJugador = jugador.getSalud();
-		ataqueMaxJugador = jugador.getAtaqueMax();
-		ataqueMinJugador = jugador.getAtaqueMin();
-		defensaJugador = jugador.getDefensa();
-		pociones = jugador.getPociones();
-	}
-
-	public static void valoresInicialesEnemigo(Personaje enemigo) {
-		saludEnemigo = enemigo.getSalud();
-		ataqueMaxEnemigo = enemigo.getAtaqueMax();
-		ataqueMinEnemigo = enemigo.getAtaqueMin();
-		defensaEnemigo = enemigo.getDefensa();
-		pociones = enemigo.getPociones();
-	}
-
 	public static void Atacar(Personaje clase, Personaje enemigo, JTextArea InformacionCombate,
-			JProgressBar barraSaludEnemigo, JProgressBar barraSaludJugador, JuegoUI juegoUI) {
+			JProgressBar barraSaludEnemigo, JProgressBar barraSaludJugador, JButton btnAtaque, JButton btnDefensa, JButton btnPocion) {
 
 		Random rand = new Random();
 		int critico = rand.nextInt(11);
@@ -78,13 +62,12 @@ public class JugarPartida {
 				InformacionCombate.append("Has atacado y las realizado " + daño + " puntos de daño.\n");
 			}
 		}
-		enemigo.setSalud(enemigo.getSalud() - daño);
+		ajustarSalud(enemigo, InformacionCombate, barraSaludEnemigo, daño);
+		comprobarSalud(clase, enemigo, InformacionCombate, barraSaludEnemigo, barraSaludJugador, btnAtaque, btnDefensa, btnPocion);
 		InformacionCombate.append("Al enemigo le queda " + enemigo.getSalud() + " de salud.\n");
-		barraSaludEnemigo.setValue(enemigo.getSalud());
-		barraSaludEnemigo.setString(String.valueOf(enemigo.getSalud()));
 		InformacionCombate.append("\n");
 		turnoEnemigo(clase, enemigo, InformacionCombate, barraSaludEnemigo, barraSaludJugador);
-		comprobarSalud(clase, enemigo, InformacionCombate, barraSaludEnemigo, barraSaludJugador);
+		
 		turno++;
 	}
 
@@ -99,102 +82,70 @@ public class JugarPartida {
 		if (critico >= 8) {
 			daño = (int) ((ataque * 1.5) * 2) / (int) (defensa * 0.5);
 			InformacionCombate.append("CRITICO!\n");
-			InformacionCombate
-					.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
+			InformacionCombate.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
 		} else {
 			daño = (int) (ataque * 1.5) / (int) (defensa * 0.5);
 			if (daño <= 0) {
 				daño = 1;
-				InformacionCombate
-						.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
+				InformacionCombate.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
 			} else {
-				InformacionCombate
-						.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
+				InformacionCombate.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
 			}
 		}
-		clase.setSalud(clase.getSalud() - daño);
+		ajustarSalud(clase, InformacionCombate, barraSaludJugador, daño);
 		InformacionCombate.append("Te queda " + clase.getSalud() + " de salud.\n");
-		barraSaludJugador.setValue(clase.getSalud());
-		barraSaludJugador.setString(String.valueOf(clase.getSalud()));
 		InformacionCombate.append("\n");
 	}
 
 	private static void comprobarSalud(Personaje clase, Personaje enemigo, JTextArea informacionCombate,
-			JProgressBar barraSaludEnemigo, JProgressBar barraSaludJugador) {
-		
+			JProgressBar barraSaludEnemigo, JProgressBar barraSaludJugador, JButton btnAtaque, JButton btnDefensa, JButton btnPocion) {
+		if(clase.getSalud() <= 0) {
+			informacionCombate.append("Has sido derrotado!");
+			informacionCombate.append("\n");
+			barraSaludJugador.setString("0");
+			desactivarBotones(btnAtaque, btnDefensa, btnPocion);
+		}
+		if(enemigo.getSalud() <= 0) {
+			informacionCombate.append("Has derrotado al enemigo!");
+			informacionCombate.append("\n");
+			barraSaludEnemigo.setString("0");
+			desactivarBotones(btnAtaque, btnDefensa, btnPocion);
+		}
 
 	}
+	
+	private static void ajustarSalud(Personaje objetivo, JTextArea InformacionCombate, JProgressBar barraSalud,
+			int daño) {
+		objetivo.setSalud(objetivo.getSalud() - daño);
+		barraSalud.setValue(objetivo.getSalud());
+		barraSalud.setString(String.valueOf(objetivo.getSalud()));
+		
+	}
 
+	private static void desactivarBotones(JButton btnAtaque, JButton btnDefensa, JButton btnPocion) {
+		btnAtaque.setEnabled(false);
+		btnDefensa.setEnabled(false);
+		btnPocion.setEnabled(false);
+	}
+
+	public static void valoresInicialesJugador(Personaje jugador) {
+		saludJugador = jugador.getSalud();
+		ataqueMaxJugador = jugador.getAtaqueMax();
+		ataqueMinJugador = jugador.getAtaqueMin();
+		defensaJugador = jugador.getDefensa();
+		pociones = jugador.getPociones();
+	}
+
+	public static void valoresInicialesEnemigo(Personaje enemigo) {
+		saludEnemigo = enemigo.getSalud();
+		ataqueMaxEnemigo = enemigo.getAtaqueMax();
+		ataqueMinEnemigo = enemigo.getAtaqueMin();
+		defensaEnemigo = enemigo.getDefensa();
+		pociones = enemigo.getPociones();
+	}
+	
 	public static int getSaludJugador() {
 		return saludJugador;
-	}
-
-	public static void setSaludJugador(int saludJugador) {
-		JugarPartida.saludJugador = saludJugador;
-	}
-
-	public static int getSaludEnemigo() {
-		return saludEnemigo;
-	}
-
-	public static void setSaludEnemigo(int saludEnemigo) {
-		JugarPartida.saludEnemigo = saludEnemigo;
-	}
-
-	public static int getAtaqueMaxJugador() {
-		return ataqueMaxJugador;
-	}
-
-	public static void setAtaqueMaxJugador(int ataqueMaxJugador) {
-		JugarPartida.ataqueMaxJugador = ataqueMaxJugador;
-	}
-
-	public static int getAtaqueMinJugador() {
-		return ataqueMinJugador;
-	}
-
-	public static void setAtaqueMinJugador(int ataqueMinJugador) {
-		JugarPartida.ataqueMinJugador = ataqueMinJugador;
-	}
-
-	public static int getAtaqueMaxEnemigo() {
-		return ataqueMaxEnemigo;
-	}
-
-	public static void setAtaqueMaxEnemigo(int ataqueMaxEnemigo) {
-		JugarPartida.ataqueMaxEnemigo = ataqueMaxEnemigo;
-	}
-
-	public static int getAtaqueMinEnemigo() {
-		return ataqueMinEnemigo;
-	}
-
-	public static void setAtaqueMinEnemigo(int ataqueMinEnemigo) {
-		JugarPartida.ataqueMinEnemigo = ataqueMinEnemigo;
-	}
-
-	public static int getDefensaJugador() {
-		return defensaJugador;
-	}
-
-	public static void setDefensaJugador(int defensaJugador) {
-		JugarPartida.defensaJugador = defensaJugador;
-	}
-
-	public static int getDefensaEnemigo() {
-		return defensaEnemigo;
-	}
-
-	public static void setDefensaEnemigo(int defensaEnemigo) {
-		JugarPartida.defensaEnemigo = defensaEnemigo;
-	}
-
-	public static int getPociones() {
-		return pociones;
-	}
-
-	public static void setPociones(int pociones) {
-		JugarPartida.pociones = pociones;
 	}
 
 }

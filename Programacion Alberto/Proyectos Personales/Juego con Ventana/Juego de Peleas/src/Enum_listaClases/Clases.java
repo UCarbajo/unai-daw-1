@@ -4,5 +4,7 @@ public enum Clases {
 
 	GUERRERO,
 	MAGO,
-	ASESINO
+	ASESINO,
+	PALADÍN,
+	CLÉRIGO
 }

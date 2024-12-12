@@ -48,7 +48,6 @@ public class JuegoUI extends JFrame {
 		BarraSaludEnemigo.setMaximum(enemigo.getSalud());
 		BarraSaludEnemigo.setMinimum(0);
 		BarraSaludEnemigo.setValue(enemigo.getSalud());
-		BarraSaludEnemigo.setString("100");
 		getContentPane().add(BarraSaludEnemigo);
 
 		JLabel lblClaseJugador = new JLabel("Clase:");
@@ -156,7 +155,7 @@ public class JuegoUI extends JFrame {
 		btnAtaque.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				JugarPartida.Atacar(clase, enemigo, InformacionCombate, BarraSaludEnemigo, BarraSaludJugador, JuegoUI.this);
+				JugarPartida.Atacar(clase, enemigo, InformacionCombate, BarraSaludEnemigo, BarraSaludJugador, btnAtaque, btnDefensa, btnPocion);
 			}
 		});
 
