@@ -16,10 +16,10 @@ public class Main {
 		 * añadir estudiantes al arraylist (new Estudiante....)
 		 */
 		
-		//AltaEstudiante window = new AltaEstudiante(estudiantes);
-		estudiantes.add(new Estudiante());
+		AltaEstudiante window = new AltaEstudiante(estudiantes);
 		ListadoEstudiante window2 = new ListadoEstudiante(estudiantes);
 		
+		window.setVisible(true);
 		window2.setVisible(true);
 		
 	}
