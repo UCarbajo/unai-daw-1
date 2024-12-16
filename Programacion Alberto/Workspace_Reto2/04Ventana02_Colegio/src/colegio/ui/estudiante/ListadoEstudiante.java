@@ -42,80 +42,7 @@ public class ListadoEstudiante extends JFrame {
 		textDNI.setBounds(60, 11, 140, 20);
 		contentPane.add(textDNI);
 		textDNI.setColumns(10);
-
-		String[] columnas = { "DNI", "Nombre", "Apellidos", "Email", "Género", "Curso", "Necesidades Especiales",
-				"Términos" };
-
-		modelo = new DefaultTableModel(columnas, 0) {
-
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		table = new JTable(modelo);
-
-		ListSelectionModel modeloSeleccion = table.getSelectionModel();
-		modeloSeleccion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 132, 414, 297);
-		contentPane.add(scrollPane);
-
-		JButton btnActualizar = new JButton("Actualizar");
-		btnActualizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				actualizarTabla(estudiantes);
-			}
-		});
-
-		modeloSeleccion.addListSelectionListener(new ListSelectionListener() {
-
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				int filaSeleccionada = table.getSelectedRow();
-
-				textDNI.setText(table.getValueAt(filaSeleccionada, 0).toString());
-				textNombre.setText(table.getValueAt(filaSeleccionada, 1).toString());
-				textApellido.setText(table.getValueAt(filaSeleccionada, 2).toString());
-				textEmail.setText(table.getValueAt(filaSeleccionada, 3).toString());
-				textGenero.setText(table.getValueAt(filaSeleccionada, 4).toString());
-				textCurso.setText(table.getValueAt(filaSeleccionada, 5).toString());
-				
-			}
-		});
-
-		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() == 2) {
-					int filaSeleccionada = table.getSelectedRow();
-					System.out.println("Funciona");
-					window.setTextDni(table.getValueAt(filaSeleccionada, 0).toString());
-					window.setTextNombre(table.getValueAt(filaSeleccionada, 1).toString());
-					window.setTextApellidos(table.getValueAt(filaSeleccionada, 2).toString());
-					window.setTextEmail(table.getValueAt(filaSeleccionada, 3).toString());
-					String genero = table.getValueAt(filaSeleccionada, 4).toString();
-					switch (genero) {
-					case "0":
-						window.setEnabledRdbtnFemenino();
-						break;
-					case "1":
-						window.setEnabledRdbtnMasculino();
-						break;
-					case "2":
-						window.setEnabledRdbtnOtro();
-						break;
-					}
-
-				}
-
-			}
-		});
-
-		btnActualizar.setBounds(173, 448, 89, 23);
-		contentPane.add(btnActualizar);
-
+		
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setBounds(10, 42, 46, 14);
 		contentPane.add(lblApellido);
@@ -161,14 +88,89 @@ public class ListadoEstudiante extends JFrame {
 		textCurso.setBounds(284, 67, 140, 20);
 		contentPane.add(textCurso);
 
+
+		String[] columnas = { "DNI", "Nombre", "Apellidos", "Fecha nacimiento", "Email", "Género", "Curso",
+				"Necesidades Especiales", "Términos" };
+
+		modelo = new DefaultTableModel(columnas, 0) {
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		
+		table = new JTable(modelo);
+
+		ListSelectionModel modeloSeleccion = table.getSelectionModel();
+		modeloSeleccion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(10, 132, 414, 297);
+		contentPane.add(scrollPane);
+
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actualizarTabla(estudiantes);
+			}
+		});
+
+		modeloSeleccion.addListSelectionListener(new ListSelectionListener() {
+
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				int filaSeleccionada = table.getSelectedRow();
+
+				textDNI.setText(table.getValueAt(filaSeleccionada, 0).toString());
+				textNombre.setText(table.getValueAt(filaSeleccionada, 1).toString());
+				textApellido.setText(table.getValueAt(filaSeleccionada, 2).toString());
+				textEmail.setText(table.getValueAt(filaSeleccionada, 3).toString());
+				textGenero.setText(table.getValueAt(filaSeleccionada, 4).toString());
+				textCurso.setText(table.getValueAt(filaSeleccionada, 5).toString());
+
+			}
+		});
+
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					int filaSeleccionada = table.getSelectedRow();
+					
+					window.setTextDni(table.getValueAt(filaSeleccionada, 0).toString());
+					window.setTextNombre(table.getValueAt(filaSeleccionada, 1).toString());
+					window.setTextApellidos(table.getValueAt(filaSeleccionada, 2).toString());
+					window.setTextFechaNacimiento(table.getValueAt(filaSeleccionada, 3).toString());
+					window.setTextEmail(table.getValueAt(filaSeleccionada, 4).toString());
+					String genero = table.getValueAt(filaSeleccionada, 5).toString();
+					switch (genero) {
+					case "0":
+						window.setEnabledRdbtnFemenino();
+						break;
+					case "1":
+						window.setEnabledRdbtnMasculino();
+						break;
+					case "2":
+						window.setEnabledRdbtnOtro();
+						break;
+					}
+
+				}
+
+			}
+		});
+
+		btnActualizar.setBounds(173, 448, 89, 23);
+		contentPane.add(btnActualizar);
 	}
 
 	public void actualizarTabla(ArrayList<Estudiante> estudiantes) {
 		modelo.setRowCount(0);
 		for (Estudiante estudiante : estudiantes) {
 			modelo.addRow(new Object[] { estudiante.getDni(), estudiante.getNombre(), estudiante.getApellidos(),
-					estudiante.getEmail(), estudiante.getGenero(), estudiante.getCurso(),
-					estudiante.getNecesidadesEspeciales(), estudiante.isTerminosAceptados() });
+					estudiante.getFechaNacimiento(), estudiante.getEmail(), estudiante.getGenero(),
+					estudiante.getCurso(), estudiante.getNecesidadesEspeciales(), estudiante.isTerminosAceptados() });
 		}
 	}
 }

@@ -223,64 +223,32 @@ public class AltaEstudiante extends JFrame {
 		
 	}
 	
-	public JTextField getTextDni() {
-		return textDni;
-	}
-
 	public void setTextDni(String textDni) {
 		this.textDni.setText(textDni);
 	}
 	
-	public JTextField getTextNombre() {
-		return textNombre;
-	}
-
 	public void setTextNombre(String textNombre) {
 		this.textNombre.setText(textNombre);;
 	}
 	
-	public JTextField getTextApellidos() {
-		return textApellidos;
-	}
-
 	public void setTextApellidos(String textApellidos) {
 		this.textApellidos.setText(textApellidos);
 	}
 	
-	public JTextField getTextEmail() {
-		return textEmail;
-	}
-
 	public void setTextEmail(String textEmail) {
 		this.textEmail.setText(textEmail);;
-	}
-	
-	public void setTextFechaNacimiento(JTextField textFechaNacimiento) {
-		this.textFechaNacimiento = textFechaNacimiento;
 	}
 	
 	public void setTextFechaNacimiento(String textFechaNacimiento) {
 		this.textFechaNacimiento.setText(textFechaNacimiento);
 	}
 
-	public JRadioButton getRdbtnFemenino() {
-		return rdbtnFemenino;
-	}
-
 	public void setEnabledRdbtnFemenino() {
 	    this.btnGroupGenero.setSelected(rdbtnFemenino.getModel(), true);
 	}
 
-	public JRadioButton getRdbtnMasculino() {
-		return rdbtnMasculino;
-	}
-
 	public void setEnabledRdbtnMasculino() {
 		this.btnGroupGenero.setSelected(rdbtnMasculino.getModel(), true);
-	}
-
-	public JRadioButton getRdbtnOtro() {
-		return rdbtnOtro;
 	}
 
 	public void setEnabledRdbtnOtro() {
