@@ -17,7 +17,7 @@ public class Main {
 		 */
 		
 		AltaEstudiante window = new AltaEstudiante(estudiantes);
-		ListadoEstudiante window2 = new ListadoEstudiante(estudiantes);
+		ListadoEstudiante window2 = new ListadoEstudiante(estudiantes, window);
 		
 		window.setVisible(true);
 		window2.setVisible(true);

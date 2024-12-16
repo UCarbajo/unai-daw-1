@@ -52,14 +52,14 @@ public class JugarPartida {
 		if (critico >= 8) {
 			daño = (int) ((ataque * 1.5) * 2) / (int) (defensa * 0.5);
 			InformacionCombate.append("CRITICO!\n");
-			InformacionCombate.append("Has atacado y las realizado " + daño + " puntos de daño.\n");
+			InformacionCombate.append("Has atacado y has realizado " + daño + " puntos de daño.\n");
 		} else {
 			daño = (int) (ataque * 1.5) / (int) (defensa * 0.5);
 			if (daño <= 0) {
 				daño = 1;
-				InformacionCombate.append("Has atacado y las realizado " + daño + " puntos de daño.\n");
+				InformacionCombate.append("Has atacado y has realizado " + daño + " puntos de daño.\n");
 			} else {
-				InformacionCombate.append("Has atacado y las realizado " + daño + " puntos de daño.\n");
+				InformacionCombate.append("Has atacado y has realizado " + daño + " puntos de daño.\n");
 			}
 		}
 		ajustarSalud(enemigo, InformacionCombate, barraSaludEnemigo, daño);
@@ -82,14 +82,14 @@ public class JugarPartida {
 		if (critico >= 8) {
 			daño = (int) ((ataque * 1.5) * 2) / (int) (defensa * 0.5);
 			InformacionCombate.append("CRITICO!\n");
-			InformacionCombate.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
+			InformacionCombate.append(enemigo.getNombre() + " ha atacado y ha realizado " + daño + " puntos de daño.\n");
 		} else {
 			daño = (int) (ataque * 1.5) / (int) (defensa * 0.5);
 			if (daño <= 0) {
 				daño = 1;
-				InformacionCombate.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
+				InformacionCombate.append(enemigo.getNombre() + " ha atacado y ha realizado " + daño + " puntos de daño.\n");
 			} else {
-				InformacionCombate.append(enemigo.getNombre() + " ha atacado y las realizado " + daño + " puntos de daño.\n");
+				InformacionCombate.append(enemigo.getNombre() + " ha atacado y ha realizado " + daño + " puntos de daño.\n");
 			}
 		}
 		ajustarSalud(clase, InformacionCombate, barraSaludJugador, daño);

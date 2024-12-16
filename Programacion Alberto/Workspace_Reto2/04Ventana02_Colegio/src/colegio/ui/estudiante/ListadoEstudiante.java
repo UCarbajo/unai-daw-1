@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.DefaultTableModel;
 import colegio.model.Estudiante;
 import java.awt.event.ActionListener;
@@ -19,13 +20,15 @@ public class ListadoEstudiante extends JFrame {
 	private JTable table;
 	private DefaultTableModel modelo;
 	private JTextField textDNI;
-	private JTextField textField;
+	private JTextField textApellido;
 	private JTextField textNombre;
-	private JTextField textField_2;
+	private JTextField textEmail;
+	private JTextField textGenero;
+	private JTextField textCurso;
 
-	public ListadoEstudiante(ArrayList<Estudiante> estudiantes) {
+	public ListadoEstudiante(ArrayList<Estudiante> estudiantes, AltaEstudiante window) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 521);
+		setBounds(800, 100, 450, 521);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -43,7 +46,13 @@ public class ListadoEstudiante extends JFrame {
 		String[] columnas = { "DNI", "Nombre", "Apellidos", "Email", "Género", "Curso", "Necesidades Especiales",
 				"Términos" };
 
-		modelo = new DefaultTableModel(columnas, 0); // Modelo con columnas, sin filas
+		modelo = new DefaultTableModel(columnas, 0) {
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		table = new JTable(modelo);
 
 		ListSelectionModel modeloSeleccion = table.getSelectionModel();
@@ -67,74 +76,90 @@ public class ListadoEstudiante extends JFrame {
 				int filaSeleccionada = table.getSelectedRow();
 
 				textDNI.setText(table.getValueAt(filaSeleccionada, 0).toString());
-				textDNI.setText(table.getValueAt(filaSeleccionada, 1).toString());
-
+				textNombre.setText(table.getValueAt(filaSeleccionada, 1).toString());
+				textApellido.setText(table.getValueAt(filaSeleccionada, 2).toString());
+				textEmail.setText(table.getValueAt(filaSeleccionada, 3).toString());
+				textGenero.setText(table.getValueAt(filaSeleccionada, 4).toString());
+				textCurso.setText(table.getValueAt(filaSeleccionada, 5).toString());
+				
 			}
 		});
-		
-		modeloSeleccion.addListSelectionListener((ListSelectionListener) new MouseListener() {
 
+		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+				if (e.getClickCount() == 2) {
+					int filaSeleccionada = table.getSelectedRow();
+					System.out.println("Funciona");
+					window.setTextDni(table.getValueAt(filaSeleccionada, 0).toString());
+					window.setTextNombre(table.getValueAt(filaSeleccionada, 1).toString());
+					window.setTextApellidos(table.getValueAt(filaSeleccionada, 2).toString());
+					window.setTextEmail(table.getValueAt(filaSeleccionada, 3).toString());
+					String genero = table.getValueAt(filaSeleccionada, 4).toString();
+					switch (genero) {
+					case "0":
+						window.setEnabledRdbtnFemenino();
+						break;
+					case "1":
+						window.setEnabledRdbtnMasculino();
+						break;
+					case "2":
+						window.setEnabledRdbtnOtro();
+						break;
+					}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+				}
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
 		});
 
 		btnActualizar.setBounds(173, 448, 89, 23);
 		contentPane.add(btnActualizar);
-		
+
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setBounds(10, 42, 46, 14);
 		contentPane.add(lblApellido);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(60, 39, 140, 20);
-		contentPane.add(textField);
-		
+
+		textApellido = new JTextField();
+		textApellido.setColumns(10);
+		textApellido.setBounds(60, 39, 140, 20);
+		contentPane.add(textApellido);
+
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(228, 14, 46, 14);
 		contentPane.add(lblNombre);
-		
+
 		textNombre = new JTextField();
 		textNombre.setColumns(10);
 		textNombre.setBounds(284, 11, 140, 20);
 		contentPane.add(textNombre);
-		
-		JLabel lblNombre_1_2 = new JLabel("Nombre:");
-		lblNombre_1_2.setBounds(228, 42, 46, 14);
-		contentPane.add(lblNombre_1_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(284, 39, 140, 20);
-		contentPane.add(textField_2);
+
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setBounds(228, 42, 46, 14);
+		contentPane.add(lblEmail);
+
+		textEmail = new JTextField();
+		textEmail.setColumns(10);
+		textEmail.setBounds(284, 39, 140, 20);
+		contentPane.add(textEmail);
+
+		JLabel lblGenero = new JLabel("G\u00E9nero:");
+		lblGenero.setBounds(10, 70, 46, 14);
+		contentPane.add(lblGenero);
+
+		textGenero = new JTextField();
+		textGenero.setColumns(10);
+		textGenero.setBounds(60, 67, 140, 20);
+		contentPane.add(textGenero);
+
+		JLabel lblCurso = new JLabel("Curso:");
+		lblCurso.setBounds(228, 70, 46, 14);
+		contentPane.add(lblCurso);
+
+		textCurso = new JTextField();
+		textCurso.setColumns(10);
+		textCurso.setBounds(284, 67, 140, 20);
+		contentPane.add(textCurso);
 
 	}
 

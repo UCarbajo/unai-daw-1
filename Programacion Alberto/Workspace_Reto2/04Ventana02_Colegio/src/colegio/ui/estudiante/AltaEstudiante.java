@@ -13,6 +13,7 @@ import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -38,6 +39,9 @@ public class AltaEstudiante extends JFrame {
 	private JTextField textApellidos;
 	private JTextField textEmail;
 	private JTextField textFechaNacimiento;
+	private JRadioButton rdbtnFemenino;
+	private JRadioButton rdbtnMasculino;
+	private JRadioButton rdbtnOtro;
 	private final ButtonGroup btnGroupGenero = new ButtonGroup();
 
 	public AltaEstudiante(ArrayList<Estudiante> estudiantes) {
@@ -90,17 +94,17 @@ public class AltaEstudiante extends JFrame {
 		lblEmail.setBounds(10, 156, 46, 14);
 		contentPane.add(lblEmail);
 		
-		JRadioButton rdbtnFemenino = new JRadioButton("Femenino");
+		rdbtnFemenino = new JRadioButton("Femenino");
 		btnGroupGenero.add(rdbtnFemenino);
 		rdbtnFemenino.setBounds(10, 213, 109, 23);
 		contentPane.add(rdbtnFemenino);
 		
-		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino = new JRadioButton("Masculino");
 		btnGroupGenero.add(rdbtnMasculino);
 		rdbtnMasculino.setBounds(121, 213, 109, 23);
 		contentPane.add(rdbtnMasculino);
 		
-		JRadioButton rdbtnOtro = new JRadioButton("Otro");
+		rdbtnOtro = new JRadioButton("Otro");
 		btnGroupGenero.add(rdbtnOtro);
 		rdbtnOtro.setBounds(232, 213, 109, 23);
 		contentPane.add(rdbtnOtro);
@@ -215,8 +219,74 @@ public class AltaEstudiante extends JFrame {
 
 			}
 		});
+		
+		
 	}
 	
+	public JTextField getTextDni() {
+		return textDni;
+	}
+
+	public void setTextDni(String textDni) {
+		this.textDni.setText(textDni);
+	}
+	
+	public JTextField getTextNombre() {
+		return textNombre;
+	}
+
+	public void setTextNombre(String textNombre) {
+		this.textNombre.setText(textNombre);;
+	}
+	
+	public JTextField getTextApellidos() {
+		return textApellidos;
+	}
+
+	public void setTextApellidos(String textApellidos) {
+		this.textApellidos.setText(textApellidos);
+	}
+	
+	public JTextField getTextEmail() {
+		return textEmail;
+	}
+
+	public void setTextEmail(String textEmail) {
+		this.textEmail.setText(textEmail);;
+	}
+	
+	public void setTextFechaNacimiento(JTextField textFechaNacimiento) {
+		this.textFechaNacimiento = textFechaNacimiento;
+	}
+	
+	public void setTextFechaNacimiento(String textFechaNacimiento) {
+		this.textFechaNacimiento.setText(textFechaNacimiento);
+	}
+
+	public JRadioButton getRdbtnFemenino() {
+		return rdbtnFemenino;
+	}
+
+	public void setEnabledRdbtnFemenino() {
+	    this.btnGroupGenero.setSelected(rdbtnFemenino.getModel(), true);
+	}
+
+	public JRadioButton getRdbtnMasculino() {
+		return rdbtnMasculino;
+	}
+
+	public void setEnabledRdbtnMasculino() {
+		this.btnGroupGenero.setSelected(rdbtnMasculino.getModel(), true);
+	}
+
+	public JRadioButton getRdbtnOtro() {
+		return rdbtnOtro;
+	}
+
+	public void setEnabledRdbtnOtro() {
+		this.btnGroupGenero.setSelected(rdbtnOtro.getModel(), true);
+	}
+
 	private boolean validarCampos(String dni, String nombre, String apellidos, String curso, String email, String fechaNacimiento, boolean terminos, String genero) {
 		if(dni.equals("") || dni.length() != 9) { //no este repetido, que el dni tenga formato correcto
 			return false;
