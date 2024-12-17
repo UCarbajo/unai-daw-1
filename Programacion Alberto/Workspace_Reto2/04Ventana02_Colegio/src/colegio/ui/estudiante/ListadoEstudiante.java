@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.format.DateTimeFormatter;
 
 public class ListadoEstudiante extends JFrame {
 
@@ -42,7 +43,7 @@ public class ListadoEstudiante extends JFrame {
 		textDNI.setBounds(60, 11, 140, 20);
 		contentPane.add(textDNI);
 		textDNI.setColumns(10);
-		
+
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setBounds(10, 42, 46, 14);
 		contentPane.add(lblApellido);
@@ -88,7 +89,6 @@ public class ListadoEstudiante extends JFrame {
 		textCurso.setBounds(284, 67, 140, 20);
 		contentPane.add(textCurso);
 
-
 		String[] columnas = { "DNI", "Nombre", "Apellidos", "Fecha nacimiento", "Email", "Género", "Curso",
 				"Necesidades Especiales", "Términos" };
 
@@ -99,7 +99,7 @@ public class ListadoEstudiante extends JFrame {
 				return false;
 			}
 		};
-		
+
 		table = new JTable(modelo);
 
 		ListSelectionModel modeloSeleccion = table.getSelectionModel();
@@ -137,7 +137,7 @@ public class ListadoEstudiante extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
 					int filaSeleccionada = table.getSelectedRow();
-					
+
 					window.setTextDni(table.getValueAt(filaSeleccionada, 0).toString());
 					window.setTextNombre(table.getValueAt(filaSeleccionada, 1).toString());
 					window.setTextApellidos(table.getValueAt(filaSeleccionada, 2).toString());
@@ -168,8 +168,23 @@ public class ListadoEstudiante extends JFrame {
 	public void actualizarTabla(ArrayList<Estudiante> estudiantes) {
 		modelo.setRowCount(0);
 		for (Estudiante estudiante : estudiantes) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			String fechaNac = estudiante.getFechaNacimiento().format(formatter);
+			String genero = "";
+
+			switch (estudiante.getGenero()) {
+			case 0 -> {
+				genero = "Femenino";
+			}
+			case 1 -> {
+				genero = "Masculino";
+			}
+			case 2 -> {
+				genero = "Otro";
+			}
+			}
 			modelo.addRow(new Object[] { estudiante.getDni(), estudiante.getNombre(), estudiante.getApellidos(),
-					estudiante.getFechaNacimiento(), estudiante.getEmail(), estudiante.getGenero(),
+					fechaNac, estudiante.getEmail(), genero,
 					estudiante.getCurso(), estudiante.getNecesidadesEspeciales(), estudiante.isTerminosAceptados() });
 		}
 	}

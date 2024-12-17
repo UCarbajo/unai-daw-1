@@ -1,0 +1,14 @@
+ body {
+     background-color: white;
+ }
+
+ @media (orientation: portrait) {
+     body {
+         background-color: lightyellow;
+     }
+ }
+ @media (orientation: landscape){
+    body{
+        background-color: lightpink;
+    }
+ }
