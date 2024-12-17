@@ -1,0 +1,26 @@
+nav{
+    background-color: black;
+}
+.listaDesordenada{
+    list-style: none;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+li{
+    padding: 1em;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+a:hover{
+    color: blue;
+}
+@media(max-width: 600px) {
+    .listaDesordenada{
+        flex-direction: column;
+        justify-content: center;
+    }
+}
