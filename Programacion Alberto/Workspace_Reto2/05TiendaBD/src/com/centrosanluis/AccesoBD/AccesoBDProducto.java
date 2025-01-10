@@ -22,6 +22,7 @@ public class AccesoBDProducto extends AccesoBD {
 			coche = new ProductoDTO(rs.getString("marca"), rs.getString("modelo"), rs.getString("color"),
 					rs.getDouble("precio"));
 		}
+		desconectar();
 		return coche;
 	}
 }

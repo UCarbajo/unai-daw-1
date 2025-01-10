@@ -25,14 +25,27 @@ public class AccesoBD {
 		conectar();
 	}
 
-	private void conectar() throws ClassNotFoundException, SQLException {
+	public void conectar() throws ClassNotFoundException, SQLException {
+		//CARGAMOS EL DRIVER
 		Class.forName(tipoBD);
+		
+		//CREAR CONEXIÓN
+		//URL mySQL -> jdbc:mysql://IP:PUERTO/NOMBRE_BASE_DE_DATOS
+		//USER -> root
+		//PASS -> NO TIENE
 		con = DriverManager.getConnection("jdbc:mysql://localhost/" + this.bd, this.user, this.password);
+		
 		System.out.println("Conexión establecida");
+		
+		//CREAR Statement -> lo que utilizaremos para ejecutar SQL en la BD desde JAVA
 		st = con.createStatement();
 	}
 
-	private void desconectar() throws SQLException {
+	public void desconectar() throws SQLException {
+		//if(rs!=null) {
+			//rs.close;
+		//}
 		st.close();
+		con.close();
 	}
 }
