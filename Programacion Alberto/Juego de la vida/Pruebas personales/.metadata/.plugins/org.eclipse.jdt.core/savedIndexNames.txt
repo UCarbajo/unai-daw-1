@@ -1,0 +1,8 @@
+INDEX VERSION 1.131+D:\DAW\unai-daw-1\Programacion Alberto\Juego de la vida\Pruebas personales\.metadata\.plugins\org.eclipse.jdt.core
+4202946885.index
+4154298626.index
+4269158776.index
+408943164.index
+356616827.index
+2093297076.index
+504161098.index

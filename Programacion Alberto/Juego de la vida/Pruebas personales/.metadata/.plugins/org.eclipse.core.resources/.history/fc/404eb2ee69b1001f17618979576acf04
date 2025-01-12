@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+			
+		int[] array = {6,2,8,4,5};
+		int numero = array[0];
+		for(int i = 0; i < array.length; i++) {
+			if(numero < array[i]) {
+				numero = array[i];
+			}
+		}
+		System.out.println(numero);
+	
+	}
+
+}
