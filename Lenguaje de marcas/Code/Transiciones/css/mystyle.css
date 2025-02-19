@@ -1,0 +1,58 @@
+html,
+body {
+    width: auto;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+    
+    animation-name: cambiarcolor;
+    animation: cambiarcolor 2s infinite alternate;
+
+}
+
+.tarjeta:hover {
+    transition: transform 1s ease;
+    transform: translate(0px, -100px) scale(1.1);
+}
+
+.tarjeta img {
+    width: 400px;
+    height: 200px;
+    animation-name: rotacion;
+    animation: rotacion 3s infinite linear;
+}
+
+@keyframes cambiarcolor {
+    from {
+        background-color: aqua;
+    }
+
+    to {
+        background-color: green;
+    }
+}
+
+@keyframes rotacion {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
