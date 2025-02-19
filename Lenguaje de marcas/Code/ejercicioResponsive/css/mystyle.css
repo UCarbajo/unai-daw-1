@@ -1,0 +1,80 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+header{
+    background-color: black;
+    color: white;
+}
+header ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+header img{
+    width: 50%;
+    height: 50%;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.contenedorTexto{
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+}
+.contenedorTecnologia{
+    background-color: aqua;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.tecnologia{
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 33%;
+    height: auto;
+    margin: 5px 0px 0px 0px;
+    align-items: center;
+}
+.tecnologia p{
+    width: 100%;
+    height: auto;
+    margin: 5px;
+}
+#imgDoble{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+}
+#imgDoble img{
+    width: 100%;
+    height: 100%;
+}
+#imgContenedor{
+    width: 90%;
+    height: 100%;
+    margin: 2px;
+}
+@media (max-width: 1280px) {
+
+    .tecnologia{
+        width: 49%;
+        padding: 0px 1px 0px 1px;
+    }
+}
+@media (max-width: 768px) {
+
+    .tecnologia{
+        width: 100%;
+        padding: 0px 1px 0px 1px;
+    }
+}

@@ -1,0 +1,28 @@
+.tarjeta {
+    width: 300px;
+    height: 200px;
+    background-color: yellow;
+    transition: transform 0.5s ease;
+    transform: translate(200px, 100px) rotate(20deg) scale(1);
+}
+
+.tarjeta img {
+    animation: cambiarcolor 2s infinite alternate;
+}
+
+@keyframes cambiarcolor {
+    from {
+        background-color: yellow;
+        width: 300px;
+        height: 200px;
+    }
+    to {
+        background-color: green;
+        width: 400px;
+        height: 300px;
+    }
+}
+
+.tarjeta:hover {
+    transform: translate(500px, 400px);
+}

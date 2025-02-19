@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+            /*transform: translate(200px, 100px);*/
+            /*transform: rotate(45deg);*/
+            /*transform: scale(1.5, 2);*/
+            /*transform: skew(20deg, 10deg);*/
+            /*transform: translate(200px, 100px) rotate(45deg) scale(1.5, 2) skew(20deg, 10deg);*/
+
+
+            /*animation-duration: 0.5s;
+            animation-timing-function: ease;
+            animation-delay: 0.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-fill-mode: forwards;*/
+            transition: transform 0.5s ease;
+            animation-name: cambiarcolor;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+            animation: cambiarcolor 2s infinite alternate;
+        }
+
+        @keyframes cambiarcolor {
+            from {
+                background-color: blue;
+            }
+
+            to {
+                background-color: yellow;
+            }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-50px);
+            }
+        }
+
+        .box:hover {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+</body>
+
+</html>
