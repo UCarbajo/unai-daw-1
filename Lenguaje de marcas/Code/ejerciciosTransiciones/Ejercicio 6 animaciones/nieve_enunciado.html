@@ -1,0 +1,65 @@
+
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio Nieve - Animacion CSS</title>
+        <style type="text/css" media="screen">
+		/*
+		Utilizad al menos dos animaciones:
+
+		La primera para simular la caida de los copos de nieve.
+		La segunda para hacer desaparecer los copos según van llegando al suelo, utilizando la propiedad opacity.
+
+		*/
+		#container{		
+			background: #666 url(arbol.jpg) no-repeat;
+			width: 480px;
+			height: 480px;		
+			position: relative;	
+			z-index:-100;
+		}
+
+		#snow div {
+			position: absolute;
+			top: -40px;
+			
+		}
+		.copos {
+			color: #fff;
+			font-size: 1em;
+			position: absolute;	
+		}
+		.copos.f1 {
+			left: 40px;
+				
+		}
+		.copos.f2 {
+			font-size: 1.8em;
+			left: 120px;
+				
+		}
+		.copos.f3 {
+			left: 200px;
+			
+		}
+		.copos.f4 {
+			font-size: 1.5em;
+			left: 280px;
+			
+		}
+		 
+		
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="snow" class="snow">
+                <div class="copos f1">&#10053;</div>
+                <div class="copos f2">&#10052;</div>
+                <div class="copos f3">&#10053;</div>
+                <div class="copos f4">&#10052;</div>
+            </div>
+        </div>
+    </body>
+</html>
