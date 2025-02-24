@@ -1,6 +1,6 @@
 <!-- DIRECTIVA %@ MODIFICAR COMPORTAMIENTO DE LA PÁGINA-->
 <!-- DECLARACIONES %! VARIABLES/METODOS GLOBALES -->
-<!-- EXPRESIONES%= MOSTRAR UN VALOR JAVA -->
+<!-- EXPRESIONES %= MOSTRAR UN VALOR JAVA -->
 <!-- CODIGO JAVA % PODEMOS AÑADIR CUALQUIER CODIGO JAVA -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -19,7 +19,7 @@
 			<button type="submit">Entrar</button>
 			<button type="reset">Borrar</button>
 		</form>
-		<% if(request.getParameter("error") != null) {%>
+		<% if(request.getSession().getAttribute("error") != null) {%>
 		<p>
 			Usuario o contraseña incorrecto.
 		</p>
