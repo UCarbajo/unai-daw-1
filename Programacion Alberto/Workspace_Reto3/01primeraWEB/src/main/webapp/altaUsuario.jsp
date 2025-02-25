@@ -1,34 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Alta de usuario</title>
-<<<<<<< HEAD
-=======
- <link rel="stylesheet" href="css/altaUsuarioStyle.css">
->>>>>>> 2b61c6401e2f836268e97b0b6cedbe412ba43529
-</head>
-<body>
-	<form action="altaUsuario" method="POST">
-        <input type="text" name="name" placeholder="Nombre">
-        <input type="text" name="lastName" placeholder="Apellidos"> <br><br>
-        <input type="text" name="phoneNumber" placeholder="Telefono">
-        <input type="email" name="mail" placeholder="Correo electronico"><br><br>
-        <input type="text" name="userName" placeholder="Nombre de Usuario">
-        <input type="password" name="passWord" placeholder="Contraseña"><br><br>
-        <button type="submit">Entrar</button>
-        <button type="reset">Borrar</button>
-    </form>
-    <%if(request.getSession().getAttribute("errorUsuario") != null){%>
-    	<p>NOMBRE DE USUARIO NO VÁLIDO</p>
-   	<% }%> 
-<<<<<<< HEAD
-=======
-   	<%if(request.getSession().getAttribute("errorCampo") != null){%>
-    	<p>RELLENA LOS CAMPOS CORRECTAMENTE</p>
-   	<% }%>
->>>>>>> 2b61c6401e2f836268e97b0b6cedbe412ba43529
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro de Usuario</title>
+        <link rel="stylesheet" href="css/altaUsuarioStyle.css">
+    </head>
+
+    <body>
+        <div class="container-formulario">
+            <form action="altaUsuario" method="POST">
+                <h2>Formulario de Registro</h2>
+                <div class="input-group">
+                    <input type="text" name="name" placeholder="Nombre" required>
+                    <input type="text" name="lastName" placeholder="Apellidos" required>
+                </div>
+                <div class="input-group">
+                    <input type="tel" name="phoneNumber" placeholder="Teléfono" required>
+                    <input type="email" name="mail" placeholder="Correo Electrónico" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" name="userName" placeholder="Nombre de Usuario" required>
+                    <input type="password" name="passWord" placeholder="Contraseña" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit">Registrar</button>
+                    <button type="reset">Borrar</button>
+                </div>
+ 					
+				<%if(request.getSession().getAttribute("errorUsuario") !=null){%>
+					<p class="mensaje-error">NOMBRE DE USUARIO NO VÁLIDO</p>
+				<% }%>
+				<%if(request.getSession().getAttribute("errorCampo") !=null){%>
+					<p class="mensaje-error">RELLENA LOS CAMPOS CORRECTAMENTE</p>
+				<% }%>
+            </form>
+        </div>
+    </body>
+
+    </html>

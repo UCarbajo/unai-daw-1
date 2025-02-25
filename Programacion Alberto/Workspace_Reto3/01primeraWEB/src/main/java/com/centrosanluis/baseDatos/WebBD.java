@@ -38,24 +38,15 @@ public class WebBD extends AccesoBD {
 		//TODO PREPARAMOS UN BOOLEAN EN FALSO PARA INDICAR SI SE HA AÑADIDO O NO UN USUARIO
 		boolean usuarioAnadido = false;
 		//TODO PREPARAMOS UNA CONSULTA PARA COMPROBAR SI EXISTE ALGUIEN CON EL MISMO NOMBRE DE USUARIO
-<<<<<<< HEAD
-		String sql = "SELECT username FROM usuarios WHERE username = ?";
-=======
 		String sql = "SELECT * FROM usuarios WHERE username = ? OR mail = ?";
->>>>>>> 2b61c6401e2f836268e97b0b6cedbe412ba43529
 		try {
 			conectar();
 			//TODO EXECUTAMOS LA CONSULTA Y LO RECIBE EL RESULTSET(rs)
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, user.getUserName());
-<<<<<<< HEAD
-			rs = ps.executeQuery();
-			//TODO SI EL RESULTSET NO CONTIENE UNA LINEA (NO HAY OTRO USUARIO CON EL MISMO NOMBRE) 
-=======
 			ps.setString(2, user.getMail());
 			rs = ps.executeQuery();
 			//TODO SI EL RESULTSET NO CONTIENE UNA LINEA (NO HAY OTRO USUARIO O CORREO CON EL MISMO NOMBRE) 
->>>>>>> 2b61c6401e2f836268e97b0b6cedbe412ba43529
 			//PREPARAMOS LA INSERCCION DE UN NUEVO USUARIO A LA BASE DE DATOS
 			//TAMBIEN CAMBIAMOS EL ESTADO DEL BOOLEAN PARA INDICAR QUE SE HA AÑADIDO UN USUARIO
 			if(!rs.next()) {
