@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+body{
+	background-color: black;
+}
+.container-formulario{
+	height: auto;
+	width: auto;
+	display: flex;
+	justify-content: center;
+}
+.container-formulario form{
+	background-color: white;
+	display: flex;
+	flex-wrap: wrap;
+	width: 30%;
+	justify-content: space-around;
+	gap: 10px;
+	align-items: center;
+	padding: 10px 5px 10px 5px;
+}
+#formulario-contenido{
+	width: 45%;
+}

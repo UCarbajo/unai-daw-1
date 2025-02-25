@@ -1,7 +1,11 @@
 package com.centrosanluis.controller;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import javax.servlet.ServletConfig;
+=======
+
+>>>>>>> 2b61c6401e2f836268e97b0b6cedbe412ba43529
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +22,7 @@ import com.centrosanluis.model.Usuario;
 public class AltaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private WebBD acceso = new WebBD();
+<<<<<<< HEAD
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -44,6 +49,56 @@ public class AltaUsuario extends HttpServlet {
 			request.getSession().setAttribute("errorUsuario", "1");
 			response.sendRedirect("altaUsuario.jsp");
 		}
+=======
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO OBTENEMOS TODOS LOS DATOS DEL FORMULARIO DE ALTA USUARIO
+		// TODO FALTA CONTROLAR LOS ERRORES (CAMPOS NO RELLENADOS, CAMPOS MAL
+		// RELLENADOS, ...)
+		String name = request.getParameter("name");
+		String lastName = request.getParameter("lastName");
+		String phoneNumber = request.getParameter("phoneNumber");
+		String mail = request.getParameter("mail");
+		String userName = request.getParameter("userName");
+		String passWord = request.getParameter("passWord");
+
+		// TODO COMPROBAMOS QUE LOS CAMPOS ESTEN RELLENADOS
+		
+		try {
+			if (!name.isBlank() && !lastName.isBlank() && !phoneNumber.isBlank() && !mail.isBlank() && !userName.isBlank() && !passWord.isBlank()) {
+				// TODO CREAMOS UNA INSTANCIA DEL USUARIO CON LOS DATOS DEL FORMULARIO
+				
+				Usuario user = new Usuario(name, lastName, mail, userName, passWord, Integer.parseInt(phoneNumber));
+
+				// TODO HACEMOS UNA CONSULTA A LA BD, SI SE AÑADE EL USUARIO CORRECTAMENTE, SE
+				// REDIRIGE AL USUARIO A LA PAGINA INDEX
+				if (acceso.anadirUsuario(user)) {
+					response.sendRedirect("index.html");
+				} else {
+					// TODO SI EL USUARIO NO SE HA PODIDO AÑADIR, CREAMOS UN ERROR DE USUARIO PARA
+					// PODER INDICARLO EN ALTAUSUARIO.JSP
+					request.getSession().setAttribute("errorUsuario", "1");
+					response.sendRedirect("altaUsuario.jsp");
+				}
+			}else {
+				//TODO SI ALGUN CAMPO NO ESTA RELLENADO, LANZAMOS UN ERROR
+				request.getSession().setAttribute("errorCampo", "1");
+				response.sendRedirect("altaUsuario.jsp");
+			}
+		}catch(NumberFormatException e) {
+			// TODO SI INTRODUCE LETRAS EN EL CAMPO DE NUMERO DE TELEFONO
+			// CAZAMOS EL ERROR Y MOSTRAMOS MENSAJE DE ERROR
+			request.getSession().setAttribute("errorCampo", "1");
+			response.sendRedirect("altaUsuario.jsp");
+		}
+
+>>>>>>> 2b61c6401e2f836268e97b0b6cedbe412ba43529
 	}
 
 }
