@@ -3,8 +3,7 @@ package com.centrosanluis.baseDatos;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.centrosanluis.model.Usuario;
-import com.mysql.cj.xdevapi.PreparableStatement;
+import com.centrosanluis.dao.Usuario;
 
 public class WebBD extends AccesoBD {
 
@@ -14,7 +13,7 @@ public class WebBD extends AccesoBD {
 	}
 
 	public boolean comprobarUsuario(Usuario user) {
-		String sql = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+		String sql = "SELECT username FROM usuarios WHERE username = ? AND password = ?";
 		boolean existeUsuario = false;
 		try {
 			conectar();

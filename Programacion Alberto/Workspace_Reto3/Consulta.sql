@@ -5,7 +5,7 @@ USE paginaWeb;
 CREATE TABLE usuarios (
 	name VARCHAR(50),
 	lastName VARCHAR(50),
-	mail VARCHAR(100),
+	mail VARCHAR(100) UNIQUE,
 	userName VARCHAR(50) NOT NULL PRIMARY KEY,
 	passWord VARCHAR(255),
 	phoneNumber INT

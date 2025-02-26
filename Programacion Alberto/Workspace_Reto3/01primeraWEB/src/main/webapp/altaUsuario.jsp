@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Registro de Usuario</title>
-        <link rel="stylesheet" href="css/altaUsuarioStyle.css">
+        <link rel="stylesheet" href="styles/altaUsuarioStyle.css">
     </head>
 
     <body>
@@ -30,7 +30,7 @@
                 </div>
  					
 				<%if(request.getSession().getAttribute("errorUsuario") !=null){%>
-					<p class="mensaje-error">NOMBRE DE USUARIO NO V¡ÅLIDO</p>
+					<p class="mensaje-error">NOMBRE DE USUARIO NO V¡LIDO</p>
 				<% }%>
 				<%if(request.getSession().getAttribute("errorCampo") !=null){%>
 					<p class="mensaje-error">RELLENA LOS CAMPOS CORRECTAMENTE</p>

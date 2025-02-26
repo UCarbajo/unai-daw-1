@@ -1,10 +1,10 @@
-package com.centrosanluis.model;
+package com.centrosanluis.dao;
 
 public class Usuario {
-	
+
 	private String name, lastName, mail, userName, passWord;
 	private int phoneNumber;
-	
+
 	public Usuario() {
 		super();
 	}
@@ -75,8 +75,10 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [name=" + name + ", lastName=" + lastName + ", mail=" + mail + ", userName=" + userName
-				+ ", passWord=" + passWord + ", phoneNumber=" + phoneNumber + "]";
+		// TODO EL StringBuilder ES MEJOR PARA EL RENDIMIENTO
+		StringBuilder str = new StringBuilder();
+		str.append(name).append(" ").append(lastName).append(" ").append(mail).append(" ").append(userName).append(" ").append(passWord).append(" ").append(phoneNumber);
+		return str.toString();
 	}
 
 }
