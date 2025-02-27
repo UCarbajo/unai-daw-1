@@ -1,4 +1,4 @@
-package com.centrosanluis.dao;
+package com.centrosanluis.model;
 
 public class Usuario {
 

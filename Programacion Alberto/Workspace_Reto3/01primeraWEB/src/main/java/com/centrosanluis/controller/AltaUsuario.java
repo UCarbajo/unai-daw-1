@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.centrosanluis.baseDatos.WebBD;
-import com.centrosanluis.dao.Usuario;
+import com.centrosanluis.model.Usuario;
 
 /**
  * Servlet implementation class AltaUsuario
  */
-@WebServlet("/altaUsuario")
+@WebServlet("/registro")
 public class AltaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private WebBD acceso = new WebBD();
@@ -49,20 +49,17 @@ public class AltaUsuario extends HttpServlet {
 					// TODO SI EL USUARIO NO SE HA PODIDO AÑADIR (USERNAME O CORREO REPETIDO),
 					// CREAMOS UN ERROR DE USUARIO PARA PODER INDICARLO EN ALTAUSUARIO.JSP
 					request.getSession().setAttribute("errorUsuario", "1");
-					request.getSession().removeAttribute("errorCampo");
 					response.sendRedirect("altaUsuario.jsp");
 				}
 			}else {
 				//TODO SI ALGUN CAMPO NO ESTA RELLENADO CORRECTAMENTE (RELLANDO CON ESPACIOS), LANZAMOS UN ERROR
 				request.getSession().setAttribute("errorCampo", "1");
-				request.getSession().removeAttribute("errorUsuario");
 				response.sendRedirect("altaUsuario.jsp");
 			}
 		}catch(NumberFormatException e) {
 			// TODO SI INTRODUCE LETRAS EN EL CAMPO DE NUMERO DE TELEFONO
 			// CAZAMOS EL ERROR Y MOSTRAMOS MENSAJE DE ERROR
 			request.getSession().setAttribute("errorCampo", "1");
-			request.getSession().removeAttribute("errorUsuario");
 			response.sendRedirect("altaUsuario.jsp");
 		}
 

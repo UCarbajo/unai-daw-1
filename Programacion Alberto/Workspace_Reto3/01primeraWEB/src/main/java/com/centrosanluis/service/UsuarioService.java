@@ -1,16 +1,16 @@
 package com.centrosanluis.service;
 
 import com.centrosanluis.controller.Usuario;
-import com.centrosanluis.model.UsuarioModel;
+import com.centrosanluis.dao.UsuarioDAO;
 
 public class UsuarioService {
 
-	UsuarioModel usuarioModel;
+	UsuarioDAO usuarioModel;
 	
 	
 	public UsuarioService() {
 		super();
-		usuarioModel = new UsuarioModel();
+		usuarioModel = new UsuarioDAO();
 	}
 
 

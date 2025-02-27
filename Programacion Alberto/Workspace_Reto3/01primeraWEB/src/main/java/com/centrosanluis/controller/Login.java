@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.centrosanluis.baseDatos.WebBD;
-import com.centrosanluis.dao.Usuario;
+import com.centrosanluis.model.Usuario;
 
 /**
  * Servlet implementation class Login

@@ -1,4 +1,4 @@
-package com.centrosanluis.model;
+package com.centrosanluis.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
