@@ -9,6 +9,12 @@ public class Usuario {
 		super();
 	}
 
+	public Usuario(String userName, String passWord) {
+		super();
+		this.userName = userName;
+		this.passWord = passWord;
+	}
+	
 	public Usuario(String name, String lastName, String mail, String userName, String passWord, int phoneNumber) {
 		super();
 		this.name = name;
@@ -17,12 +23,6 @@ public class Usuario {
 		this.userName = userName;
 		this.passWord = passWord;
 		this.phoneNumber = phoneNumber;
-	}
-
-	public Usuario(String userName, String passWord) {
-		super();
-		this.userName = userName;
-		this.passWord = passWord;
 	}
 
 	public String getName() {

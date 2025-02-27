@@ -10,7 +10,7 @@
 
     <body>
         <div class="container-formulario">
-            <form action="altaUsuario" method="POST">
+            <form action="registro" method="POST">
                 <h2>Formulario de Registro</h2>
                 <div class="input-group">
                     <input type="text" name="name" placeholder="Nombre" required>

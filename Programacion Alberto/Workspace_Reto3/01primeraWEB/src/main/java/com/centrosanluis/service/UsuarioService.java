@@ -1,22 +1,47 @@
 package com.centrosanluis.service;
 
-import com.centrosanluis.controller.Usuario;
+import com.centrosanluis.model.Usuario;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.centrosanluis.dao.UsuarioDAO;
 
 public class UsuarioService {
 
-	UsuarioDAO usuarioModel;
-	
+UsuarioDAO usuarioDAO;
 	
 	public UsuarioService() {
-		super();
-		usuarioModel = new UsuarioDAO();
+		usuarioDAO = new UsuarioDAO();
+	}
+	
+	public Usuario login(Usuario usuario) {
+		usuario.setPassWord(hashPassword(usuario.getPassWord()));
+		
+		return usuarioDAO.login(usuario);
 	}
 
-
-	public Usuario login(Usuario user) {
-		return null;
+	public boolean addUser(Usuario nuevoUsuario) {
+		String hashedPass = hashPassword(nuevoUsuario.getPassWord());
 		
+		nuevoUsuario.setPassWord(hashedPass);
+		
+		return usuarioDAO.addUser(nuevoUsuario);
+	}
+	
+	private String hashPassword(String password) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte[] hash = md.digest(password.getBytes());
+			StringBuilder hexString = new StringBuilder();
+			for(byte b: hash) {
+				hexString.append(String.format("%02x", b));
+			}
+			return hexString.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 	
 }

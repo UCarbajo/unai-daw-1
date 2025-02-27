@@ -2,45 +2,42 @@ package com.centrosanluis.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class AccesoBD {
 
-	public static final String DRIVER_MYSQL = "com.mysql.jdbc.Driver";
+	private static final String URL = "jdbc:mysql://localhost:3306/paginaweb";
+	private static final String USER = "root";
+	private static final String PASSWORD = "1234";
 	
-	protected Connection con;
-	protected Statement st;
-	protected ResultSet rs;
-	
-	String tipoBD, baseDatos, userName, passWord;
-
-	protected AccesoBD(String tipoBD, String baseDatos, String userName, String passWord) {
-		super();
-		this.tipoBD = tipoBD;
-		this.baseDatos = baseDatos;
-		this.userName = userName;
-		this.passWord = passWord;
+	public static Connection getConnection() {
+		Connection con = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
+		}catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return con;
 	}
 	
-	protected void conectar() throws ClassNotFoundException, SQLException {
-		Class.forName(DRIVER_MYSQL);
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + baseDatos, userName, passWord);
-		
-		System.out.println("Conexión establecida");
-		st = con.createStatement();
-	}
-	
-	protected void desconectar() throws SQLException {
-		if(con!=null) {
-			con.close();
-		}
-		if(st!=null) {
-			st.close();
-		}
-		if(rs!=null) {
-			rs.close();
+	public static void closeConnection(ResultSet rs, PreparedStatement ps, Connection con) {
+		try {
+			if(rs!=null) {
+				rs.close();
+			}
+			
+			if(ps!=null) {
+				ps.close();
+			}
+			
+			if(con!=null) {
+				con.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }
