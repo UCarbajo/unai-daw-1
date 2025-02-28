@@ -8,13 +8,13 @@ import com.centrosanluis.model.Usuario;
 public class ListadoService {
 
 	ListadoDAO listadoDao;
-	
+
 	public ListadoService() {
 		listadoDao = new ListadoDAO();
 	}
-	
+
 	public ArrayList<Usuario> getListado() {
-		
+
 		return listadoDao.getListado();
 	}
 }
