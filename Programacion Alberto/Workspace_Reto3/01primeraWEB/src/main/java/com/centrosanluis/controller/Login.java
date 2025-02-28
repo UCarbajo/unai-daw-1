@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 
 		if(usuarioLogin!=null) {
 			request.getSession().setAttribute("usuario", usuarioLogin);
-			response.sendRedirect("index.html");
+			response.sendRedirect("private/index.jsp");
 		}else {
 			response.sendRedirect("login.jsp?error=1");
 		}

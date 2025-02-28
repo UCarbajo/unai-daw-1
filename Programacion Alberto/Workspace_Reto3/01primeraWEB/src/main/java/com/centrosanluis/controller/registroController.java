@@ -16,7 +16,7 @@ import com.centrosanluis.service.UsuarioService;
  * Servlet implementation class AltaUsuario
  */
 @WebServlet("/registro")
-public class AltaUsuarioController extends HttpServlet {
+public class registroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UsuarioService usuarioService;
 	
@@ -51,7 +51,7 @@ public class AltaUsuarioController extends HttpServlet {
 				// TODO HACEMOS UNA CONSULTA A LA BD, SI SE AÑADE EL USUARIO CORRECTAMENTE, 	
 				// SE REDIRIGE AL USUARIO A LA PAGINA INDEX
 				if (usuarioService.addUser(user)) {
-					response.sendRedirect("index.html");
+					response.sendRedirect("private/index.jsp");
 				} else {
 					// TODO SI EL USUARIO NO SE HA PODIDO AÑADIR (USERNAME O CORREO REPETIDO),
 					// CREAMOS UN ERROR DE USUARIO PARA PODER INDICARLO EN ALTAUSUARIO.JSP
