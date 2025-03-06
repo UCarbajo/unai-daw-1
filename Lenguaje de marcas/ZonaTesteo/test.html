@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
- <link rel="stylesheet" href="styles/loginStyle.css">
+    <meta charset="ISO-8859-1">
+    <title>Listado de Productos</title>
+    <link rel="stylesheet" href="styles/altaProductoStyle.css">
 </head>
+
 <body>
-	<div class="container-login">
-		<form action="login" method="post">
-            <h2>Iniciar Sesión</h2>
-        <div class="input-group">
-			<input type="text" name="username" placeholder="Nombre de Usuario">
-			<input type="password" name="password" placeholder="Contraseña">
+    <div class="container">
+        <h1>Listado de Productos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Descripción</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>TEST</td>
+                    <td>
+                        <form action="productomostrar" method="post">
+                            <input type="hidden" name="id" value="">
+                            <button type="submit" name="action" value="editar">Editar</button>
+                            <button type="submit" name="action" value="eliminar"
+                                onclick="return confirm('¿Eliminar producto');">Eliminar</button>
+                        </form>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="pagina-group">
+            <a href="">Anterior</a>
+            <a href="">Siguiente</a>
         </div>
-        <div class="button-group">
-			<button type="submit">Entrar</button>
-			<button type="reset">Borrar</button>
-        </div>
-		</form>
-	</div>
+    </div>
 </body>
+
 </html>
