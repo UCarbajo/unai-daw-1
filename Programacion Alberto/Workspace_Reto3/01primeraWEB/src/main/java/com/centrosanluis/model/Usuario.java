@@ -4,6 +4,7 @@ public class Usuario {
 
 	private String name, lastName, mail, userName, passWord;
 	private int phoneNumber;
+	private Rol rol;
 
 	public Usuario() {
 		super();
@@ -15,7 +16,7 @@ public class Usuario {
 		this.passWord = passWord;
 	}
 	
-	public Usuario(String name, String lastName, String mail, String userName, String passWord, int phoneNumber) {
+	public Usuario(String name, String lastName, String mail, String userName, String passWord, int phoneNumber, Rol rol) {
 		super();
 		this.name = name;
 		this.lastName = lastName;
@@ -23,6 +24,7 @@ public class Usuario {
 		this.userName = userName;
 		this.passWord = passWord;
 		this.phoneNumber = phoneNumber;
+		this.rol = rol;
 	}
 
 	public String getName() {
@@ -71,6 +73,14 @@ public class Usuario {
 
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 
 	@Override

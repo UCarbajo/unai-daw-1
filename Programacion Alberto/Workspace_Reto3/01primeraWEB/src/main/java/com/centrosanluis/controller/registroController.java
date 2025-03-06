@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.centrosanluis.model.Rol;
 import com.centrosanluis.model.Usuario;
+import com.centrosanluis.service.RolesService;
 import com.centrosanluis.service.UsuarioService;
 
 /**
@@ -19,16 +21,20 @@ import com.centrosanluis.service.UsuarioService;
 public class registroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UsuarioService usuarioService;
+	RolesService rolesService;
 	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		usuarioService = new UsuarioService();
+		rolesService = new RolesService();
 		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		request.setAttribute("listaRoles", rolesService.getRoles());
+		request.getRequestDispatcher("registro.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,12 +47,15 @@ public class registroController extends HttpServlet {
 		String mail = request.getParameter("mail");
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
+		String id = request.getParameter("rolID");
 
 		// TODO COMPROBAMOS QUE LOS CAMPOS OBLIGATORIOS RELLENADOS NO ESTEN VACIOS (RELLENADO CON ESPACIOS)
 		try {
 			if (comprobarCampos(name, lastName, phoneNumber, mail, userName, passWord)) {
 				// TODO CREAMOS UNA INSTANCIA DEL USUARIO CON LOS DATOS DEL FORMULARIO
-				Usuario user = new Usuario(name, lastName, mail, userName, passWord, Integer.parseInt(phoneNumber));
+				Rol rol = new Rol();
+				rol.setId(Integer.parseInt(id));
+				Usuario user = new Usuario(name, lastName, mail, userName, passWord, Integer.parseInt(phoneNumber), rol );
 
 				// TODO HACEMOS UNA CONSULTA A LA BD, SI SE AÑADE EL USUARIO CORRECTAMENTE, 	
 				// SE REDIRIGE AL USUARIO A LA PAGINA INDEX

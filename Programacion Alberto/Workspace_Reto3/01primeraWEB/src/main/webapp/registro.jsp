@@ -1,7 +1,9 @@
+<%@page import="com.centrosanluis.model.Rol"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
     <!DOCTYPE html>
+<%ArrayList<Rol> listaRoles = (ArrayList<Rol>) request.getAttribute("listaRoles"); %>
     <html lang="es">
-
     <head>
         <meta charset="UTF-8">
         <title>Registro de Usuario</title>
@@ -24,6 +26,15 @@
                     <input type="text" name="userName" placeholder="Nombre de Usuario" required>
                     <input type="password" name="passWord" placeholder="Contraseña" required>
                 </div>
+               
+                <div class="input-group">
+                	<select name="rolID">
+                	 <%for(Rol r : listaRoles) { %>
+                	 	<option value="<%=r.getId()%>"><%=r.getRol()%></option>
+                	  <%} %>
+                	</select>	
+                </div>
+               
                 <div class="button-group">
                     <button type="submit">Registrar</button>
                     <button type="reset">Borrar</button>

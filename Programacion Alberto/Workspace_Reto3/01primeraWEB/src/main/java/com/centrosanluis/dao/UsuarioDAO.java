@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.centrosanluis.model.Usuario;
 
 public class UsuarioDAO{
@@ -49,7 +50,7 @@ public class UsuarioDAO{
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		
-		String sql = "INSERT INTO usuarios (name, lastname, phonenumber, mail, username, password) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO usuarios (name, lastname, phonenumber, mail, username, password, id_rol) VALUES (?,?,?,?,?,?,?)";
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -60,6 +61,7 @@ public class UsuarioDAO{
 			ps.setString(4, nuevoUsuario.getMail());
 			ps.setString(5, nuevoUsuario.getUserName());
 			ps.setString(6, nuevoUsuario.getPassWord());
+			ps.setInt(7, nuevoUsuario.getRol().getId());
 			
 			if(ps.executeUpdate() > 0) {
 				return true;

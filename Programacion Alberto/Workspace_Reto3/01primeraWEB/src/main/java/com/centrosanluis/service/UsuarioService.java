@@ -1,11 +1,10 @@
 package com.centrosanluis.service;
 
-import com.centrosanluis.model.Usuario;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import com.centrosanluis.dao.UsuarioDAO;
+import com.centrosanluis.model.Usuario;
 
 public class UsuarioService {
 
