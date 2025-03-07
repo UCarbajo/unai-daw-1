@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>HOLA MUNDO</h1>
-<a href="ListadoUsuarios"> Listado Usuarios</a>
+<a href="listadoUsuarios"> Listado Usuarios</a>
 </body>
 </html>

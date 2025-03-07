@@ -42,5 +42,10 @@ UsuarioDAO usuarioDAO;
 			return "";
 		}
 	}
+
+	public void deleteUsuario(String mail) {
+		usuarioDAO.deleteUsuario(mail);
+		
+	}
 	
 }

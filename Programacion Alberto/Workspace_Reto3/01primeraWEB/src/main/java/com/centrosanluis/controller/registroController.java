@@ -60,7 +60,7 @@ public class registroController extends HttpServlet {
 				// TODO HACEMOS UNA CONSULTA A LA BD, SI SE AÑADE EL USUARIO CORRECTAMENTE, 	
 				// SE REDIRIGE AL USUARIO A LA PAGINA INDEX
 				if (usuarioService.addUser(user)) {
-					response.sendRedirect("private/index.jsp");
+					response.sendRedirect("login");
 				} else {
 					// TODO SI EL USUARIO NO SE HA PODIDO AÑADIR (USERNAME O CORREO REPETIDO),
 					// CREAMOS UN ERROR DE USUARIO PARA PODER INDICARLO EN ALTAUSUARIO.JSP
