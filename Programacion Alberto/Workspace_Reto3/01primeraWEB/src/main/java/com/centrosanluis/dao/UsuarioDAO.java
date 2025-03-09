@@ -76,4 +76,22 @@ public class UsuarioDAO{
 		}
 		return false;
 	}
+
+	public void deleteUser(String mail) {
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		
+		String sql = "DELETE FROM usuarios WHERE mail = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, mail);
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			AccesoBD.closeConnection(null, ps, con);
+		}
+	
+	}
 }

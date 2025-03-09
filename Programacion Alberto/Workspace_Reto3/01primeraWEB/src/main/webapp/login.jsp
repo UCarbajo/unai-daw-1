@@ -12,8 +12,8 @@
 </head>
 <body>
     <div class="container-login">
-        <h2>Iniciar Sesión</h2>
         <form action="login" method="post">
+        <h2>Iniciar Sesión</h2>
             <div class="input-group">
                 <input type="text" name="username" placeholder="Nombre de Usuario">
                 <input type="password" name="password" placeholder="Contraseña">
@@ -22,7 +22,9 @@
                 <button type="submit">Entrar</button>
                 <button type="reset">Borrar</button>
             </div>
-            <a href="registro">¿Nuevo usuario? Regístrate</a>
+            <div class="link-group">
+           	 <a href="registro">¿Nuevo usuario? Regístrate</a>
+            </div>
         </form>
         <% if(request.getSession().getAttribute("error") != null) {%>
         <p>Usuario o contraseña incorrecto.</p>

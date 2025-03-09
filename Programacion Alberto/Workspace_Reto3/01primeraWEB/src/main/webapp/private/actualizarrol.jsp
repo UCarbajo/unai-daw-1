@@ -1,18 +1,24 @@
+<%@page import="com.centrosanluis.model.Rol"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%ArrayList<Rol> listaRoles = (ArrayList<Rol>) request.getAttribute("listaRoles"); %>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
-    <link rel="stylesheet" href="styles/altaProductoStyle.css">
+    <link rel="stylesheet" href="styles/anadirRolStyle.css">
 </head>
 
 <body>
     <form action="actualizarrol" method="post">
         <div class="input-group">
             <label>Indica el rol a actualizar</label>
-            <select name="listaroles">
-                <option value="">TEST</option>
+            <select name="selectRoles">
+                <%for(Rol r: listaRoles) {%>
+                <option value="<%=r.getId()%>"><%=r.getRol()%></option>      
+                <%} %>
             </select>
         </div>
         <div class="input-group">
@@ -25,5 +31,4 @@
         </div>
     </form>
 </body>
-
 </html>

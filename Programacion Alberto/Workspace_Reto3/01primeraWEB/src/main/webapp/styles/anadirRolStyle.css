@@ -1,3 +1,4 @@
+@charset "ISO-8859-1";
 *{
     margin: 0;
     padding: 0;
@@ -21,9 +22,12 @@ form{
     border-radius: 0.5em;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .input-group{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 label{
     text-align: center;
@@ -37,9 +41,9 @@ label{
     text-align: center;
 }
 .input-group select{
-    padding: 0.3em 1em;
+    padding: 0.3em 0.6em;
     margin-bottom: 1em;
-    width: 18em;
+    width: 10em;
     font-size: 1.2em;
 }
 
@@ -49,12 +53,12 @@ label{
     justify-content: space-between;
 }
 .button-group button, a{
-    width: 15%;
+    width: 30%;
     text-align: center;
 	text-decoration: none;
 	background-color: #28a745;
 	color: white;
-	padding: 1em 3em;
+	padding: 1em 1.7em;
 	border-radius: 10px;
     border: none;
     font-size: 1em;

@@ -16,11 +16,11 @@ import com.centrosanluis.service.UsuarioService;
  * Servlet implementation class Login
  */
 @WebServlet("/login")
-public class Login extends HttpServlet {
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UsuarioService usuarioService;
 	
-	public Login() {
+	public LoginController() {
 		super();
 	}
 
@@ -33,6 +33,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.getSession().invalidate();
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 	
@@ -48,7 +49,7 @@ public class Login extends HttpServlet {
 
 		if(usuarioLogin!=null) {
 			request.getSession().setAttribute("usuario", usuarioLogin);
-			response.sendRedirect("private/index.jsp");
+			response.sendRedirect("inicio");
 		}else {
 			response.sendRedirect("login.jsp?error=1");
 		}

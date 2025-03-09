@@ -17,7 +17,7 @@ body {
 }
 form {
     background-color: #fff;
-    padding: 30px 30px;
+    padding: 1.5em 1.5em 1em 1.5em;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 400px;
@@ -47,6 +47,7 @@ form h2 {
 .button-group {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 .button-group button {
@@ -68,4 +69,9 @@ form h2 {
 
 .button-group button:hover {
     opacity: 0.9;
+}
+.link-group{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

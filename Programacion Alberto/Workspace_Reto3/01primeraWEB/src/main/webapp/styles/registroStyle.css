@@ -49,7 +49,11 @@ form h2 {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-
+.select-group select{
+	width: 100%;
+	padding: 10px;
+  	margin-bottom: 10px;
+}
 .input-group input:focus {
     border-color: #007bff;
     outline: none;
@@ -61,7 +65,7 @@ form h2 {
 }
 
 .button-group button {
-    width: 48%;
+    width: 30%;
     padding: 12px;
     border: none;
     border-radius: 5px;
@@ -71,6 +75,18 @@ form h2 {
 
 .button-group button[type="submit"] {
     background-color: #28a745;
+}
+
+.button-group a{
+	background-color: #28a745;
+	width: 30%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
 .button-group button[type="reset"] {

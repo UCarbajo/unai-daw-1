@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.centrosanluis.model.Usuario;
 import com.centrosanluis.service.ListadoService;
+import com.centrosanluis.service.UsuarioService;
 
 
 @WebServlet("/listadoUsuarios")
@@ -19,6 +20,7 @@ public class ListadoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArrayList<Usuario> listaUsuarios;
 	ListadoService listadoService;
+	UsuarioService usuarioService;
 	
     public ListadoController() {
         super();
@@ -28,22 +30,21 @@ public class ListadoController extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
     	super.init(config);
     	listadoService = new ListadoService();
+    	usuarioService = new UsuarioService();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//llamo al service para obtener todos los usuarios
-		
-		//añado en la request el atributo (no sesion) listado usuarios
-				
-		//encadeno la peticion y la envio a listado.jsp
 		
 		listaUsuarios = listadoService.getListado();
 		request.setAttribute("listaUsuarios", listaUsuarios);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("private/listado.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mail = request.getParameter("eliminar");
+		usuarioService.deleteUser(mail);
+		response.sendRedirect("listadoUsuarios");
 		
 	}
 

@@ -60,23 +60,23 @@ public class registroController extends HttpServlet {
 				// TODO HACEMOS UNA CONSULTA A LA BD, SI SE AÑADE EL USUARIO CORRECTAMENTE, 	
 				// SE REDIRIGE AL USUARIO A LA PAGINA INDEX
 				if (usuarioService.addUser(user)) {
-					response.sendRedirect("private/index.jsp");
+					response.sendRedirect("login");
 				} else {
 					// TODO SI EL USUARIO NO SE HA PODIDO AÑADIR (USERNAME O CORREO REPETIDO),
 					// CREAMOS UN ERROR DE USUARIO PARA PODER INDICARLO EN ALTAUSUARIO.JSP
 					request.getSession().setAttribute("errorUsuario", "1");
-					response.sendRedirect("registro.jsp");
+					response.sendRedirect("registro");
 				}
 			}else {
 				//TODO SI ALGUN CAMPO NO ESTA RELLENADO CORRECTAMENTE (RELLANDO CON ESPACIOS), LANZAMOS UN ERROR
 				request.getSession().setAttribute("errorCampo", "1");
-				response.sendRedirect("registro.jsp");
+				response.sendRedirect("registro");
 			}
 		}catch(NumberFormatException e) {
 			// TODO SI INTRODUCE LETRAS EN EL CAMPO DE NUMERO DE TELEFONO
 			// CAZAMOS EL ERROR Y MOSTRAMOS MENSAJE DE ERROR
 			request.getSession().setAttribute("errorCampo", "1");
-			response.sendRedirect("registro.jsp");
+			response.sendRedirect("registro");
 		}
 
 	}
