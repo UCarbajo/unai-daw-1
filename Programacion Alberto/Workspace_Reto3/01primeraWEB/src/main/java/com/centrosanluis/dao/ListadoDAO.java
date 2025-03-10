@@ -19,18 +19,10 @@ public class ListadoDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		listadoUsuarios = new ArrayList<Usuario>();
-<<<<<<< HEAD
-		
-		try {
-			String sql = "SELECT u.username, u.name, u.lastname, u.phonenumber, u.mail, u.id_rol, r.rol "
-					+ "FROM usuarios u, roles r "
-					+ "WHERE r.id = u.id_rol";
-=======
 	
 		
 		try {
 			String sql = "SELECT u.username, u.name, u.lastname, u.phonenumber, u.mail, u.id_rol, r.rol FROM usuarios u, roles r WHERE u.id_rol = r.id ORDER BY u.id_rol";
->>>>>>> 00e4e0ae15845b234043eadb7250b96d0bb5c519
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery(sql);
 

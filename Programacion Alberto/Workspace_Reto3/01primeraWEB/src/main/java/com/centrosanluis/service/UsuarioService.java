@@ -43,13 +43,18 @@ UsuarioDAO usuarioDAO;
 		}
 	}
 
-<<<<<<< HEAD
-	public void deleteUsuario(String mail) {
-		usuarioDAO.deleteUsuario(mail);
-=======
 	public void deleteUser(String mail) {
 		usuarioDAO.deleteUser(mail);
->>>>>>> 00e4e0ae15845b234043eadb7250b96d0bb5c519
+		
+	}
+
+	public Usuario getUser(String mail) {
+		// TODO Auto-generated method stub
+		return usuarioDAO.getUser(mail);
+	}
+
+	public void updateUsuario(Usuario u) {
+		usuarioDAO.updateUsuario(u);
 		
 	}
 	
