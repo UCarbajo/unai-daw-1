@@ -87,7 +87,10 @@ Usuario user = (Usuario) request.getAttribute("usuario");
                         <% } } %>
                     </select>
                 </div>
-                <button type="submit" name="boton" value="guardar" class="btn-save">Guardar</button>
+                <div class="btn-save">
+               	 	<button type="submit" name="boton" value="guardar" >Guardar</button>
+                	<a href="listadoUsuarios">Cancelar</a>
+                </div>
             </form>
         </div>
         <% } %>

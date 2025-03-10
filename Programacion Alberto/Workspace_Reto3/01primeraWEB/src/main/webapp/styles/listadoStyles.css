@@ -57,7 +57,7 @@ td {
     max-width: 200px;
 }
 
-button {
+button, a {
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
@@ -117,15 +117,23 @@ h2 {
     border-radius: 5px;
 }
 
-.btn-save {
+.btn-save{
+	display: flex;
+	justify-content: center;
+}
+.btn-save button, a {
+	width: 10%;
     background-color: #4CAF50;
+    font-size: 16px;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 0px 3px;
+    
 }
 
-.btn-save:hover {
+.btn-save button:hover, a:hover {
     background-color: #45a049;
 }
