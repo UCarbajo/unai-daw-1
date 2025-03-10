@@ -60,34 +60,26 @@ public class ListadoController extends HttpServlet {
 			request.setAttribute("listaUsuarios", listaUsuarios);
 			request.getRequestDispatcher("private/listado.jsp").forward(request, response);
 		}else if(boton.equals("guardar")) {
-			String nombre = request.getParameter("nombre");
-			String apellido = request.getParameter("nombre");
-			String telefono = request.getParameter("nombre");
-			String email = request.getParameter("nombre");
-			String usuario = request.getParameter("nombre");
-			String id = request.getParameter("id");
-			Rol r = new Rol();
-			r.setId(Integer.parseInt(id));
-			Usuario u = crearUsuario(nombre, apellido, telefono, email, usuario, r);
-			
+			Usuario u = crearUsuario(request);
 			usuarioService.updateUsuario(u);
 			response.sendRedirect("listadoUsuarios");
 		}
 		
-		
 	}
 
-	private Usuario crearUsuario(String nombre, String apellido, String telefono, String email, String usuario,
-			Rol rol) {
-		Usuario u = new Usuario();
-		u.setName(nombre);
-		u.setLastName(apellido);
-		u.setMail(email);
-		u.setPhoneNumber(Integer.parseInt(telefono));
-		u.setUserName(usuario);
-		u.setRol(rol);
+	private Usuario crearUsuario(HttpServletRequest request) {
+		Usuario user = new Usuario();
+		Rol rol = new Rol();
+		user.setName(request.getParameter("nombre"));
+		user.setLastName(request.getParameter("apellido"));
+		user.setPhoneNumber(Integer.parseInt(request.getParameter("telefono")));
+		user.setMail(request.getParameter("email"));
+		user.setUserName(request.getParameter("usuario"));
 		
-		return u;
+		rol.setId(Integer.parseInt(request.getParameter("rol")));
+		user.setRol(rol);
+		
+		return user;
 	}
 
 }

@@ -112,7 +112,7 @@ public class UsuarioDAO{
 				u.setLastName(rs.getString("lastname"));
 				u.setUserName(rs.getString("username"));
 				u.setPhoneNumber(rs.getInt("phonenumber"));
-				u.setMail("mail");
+				u.setMail(rs.getString("mail"));
 				r.setId(rs.getInt("u.id_rol"));
 				r.setRol(rs.getString("r.rol"));
 				u.setRol(r);
@@ -131,7 +131,7 @@ public class UsuarioDAO{
 		PreparedStatement ps = null;
 		
 		try {
-			String sql = "UPDATE Usuarios SET name = ?, lastname = ?, phonenumber = ?, username = ?, id_rol = ? WHERE mail = ?";
+			String sql = "UPDATE usuarios SET name = ?, lastname = ?, phonenumber = ?, username = ?, id_rol = ? WHERE mail = ?";
 			ps =  con.prepareStatement(sql);
 			ps.setString(1, u.getName());
 			ps.setString(2, u.getLastName());
@@ -140,7 +140,7 @@ public class UsuarioDAO{
 			ps.setInt(5, u.getRol().getId());
 			ps.setString(6, u.getMail());
 			
-			ps.execute();
+			ps.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
