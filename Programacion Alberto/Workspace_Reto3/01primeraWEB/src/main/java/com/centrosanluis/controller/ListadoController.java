@@ -34,18 +34,20 @@ public class ListadoController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//llamo al service para obtener todos los usuarios
-		
-		//añado en la request el atributo (no sesion) listado usuarios
-				
-		//encadeno la peticion y la envio a listado.jsp
 		
 		listaUsuarios = listadoService.getListado();
 		request.setAttribute("listaUsuarios", listaUsuarios);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 00e4e0ae15845b234043eadb7250b96d0bb5c519
 		request.getRequestDispatcher("private/listado.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String mail = request.getParameter("eliminar");
+		usuarioService.deleteUser(mail);
+		response.sendRedirect("listadoUsuarios");
 		
 		String mail = request.getParameter("action");
 		usuarioService.deleteUsuario(mail);

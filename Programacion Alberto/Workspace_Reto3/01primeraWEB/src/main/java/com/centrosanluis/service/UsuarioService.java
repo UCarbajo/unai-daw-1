@@ -43,8 +43,13 @@ UsuarioDAO usuarioDAO;
 		}
 	}
 
+<<<<<<< HEAD
 	public void deleteUsuario(String mail) {
 		usuarioDAO.deleteUsuario(mail);
+=======
+	public void deleteUser(String mail) {
+		usuarioDAO.deleteUser(mail);
+>>>>>>> 00e4e0ae15845b234043eadb7250b96d0bb5c519
 		
 	}
 	

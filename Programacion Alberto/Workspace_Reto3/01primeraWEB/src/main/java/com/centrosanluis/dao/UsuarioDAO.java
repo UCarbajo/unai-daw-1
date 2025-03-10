@@ -81,19 +81,35 @@ public class UsuarioDAO {
 		return false;
 	}
 
+<<<<<<< HEAD
 	public void deleteUsuario(String mail) {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 
+=======
+	public void deleteUser(String mail) {
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		
+>>>>>>> 00e4e0ae15845b234043eadb7250b96d0bb5c519
 		String sql = "DELETE FROM usuarios WHERE mail = ?";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, mail);
+<<<<<<< HEAD
 			ps.execute();
+=======
+			ps.executeUpdate();
+			
+>>>>>>> 00e4e0ae15845b234043eadb7250b96d0bb5c519
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			AccesoBD.closeConnection(null, ps, con);
 		}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 00e4e0ae15845b234043eadb7250b96d0bb5c519
 	}
 }

@@ -18,4 +18,12 @@ public class RolesService {
 
 		return rolesDAO.getRoles();
 	}
+
+	public void addRol(Rol r) {
+		rolesDAO.addRol(r);
+		
+	}
+	public void updateRol(Rol r) {
+		rolesDAO.addRol(r);
+	}
 }

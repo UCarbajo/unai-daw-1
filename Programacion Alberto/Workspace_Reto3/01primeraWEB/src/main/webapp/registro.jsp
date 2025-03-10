@@ -27,7 +27,7 @@
                     <input type="password" name="passWord" placeholder="Contraseña" required>
                 </div>
                
-                <div class="input-group">
+                <div class="select-group">
                 	<select name="rolID">
                 	 <%for(Rol r : listaRoles) { %>
                 	 	<option value="<%=r.getId()%>"><%=r.getRol()%></option>
@@ -37,6 +37,7 @@
                
                 <div class="button-group">
                     <button type="submit">Registrar</button>
+                    <a href="login">Volver</a>
                     <button type="reset">Borrar</button>
                 </div>
  					
