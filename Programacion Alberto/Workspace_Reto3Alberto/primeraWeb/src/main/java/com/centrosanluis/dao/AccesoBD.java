@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AccesoBD {
-
-	private static final String URL = "jdbc:mysql://localhost:3306/paginaweb";
+	
+	private static final String URL = "jdbc:mysql://localhost:3306/usuarios";
 	private static final String USER = "root";
 	private static final String PASSWORD = "";
 	
@@ -40,4 +40,5 @@ public class AccesoBD {
 			e.printStackTrace();
 		}
 	}
+
 }
