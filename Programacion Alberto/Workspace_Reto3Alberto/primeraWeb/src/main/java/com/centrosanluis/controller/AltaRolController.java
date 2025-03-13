@@ -22,12 +22,39 @@ public class AltaRolController extends HttpServlet{
 	}
 
 	@Override
+<<<<<<< HEAD
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Rol rol = new Rol();
 		
 		String nombre = request.getParameter("nombre");
 		
 		rol.setNombre(nombre);
+=======
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nombre = request.getParameter("nombre");
+		String id = request.getParameter("id");
+		
+		if(id != null ) {
+			Rol r = new Rol();
+			r.setNombre(nombre);
+			r.setId(Integer.parseInt(id));
+			request.setAttribute("rol", r);
+			request.getRequestDispatcher("private/crearRol.jsp").forward(request, response);
+		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Rol rol = new Rol();
+		
+		String id = request.getParameter("id");
+		String nombre = request.getParameter("nombre");
+		
+		rol.setNombre(nombre);
+		if (id != null) {
+			rol.setId(Integer.parseInt(id));
+		}
+>>>>>>> 6e42ed3b3b43565fef325dcb42757c8c0558298f
 		
 		if(rolService.addRol(rol)) {
 			response.sendRedirect("private/index.jsp");

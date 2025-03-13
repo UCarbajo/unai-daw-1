@@ -12,7 +12,14 @@
 <p><a href="../listadoUsuarios">Listado Usuarios</a></p>
 <% if(usuario.getRol().getId() == 1){ %>
 	<p><a href="crearRol.jsp">Crear Rol</a></p>
+<<<<<<< HEAD
 	<p><a href="crearRol.jsp">Listado roles</a></p>
 <% } %>
 </body>
 </html> 
+=======
+	<p><a href="../listadoRol">Listado Rol</a></p>
+<% } %>
+</body>
+</html>
+>>>>>>> 6e42ed3b3b43565fef325dcb42757c8c0558298f

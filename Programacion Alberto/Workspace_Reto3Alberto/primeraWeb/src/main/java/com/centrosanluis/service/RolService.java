@@ -29,4 +29,11 @@ public class RolService {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	public boolean deleteRolbyID(Rol r) {
+		return rolDAO.deleteRol(r);
+	}
+
+>>>>>>> 6e42ed3b3b43565fef325dcb42757c8c0558298f
 }
