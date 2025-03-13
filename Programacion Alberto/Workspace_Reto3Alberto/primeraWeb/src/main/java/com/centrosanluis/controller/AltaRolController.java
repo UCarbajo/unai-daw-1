@@ -31,7 +31,6 @@ public class AltaRolController extends HttpServlet{
 			r.setNombre(nombre);
 			r.setId(Integer.parseInt(id));
 			request.setAttribute("rol", r);
-			request.getRequestDispatcher("private/crearRol.jsp").forward(request, response);
 		}
 		request.getRequestDispatcher("private/crearRol.jsp").forward(request, response);
 	}
@@ -41,7 +40,7 @@ public class AltaRolController extends HttpServlet{
 		Rol rol = new Rol();
 		
 		String id = request.getParameter("id");
-		String nombre = request.getParameter(" nombre");
+		String nombre = request.getParameter("nombre");
 		
 		rol.setNombre(nombre);
 		if (id != null) {
@@ -55,7 +54,6 @@ public class AltaRolController extends HttpServlet{
 			
     		request.getRequestDispatcher("crearRol.jsp").forward(request, response);
 		}
-		
 		
 	}
 }

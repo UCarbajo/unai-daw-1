@@ -1,8 +1,6 @@
-<%@page import="com.centrosanluis.model.Rol"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%ArrayList<Rol> listaRoles = (ArrayList<Rol>) request.getAttribute("listaRoles"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,22 +13,22 @@
 			<th>Rol</th>
 			<th>Acción</th>
 		</tr>
-	<%for (Rol r: listaRoles) {%>
+	<c:forEach var="rol" items="${listaRoles}">	
 		<tr>
 			<td>
-				<%=r.getNombre() %>
+				${rol.nombre}
 			</td>
 			<td>
 				<form action="altaRol" method="get">
-					<input type="hidden" name="nombre" value="<%=r.getNombre()%>">
-					<button type="submit" value="<%=r.getId()%>" name="id">Editar</button>
+					<input type="hidden" name="nombre" value="${rol.nombre}">
+					<button type="submit" value="${rol.id}" name="id">Editar</button>
 				</form>
 				<form action="listadoRol" method="post">
-					<button type="submit" value="<%=r.getId()%>" name="id">Borrar</button>
+					<button type="submit" value="${rol.id}" name="id">Borrar</button>
 				</form>
 			</td>
 		</tr>
-		<%} %>
+		</c:forEach>
 	</table>
 </body>
 </html>
