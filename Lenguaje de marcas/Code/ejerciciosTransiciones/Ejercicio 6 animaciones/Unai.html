@@ -3,6 +3,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+		<link rel="stylesheet" href="css/mystyle.css">
         <title>Ejercicio Nieve - Animacion CSS</title>
         <style type="text/css" media="screen">
 		/*
@@ -32,33 +33,56 @@
 		}
 		.copos.f1 {
 			left: 40px;
-				
+			animation-delay: 5s;
 		}
 		.copos.f2 {
-			font-size: 1.8em;
+			font-size: 1em;
 			left: 120px;
-				
+			animation-delay: 1s;
 		}
 		.copos.f3 {
 			left: 200px;
-			
+			animation-delay: 0.5s;
 		}
 		.copos.f4 {
 			font-size: 1.5em;
 			left: 280px;
-			
+			animation-delay: 3s;
 		}
-		 
-		
+
+		#copoAnimacion{
+			animation-name: copo;
+			animation-duration: 6s;	
+			animation-iteration-count: infinite;
+			animation-timing-function: ease;
+		}
+		@keyframes copo {
+			0%{
+				top: 0;
+			}
+			25%{
+				left: 20%;
+			}
+			50%{
+				left: 30%;
+			}
+			75%{
+				left: 40%;
+			}
+			100%{
+				top: 100%;
+				opacity: 0;
+			}
+		}
         </style>
     </head>
     <body>
         <div id="container">
             <div id="snow" class="snow">
-                <div class="copos f1">&#10053;</div>
-                <div class="copos f2">&#10052;</div>
-                <div class="copos f3">&#10053;</div>
-                <div class="copos f4">&#10052;</div>
+                <div class="copos f1" id="copoAnimacion">&#10053;</div>
+                <div class="copos f2" id="copoAnimacion">&#10052;</div>
+                <div class="copos f3" id="copoAnimacion">&#10053;</div>
+                <div class="copos f4" id="copoAnimacion">&#10052;</div>
             </div>
         </div>
     </body>

@@ -1,8 +1,6 @@
-<%@page import="com.centrosanluis.model.Usuario"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<% ArrayList<Usuario> listadoUsuarios = (ArrayList<Usuario>)request.getAttribute("listadoUsuarios"); %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,32 +18,28 @@
 			<th>Rol</th>
 			<th></th>
 		</tr>
-		<%if(listadoUsuarios != null){ %>
-			<%for(Usuario u : listadoUsuarios){ %>
+		<c:if test="${not empty listadoUsuarios }">
+			<c:forEach var="usuario" items="${listadoUsuarios}">
 				<tr>
-					<td><%= u.getNombre() %></td>
-					<td><%= u.getApellidos() %></td>
-					<td><%= u.getEmail() %></td>
-					<td><%= u.getTelefono() %></td>
-					<td><%= u.getUsuario() %></td>
-					<td><%= u.getRol().getNombre() %></td>
+					<td>${usuario.nombre}</td>
+					<td>${usuario.apellidos}</td>
+					<td>${usuario.email}</td>
+					<td>${usuario.telefono}</td>
+					<td>${usuario.usuario}</td>
+					<td>${usuario.rol.nombre}</td>
 					<td>
 						<form action="iniciarRegistro" method="get">
-							<input type="hidden" value="<%= u.getUsuario() %>" name="usuario">
+							<input type="hidden" value="${usuario.usuario}" name="usuario">
 							<button type="submit">Editar</button>
 						</form>
 						<form action="borrarUsuario" method="post">
-							<input type="hidden" value="<%= u.getUsuario() %>" name="usuario">
+							<input type="hidden" value="${usuario.usuario}" name="usuario">
 							<button type="submit">Borrar</button>
 						</form>
 					</td>
 				</tr>
-			<%} %>
-		<%}else{ %>
-			<tr>
-				<td colspan="5">No hay usuarios</td>
-			</tr>
-		<%} %>
+				</c:forEach>
+			</c:if>
 	</table>
 	<a href="private/index.jsp">Volver a index</a>
 </body>
