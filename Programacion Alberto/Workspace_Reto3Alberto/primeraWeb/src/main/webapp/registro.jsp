@@ -25,14 +25,9 @@
 		<input type="text" name="apellidos" value="${not empty usuario ? usuario.apellidos:'' }" placeholder="Apellidos" required>
 		<input type="text" name="email" value="${not empty usuario ? usuario.email:'' }" placeholder="Correo electronico" required>
 		<input type="text" name="telefono" value="${not empty usuario ? usuario.telefono:'' }" placeholder="Telefono" required>
-		<input type="text" 
-			name="usuario" 
-			value="${not empty usuario ? usuario.usuario:'' }" 
-			${not empty usuario ? "readonly":'' }
-			placeholder="Usuario" 
-			required>
+		<input type="text" name="usuario" value="${not empty usuario ? usuario.usuario:'' }" ${not empty usuario ? "readonly":'' } placeholder="Usuario" required>
 		
-		<c:if test="${not empty usuario }">
+		<c:if test="${empty usuario }">
 			<input type="text" name="contrasena" placeholder="Contraseña" required>
 		</c:if>
 		
