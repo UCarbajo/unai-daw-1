@@ -5,6 +5,7 @@ public class Producto {
 	private int id, stock;
 	private String nombre, descripcionCorta, descripcionLarga, rutaImagen;
 	private double precio;
+	private Categoria categoria;
 	
 	public int getId() {
 		return id;
@@ -49,11 +50,18 @@ public class Producto {
 		this.precio = precio;
 	}
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", stock=" + stock + ", nombre=" + nombre + ", descripcionCorta="
 				+ descripcionCorta + ", descripcionLarga=" + descripcionLarga + ", rutaImagen=" + rutaImagen
-				+ ", precio=" + precio + "]";
+				+ ", precio=" + precio + ", categoria=" + categoria + "]";
 	}
 	
 }

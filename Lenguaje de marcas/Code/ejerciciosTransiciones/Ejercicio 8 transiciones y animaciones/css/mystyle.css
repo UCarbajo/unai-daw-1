@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Blomster';
+    src: url(../fonts/Blomster.ttf);
+}
+@font-face {
+    font-family: 'earwig';
+    src: url(../fonts/earwig\ factory\ rg.ttf);
+}
+@font-face {
+    font-family: 'Ribbons';
+    src: url(../fonts/Ribbons-and-banners.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+h1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'earwig';
+    font-size: 10em;
+    display: inline-block;
+    animation-name: aparecer;
+    animation-duration: 10s;
+}
+h1 span{
+    margin: 0em 0.2em;
+}
+h2{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Blomster';
+    font-size: 4em;
+    width: 0;
+    animation-name: aparecer;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    
+}
+h2 span{
+    margin: 0 0.3em;
+}
+.tamano{
+    font-size: 2em;
+}
+
+#turquesa{
+    color: teal;
+}
+#azul{
+    color: rgb(0, 170, 255);
+}
+#morado{
+    color: purple;
+}
+#naranja{
+    color: orange;
+}
+
+@keyframes aparecer {
+    from {
+        width: 0%; 
+    }
+    to {
+       width: 100%;
+    }
+}
