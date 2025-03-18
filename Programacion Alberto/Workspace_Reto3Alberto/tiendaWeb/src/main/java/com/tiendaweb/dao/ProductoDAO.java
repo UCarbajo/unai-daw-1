@@ -18,21 +18,25 @@ public class ProductoDAO {
 		ArrayList<Producto> listaProducto = new ArrayList<Producto>();
 		
 		try {
-			String sql = "SELECT * FROM producto";
+			String sql = "SELECT p.*, c.nombre "
+					+ "FROM producto p "
+					+ "JOIN categoria c ON c.id = p.categoria";
+			
 			ps = con.prepareStatement(sql);		
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Producto p = new Producto();
 				Categoria c = new Categoria();
 				
-				p.setId(rs.getInt("id"));
-				p.setNombre(rs.getString("nombre"));
-				p.setPrecio(rs.getDouble("precio"));
-				p.setStock(rs.getInt("stock"));
-				p.setDescripcionCorta(rs.getString("descripcion_corta"));
-				p.setDescripcionLarga(rs.getString("descripcion_larga"));
-				p.setRutaImagen(rs.getString("ruta_imagen"));
-				c.setId(rs.getInt("categoria"));
+				p.setId(rs.getInt(1));
+				p.setNombre(rs.getString(2));
+				p.setDescripcionCorta(rs.getString(3));
+				p.setDescripcionLarga(rs.getString(4));
+				p.setPrecio(rs.getDouble(5));
+				p.setStock(rs.getInt(6));
+				p.setRutaImagen(rs.getString(7));
+				c.setId(rs.getInt(8));
+				c.setCategoria(rs.getString(9));
 				p.setCategoria(c);
 				
 				listaProducto.add(p);
@@ -44,6 +48,11 @@ public class ProductoDAO {
 			AccesoBD.closeConnection(rs, ps, con);
 		}
 		return listaProducto;
+	}
+
+	public Producto getProductoByID(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

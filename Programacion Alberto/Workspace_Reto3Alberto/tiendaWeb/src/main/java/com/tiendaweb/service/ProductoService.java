@@ -18,4 +18,9 @@ public class ProductoService {
 		return productoDAO.getProducto();
 	}
 
+	public Producto getProductoByID(String id) {
+		// TODO Auto-generated method stub
+		return productoDAO.getProductoByID(id);
+	}
+
 }
