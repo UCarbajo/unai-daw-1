@@ -23,4 +23,9 @@ public class ProductoService {
 		return productoDAO.getProductoByID(id);
 	}
 
+	public ArrayList<Producto> getProductoByArrayID(String[] productos) {
+		// TODO Auto-generated method stub
+		return productoDAO.getProductoByArrayID(productos);
+	}
+
 }

@@ -54,6 +54,11 @@ public class ListadoProductoController extends HttpServlet {
 					response.addCookie(cookie);
 				}
 			}
+		}else {
+			String id = request.getParameter("id");
+			Cookie cookie = new Cookie("carroCompra", id);
+			cookie.setMaxAge(60*60*24);
+			response.addCookie(cookie);
 		}
 		response.sendRedirect("listadoProducto");
 	}

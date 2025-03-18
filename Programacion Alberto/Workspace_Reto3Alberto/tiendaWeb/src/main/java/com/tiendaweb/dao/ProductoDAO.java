@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.swing.text.html.StyleSheet.ListPainter;
+
 import com.tiendaweb.model.Categoria;
 import com.tiendaweb.model.Producto;
 
@@ -51,8 +53,52 @@ public class ProductoDAO {
 	}
 
 	public Producto getProductoByID(String id) {
-		// TODO Auto-generated method stub
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		
 		return null;
+	}
+
+	public ArrayList<Producto> getProductoByArrayID(String[] productos) {
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ArrayList<Producto> listaProducto = new ArrayList<Producto>();
+		
+		try {
+			String sql = "SELECT p.* FROM producto p WHERE id = ?";
+			for(String id : productos) {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					Producto p = new Producto();
+					Categoria c = new Categoria();
+					
+					p.setId(rs.getInt(1));
+					p.setNombre(rs.getString(2));
+					p.setDescripcionCorta(rs.getString(3));
+					p.setDescripcionLarga(rs.getString(4));
+					p.setPrecio(rs.getDouble(5));
+					p.setStock(rs.getInt(6));
+					p.setRutaImagen(rs.getString(7));
+					c.setId(rs.getInt(8));
+					p.setCategoria(c);
+					
+					listaProducto.add(p);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();	
+			System.out.println("Error al obtener producto con array");
+		} finally {
+			AccesoBD.closeConnection(rs, ps, con);
+		}
+		
+		return listaProducto;
 	}
 
 }
