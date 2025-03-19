@@ -19,7 +19,7 @@
 		<tbody>
 			<c:forEach var="producto" items="${listaProducto}">
 				<tr>
-					<td>${producto.rutaImagen }</td>
+					<td><img width="32" alt="${producto.nombre }" src="${producto.rutaImagen }"></td>
 					<td>${producto.nombre}</td>
 					<td>${producto.descripcionCorta }</td>
 					<td>${producto.precio }€</td>

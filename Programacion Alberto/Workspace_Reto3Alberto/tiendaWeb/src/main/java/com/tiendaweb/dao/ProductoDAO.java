@@ -1,10 +1,12 @@
 package com.tiendaweb.dao;
 
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
 import javax.swing.text.html.StyleSheet.ListPainter;
 
 import com.tiendaweb.model.Categoria;
@@ -61,21 +63,26 @@ public class ProductoDAO {
 		return null;
 	}
 
-	public ArrayList<Producto> getProductoByArrayID(String[] productos) {
+	public ArrayList<Producto> getProductoByCookie(Cookie c) {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		
 		ArrayList<Producto> listaProducto = new ArrayList<Producto>();
 		
 		try {
 			String sql = "SELECT p.* FROM producto p WHERE id = ?";
+			String carro = c.getValue();
+			String carroDecoder = URLDecoder.decode(carro, "UTF-8");
+			String[] productos = carroDecoder.split(";");
+			
 			for(String id : productos) {
 				ps = con.prepareStatement(sql);
 				ps.setString(1, id);
 				rs = ps.executeQuery();
 				if(rs.next()) {
 					Producto p = new Producto();
-					Categoria c = new Categoria();
+					Categoria cat = new Categoria();
 					
 					p.setId(rs.getInt(1));
 					p.setNombre(rs.getString(2));
@@ -84,8 +91,8 @@ public class ProductoDAO {
 					p.setPrecio(rs.getDouble(5));
 					p.setStock(rs.getInt(6));
 					p.setRutaImagen(rs.getString(7));
-					c.setId(rs.getInt(8));
-					p.setCategoria(c);
+					cat.setId(rs.getInt(8));
+					p.setCategoria(cat);
 					
 					listaProducto.add(p);
 				}

@@ -25,6 +25,7 @@
         <div class="links">
             <a href="listadoProducto" class="btn">Listado de productos</a>
             <a href="carroCompra" class="btn">Carro de compra</a>
+            <a href="anadirProducto">Añadir producto</a>
         </div>
     </div>
 </body>

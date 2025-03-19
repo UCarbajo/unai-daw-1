@@ -14,7 +14,7 @@
 			<tr>
 				<th>Imagen</th>
 				<th>Nombre</th>
-				<th>Descripcion</th>
+				<th>Descripción</th>
 				<th>Precio</th>
 			</tr>
 			<c:forEach var="producto" items="${carroProducto}">
@@ -26,6 +26,9 @@
 				</tr>
 			</c:forEach>
 		</table>
+			<form action="carroCompra" method="post">
+				<button type="submit">Vaciar</button>
+			</form>
 	</c:if>
 </body>
 </html>

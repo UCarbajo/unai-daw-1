@@ -30,10 +30,7 @@ public class CarroCompraController extends HttpServlet {
 		if(cookies != null) {
 			for(Cookie c: cookies) {
 				if("carroCompra".equals(c.getName())) {
-					String carro = c.getValue();
-					String carroDecoder = URLDecoder.decode(carro, "UTF-8");
-					String[] productos = carroDecoder.split(";");
-					ArrayList<Producto> carroProducto = productoService.getProductoByArrayID(productos);
+					ArrayList<Producto> carroProducto = productoService.getProductoByCookie(c);
 					request.setAttribute("carroProducto", carroProducto);
 				}
 			}
@@ -44,6 +41,17 @@ public class CarroCompraController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c : cookies) {
+				if("carroCompra".equals(c.getName())) {
+					c.setMaxAge(0);
+					response.addCookie(c);
+					request.getSession().invalidate();
+				}
+			}
+		}
+		response.sendRedirect("carroCompra");
 	}
 
 }
