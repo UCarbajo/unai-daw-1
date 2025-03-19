@@ -25,9 +25,9 @@ public class ProductoService {
 		return productoDAO.getProductoByID(id);
 	}
 
-	public ArrayList<Producto> getProductoByCookie(Cookie c) {
+	public ArrayList<Producto> getProductoByIDArray(String[] productos) {
 		// TODO Auto-generated method stub
-		return productoDAO.getProductoByCookie(c);
+		return productoDAO.getProductoByIDArray(productos);
 	}
 
 }

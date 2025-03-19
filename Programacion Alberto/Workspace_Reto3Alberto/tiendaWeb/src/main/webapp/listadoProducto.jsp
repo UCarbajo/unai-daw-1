@@ -23,9 +23,15 @@
 					<td>${producto.nombre}</td>
 					<td>${producto.descripcionCorta }</td>
 					<td>${producto.precio }€</td>
-					<td> 
+					<td>
 						<form action="listadoProducto" method="post">
 							<button type="submit" name="id" value="${producto.id}">Añadir al carro</button>
+						</form>
+						<form action="detalles" method="get">
+							<input type="hidden" name="rutaImagen" value="${producto.rutaImagen}">
+							<input type="hidden" name="descripcionLarga" value="${producto.descripcionLarga}">
+							<input type="hidden" name="stock" value="${producto.stock}">
+							<button type="submit">Detalles</button>
 						</form>
 					</td>
 				</tr>

@@ -30,7 +30,10 @@ public class CarroCompraController extends HttpServlet {
 		if(cookies != null) {
 			for(Cookie c: cookies) {
 				if("carroCompra".equals(c.getName())) {
-					ArrayList<Producto> carroProducto = productoService.getProductoByCookie(c);
+					String carro = c.getValue();
+					String carroDecoder = URLDecoder.decode(carro, "UTF-8");
+					String[] productos = carroDecoder.split(";");
+					ArrayList<Producto> carroProducto = productoService.getProductoByIDArray(productos);
 					request.setAttribute("carroProducto", carroProducto);
 				}
 			}

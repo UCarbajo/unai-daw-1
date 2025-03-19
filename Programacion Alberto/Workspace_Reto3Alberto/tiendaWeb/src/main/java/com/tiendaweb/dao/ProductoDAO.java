@@ -63,7 +63,7 @@ public class ProductoDAO {
 		return null;
 	}
 
-	public ArrayList<Producto> getProductoByCookie(Cookie c) {
+	public ArrayList<Producto> getProductoByIDArray(String[] productos) {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -72,9 +72,6 @@ public class ProductoDAO {
 		
 		try {
 			String sql = "SELECT p.* FROM producto p WHERE id = ?";
-			String carro = c.getValue();
-			String carroDecoder = URLDecoder.decode(carro, "UTF-8");
-			String[] productos = carroDecoder.split(";");
 			
 			for(String id : productos) {
 				ps = con.prepareStatement(sql);

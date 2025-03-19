@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.tiendaweb.model.Rol;
 import com.tiendaweb.model.Usuario;
 
 public class UsuarioDAO {
@@ -13,17 +14,22 @@ public class UsuarioDAO {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Usuario usuario = new Usuario();
+		Usuario usuario = null;
 		
 		try {
-			String sql = "SELECT id FROM usuarios WHERE usuario = ? AND password = ?";
+			String sql = "SELECT id, nombre, rol FROM usuarios WHERE usuario = ? AND password = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, u.getUsuario());
 			ps.setString(2, u.getPassword());
 			
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				usuario.setId(rs.getInt("id"));
+				usuario = new Usuario();
+				Rol r = new Rol();
+				usuario.setId(rs.getInt(1));
+				usuario.setUsuario(rs.getString(2));
+				r.setId(rs.getInt(3));		
+				usuario.setRol(r);
 			}
 			
 		} catch (Exception e) {
