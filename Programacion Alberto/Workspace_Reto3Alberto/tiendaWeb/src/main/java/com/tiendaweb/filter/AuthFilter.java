@@ -1,6 +1,8 @@
 package com.tiendaweb.filter;
 
 import java.io.IOException;
+
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -8,13 +10,19 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.tiendaweb.model.Usuario;
+import com.tiendaweb.service.UsuarioService;
 
 
-@WebFilter("/private/*")
+@WebFilter(urlPatterns = {"/private/*"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 
 public class AuthFilter implements Filter {
-
-
+	UsuarioService usuarioService;
+	
     public AuthFilter() {
         // TODO Auto-generated constructor stub
     }
@@ -24,8 +32,29 @@ public class AuthFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
-		chain.doFilter(request, response);
+		usuarioService = new UsuarioService();
+		
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		Cookie[] cookies = req.getCookies();
+		Usuario u = new Usuario();
+		
+		if(cookies != null) {
+			for(Cookie c:cookies) {
+				if("usuario".equals(c.getName())) {
+					int id = Integer.parseInt(c.getValue());
+					u = usuarioService.getUsuarioById(id);
+				}
+			}
+		}
+		if(u.getRol().getId() == 1) {
+			System.out.println("he pasado por el filtro");
+			chain.doFilter(request, response);
+		}else {
+			resp.sendRedirect("inicio");
+		}
+		
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

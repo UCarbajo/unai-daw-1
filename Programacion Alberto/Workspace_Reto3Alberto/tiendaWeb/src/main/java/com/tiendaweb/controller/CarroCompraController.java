@@ -50,7 +50,6 @@ public class CarroCompraController extends HttpServlet {
 				if("carroCompra".equals(c.getName())) {
 					c.setMaxAge(0);
 					response.addCookie(c);
-					request.getSession().invalidate();
 				}
 			}
 		}

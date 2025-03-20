@@ -14,8 +14,9 @@
 			<tr>
 				<th>Imagen</th>
 				<th>Nombre</th>
+				<th>Cantidad</th>
 				<th>Descripción</th>
-				<th>Precio</th>
+				<c:set var="total" value="0" scope="page"></c:set>
 			</tr>
 			<c:forEach var="producto" items="${carroProducto}">
 				<tr>
@@ -24,8 +25,10 @@
 					<td>${producto.descripcionCorta}</td>
 					<td>${producto.precio} €</td>
 				</tr>
+				<c:set var="total" value="${total + producto.precio}" scope="page"></c:set>
 			</c:forEach>
 		</table>
+		<p>Total = <c:out value="${total}"/>€</p>
 			<form action="carroCompra" method="post">
 				<button type="submit">Vaciar</button>
 			</form>

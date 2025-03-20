@@ -105,4 +105,47 @@ public class ProductoDAO {
 		return listaProducto;
 	}
 
+	public boolean addOrUpdateProducto(Producto p) {
+		Connection con = AccesoBD.getConnection();
+		PreparedStatement ps = null;
+		
+		try {
+			String sql = "";
+			if(p.getId() != 0) {
+				 sql = "UPDATE producto "
+						+ "SET nombre = ?, SET descripcion_corta = ?, SET descripcion_larga = ?, SET precio = ?, SET stock = ?, SET rutaimagen = ?, SET categoria = ? "
+						+ "WHERE id = ?";
+			}else {
+				 sql = "INSERT INTO "
+						+ "producto (nombre, descripcion_corta, descripcion_larga, precio, stock, ruta_imagen, categoria) "
+						+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
+			}
+			
+			ps = con.prepareStatement(sql);
+			if(p.getId() != 0) {
+				ps.setInt(8, p.getId());
+			}
+			ps.setString(1, p.getNombre());
+			ps.setString(2, p.getDescripcionCorta());
+			ps.setString(3, p.getDescripcionLarga());
+			ps.setDouble(4, p.getPrecio());
+			ps.setInt(5, p.getStock());
+			ps.setString(6, p.getRutaImagen());
+			ps.setInt(7, p.getCategoria().getId());
+			
+			if(ps.executeUpdate() > 0) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error al añadir o actualizar producto");
+		} finally {
+			AccesoBD.closeConnection(null, ps, con);
+		}
+		return false;
+	}
+
 }

@@ -17,7 +17,7 @@ public class UsuarioDAO {
 		Usuario usuario = null;
 		
 		try {
-			String sql = "SELECT id, nombre, rol FROM usuarios WHERE usuario = ? AND password = ?";
+			String sql = "SELECT id, usuario, rol FROM usuarios WHERE usuario = ? AND password = ?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, u.getUsuario());
 			ps.setString(2, u.getPassword());
@@ -49,14 +49,18 @@ public class UsuarioDAO {
 		Usuario usuario = new Usuario();
 		
 		try {
-			String sql = "SELECT usuario FROM usuarios WHERE id = ?";
+			String sql = "SELECT id, usuario, rol FROM usuarios WHERE id = ?";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 	
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				usuario.setId(id);
-				usuario.setUsuario(rs.getString("usuario"));
+				usuario = new Usuario();
+				Rol r = new Rol();
+				usuario.setId(rs.getInt(1));
+				usuario.setUsuario(rs.getString(2));
+				r.setId(rs.getInt(3));		
+				usuario.setRol(r);
 			}
 			
 		} catch (Exception e) {

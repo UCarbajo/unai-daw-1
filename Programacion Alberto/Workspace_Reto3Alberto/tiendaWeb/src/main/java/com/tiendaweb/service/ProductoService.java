@@ -30,4 +30,9 @@ public class ProductoService {
 		return productoDAO.getProductoByIDArray(productos);
 	}
 
+	public boolean addOrUpdateProducto(Producto p) {
+		// TODO Auto-generated method stub
+		return productoDAO.addOrUpdateProducto(p);
+	}
+
 }

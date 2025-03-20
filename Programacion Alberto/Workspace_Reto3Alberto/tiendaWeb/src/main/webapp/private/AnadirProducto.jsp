@@ -5,28 +5,27 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Añadir producto</title>
 </head>
 <body>
-	<form action="anadirProducto" method="post"
-		enctype="multipart/form-data">
+	<form action="anadirProducto" method="post" enctype="multipart/form-data">
 		<div class="input-group">
-			<label>Nombre</label> <input type="text" name="">
+			<label>Nombre</label> <input type="text" name="nombre" required>
 		</div>
 		<div class="input-group">
-			<label>Precio</label> <input type="text" name="">
+			<label>Precio</label> <input type="text" name="precio" required>
 		</div>
 		<div class="input-group">
-			<label>Descripcion</label> <input type="text" name="">
+			<label>Descripcion</label> <input type="text" name="descripcionCorta" required>
 		</div>
 		<div class="input-group">
-			<label>Descripcion larga</label> <input type="text" name="">
+			<label>Descripcion larga</label> <input type="text" name="descripcionLarga" required>
 		</div>
 		<div class="input-group">
-			<label>Stock</label> <input type="text" name="">
+			<label>Stock</label> <input type="text" name="stock" required>
 		</div>
 		<div>
-			<label>Imagen producto</label> <input type="file">
+			<label>Imagen producto</label> <input type="file" name="rutaImagen" required>
 		</div>
 
 		<select name="categoria">
@@ -34,6 +33,7 @@
 				<option value="${categoria.id }">${categoria.categoria }</option>
 			</c:forEach>
 		</select>
+		<button type="submit">Guardar</button>
 	</form>
 </body>
 </html>
