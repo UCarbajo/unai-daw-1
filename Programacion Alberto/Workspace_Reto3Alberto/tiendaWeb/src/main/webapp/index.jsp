@@ -24,7 +24,7 @@
 			</c:choose>
 			<a href="listadoProducto">Listado de productos</a> 
 			<a href="carroCompra">Carro de compra</a>
-			<c:if test="${usuario.rol.id == 1 }">
+			<c:if test="${idUsuario == 1 }">
 				<a href="anadirProducto">Añadir producto</a>
 			</c:if>
 		</div>
