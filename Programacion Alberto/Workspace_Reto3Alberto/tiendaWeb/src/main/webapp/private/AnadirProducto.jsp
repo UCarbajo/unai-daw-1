@@ -20,25 +20,32 @@
 	</h1>
 	<form action="anadirProducto" method="post" enctype="multipart/form-data">
 		<div class="input-group">
-			<label>Nombre</label> <input type="text" name="nombre" value="${not empty producto ? producto.nombre:'' }" required>
+			<label>Nombre</label> 
+			<input type="text" name="nombre" value="${not empty producto ? producto.nombre:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Precio</label> <input type="text" name="precio" value="${not empty producto ? producto.precio:'' }" required>
+			<label>Precio</label> 
+			<input type="text" name="precio" value="${not empty producto ? producto.precio:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Descripcion</label> <input type="text" name="descripcionCorta" value="${not empty producto ? producto.descripcionCorta:'' }" required>
+			<label>Descripcion</label> 
+			<input type="text" name="descripcionCorta" value="${not empty producto ? producto.descripcionCorta:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Descripcion larga</label> <input type="text" name="descripcionLarga" value="${not empty producto ? producto.descripcionLarga:'' }" required>
+			<label>Descripcion larga</label> 
+			<input type="text" name="descripcionLarga" value="${not empty producto ? producto.descripcionLarga:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Stock</label> <input type="text" name="stock" value="${not empty producto ? producto.stock:'' }" required>
+			<label>Stock</label> 
+			<input type="text" name="stock" value="${not empty producto ? producto.stock:'' }" required>
 		</div>
 		<div>
-			<label>Imagen producto</label> <input type="file" name="rutaImagen" value="${not empty producto ? producto.rutaImagen:'' }">
+			<label>Imagen producto</label> 
+			<input type="file" name="rutaImagen" ${empty producto ? "required":"" }>
 		</div>
 		<c:if test="${not empty producto}">
 			<input type="hidden" name="id" value="${producto.id }">
+			<input type="hidden" name="rutaImagenAntigua" value="${producto.rutaImagen }" >
 		</c:if>
 		<select name="categoria">
 			<c:forEach var="categoria" items="${listaCategoria }">

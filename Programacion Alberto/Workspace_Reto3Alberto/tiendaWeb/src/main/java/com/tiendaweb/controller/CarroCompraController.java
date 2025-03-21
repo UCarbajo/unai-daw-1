@@ -71,6 +71,9 @@ public class CarroCompraController extends HttpServlet {
 					case "vaciar":
 						vaciarCarrito(response, c);
 						break;
+					case "eliminar":
+						eliminarProducto(response, c, id);
+						break;
 					}
 				}
 			}
@@ -83,6 +86,29 @@ public class CarroCompraController extends HttpServlet {
 		response.addCookie(c);
 	}
 
+	private void eliminarProducto(HttpServletResponse response, Cookie c, String id) throws UnsupportedEncodingException {
+		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF-8");
+		Map<String, String> listaFiltrada = new HashMap<String, String>();
+		String[] listaID = carroDecoder.split(",");
+		for (String item: listaID) {
+			String[] itemPart = item.split(":");
+			if(!id.equals(itemPart[0])) {
+				listaFiltrada.put(itemPart[0], itemPart[1]);
+			}
+		}
+		StringBuilder str = new StringBuilder();
+		for(Map.Entry<String, String> entry : listaFiltrada.entrySet()) {
+			if(str.length() > 0 ) str.append(",");
+			str.append(entry.getKey()).append(":").append(entry.getValue());
+		}
+		if(str.isEmpty()) {
+			vaciarCarrito(response, c);
+		}else {
+			c.setValue(URLEncoder.encode(str.toString(), "UTF-8"));
+			response.addCookie(c);
+		}
+	}
+	
 	private void restarProducto(HttpServletResponse response, Cookie c, String id) throws UnsupportedEncodingException {
 		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF8");
 		Map<String, String> listaFiltrada = new HashMap<String, String>();

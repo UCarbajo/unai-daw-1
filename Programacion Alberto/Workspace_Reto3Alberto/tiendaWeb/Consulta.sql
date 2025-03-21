@@ -22,7 +22,7 @@ nombre VARCHAR (50) NOT NULL
 
 CREATE TABLE producto (
 id INT AUTO_INCREMENT PRIMARY KEY,
-nombre VARCHAR(50) NOT NULL,
+nombre VARCHAR(200) NOT NULL,
 descripcion_corta VARCHAR (100) NOT NULL,
 descripcion_larga VARCHAR (500) NOT NULL,
 precio DOUBLE NOT NULL,
