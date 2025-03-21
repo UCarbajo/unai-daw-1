@@ -50,6 +50,7 @@ public class AnadirProductoController extends HttpServlet {
 		// .METADATA Y SE BORRARA AL REDESPLEGAR LA APP
 		
 		// 1. Recuperar parámetros del formulario
+		int id = Integer.parseInt(request.getParameter("id"));
 	    String nombre = request.getParameter("nombre");
 	    String precio = request.getParameter("precio");
 	    String descripcionCorta = request.getParameter("descripcionCorta");
@@ -101,6 +102,7 @@ public class AnadirProductoController extends HttpServlet {
 
 	    // 9. Crear y configurar el objeto Producto
 	    Producto p = new Producto();
+	    p.setId(id);
 	    p.setNombre(nombre);
 	    // Reemplaza la coma por el punto para asegurar el formato correcto del double
 	    p.setPrecio(Double.parseDouble(precio.replace(",", ".")));

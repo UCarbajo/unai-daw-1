@@ -1,13 +1,11 @@
 package com.tiendaweb.dao;
 
-import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
-import javax.servlet.http.Cookie;
-import javax.swing.text.html.StyleSheet.ListPainter;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.tiendaweb.model.Categoria;
 import com.tiendaweb.model.Producto;
@@ -58,22 +56,50 @@ public class ProductoDAO {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		Producto p = new Producto();
 		
+		try {
+			String sql = "SELECT nombre, descripcion_corta, descripcion_larga, precio, stock, ruta_imagen, categoria "
+					+ "FROM producto "
+					+ "WHERE id = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, Integer.valueOf(id));
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				
+				Categoria c = new Categoria();
+				
+				p.setId(Integer.valueOf(id));
+				p.setNombre(rs.getString(1));
+				p.setDescripcionCorta(rs.getString(2));
+				p.setDescripcionLarga(rs.getString(3));
+				p.setPrecio(rs.getDouble(4));
+				p.setStock(rs.getInt(5));
+				p.setRutaImagen(rs.getString(6));
+				c.setId(rs.getInt(7));
+				p.setCategoria(c);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			AccesoBD.closeConnection(rs, ps, con);
+		}
 		
-		return null;
+		return p;
 	}
 
-	public ArrayList<Producto> getProductoByIDArray(String[] productos) {
+	public Map<Producto, Integer> getProductoByIDArray(Map<String, String> carroItem) {
 		Connection con = AccesoBD.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		ArrayList<Producto> listaProducto = new ArrayList<Producto>();
+		Map<Producto, Integer> listaProducto = new HashMap<Producto, Integer>();
 		
 		try {
 			String sql = "SELECT p.* FROM producto p WHERE id = ?";
 			
-			for(String id : productos) {
+			for(String id : carroItem.keySet()) {
 				ps = con.prepareStatement(sql);
 				ps.setString(1, id);
 				rs = ps.executeQuery();
@@ -91,7 +117,8 @@ public class ProductoDAO {
 					cat.setId(rs.getInt(8));
 					p.setCategoria(cat);
 					
-					listaProducto.add(p);
+					int cantidad = Integer.parseInt(carroItem.get(id));
+					listaProducto.put(p, cantidad);
 				}
 			}
 			
@@ -111,20 +138,17 @@ public class ProductoDAO {
 		
 		try {
 			String sql = "";
-			if(p.getId() != 0) {
-				 sql = "UPDATE producto "
-						+ "SET nombre = ?, SET descripcion_corta = ?, SET descripcion_larga = ?, SET precio = ?, SET stock = ?, SET rutaimagen = ?, SET categoria = ? "
-						+ "WHERE id = ?";
-			}else {
-				 sql = "INSERT INTO "
-						+ "producto (nombre, descripcion_corta, descripcion_larga, precio, stock, ruta_imagen, categoria) "
-						+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
-			}
+			if (p.getId() != 0) {
+		        sql = "UPDATE producto "
+		            + "SET nombre = ?, descripcion_corta = ?, descripcion_larga = ?, precio = ?, stock = ?, ruta_imagen = ?, categoria = ? "
+		            + "WHERE id = ?";
+		    } else {
+		        sql = "INSERT INTO producto (nombre, descripcion_corta, descripcion_larga, precio, stock, ruta_imagen, categoria) "
+		            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+		    }
 			
 			ps = con.prepareStatement(sql);
-			if(p.getId() != 0) {
-				ps.setInt(8, p.getId());
-			}
+			
 			ps.setString(1, p.getNombre());
 			ps.setString(2, p.getDescripcionCorta());
 			ps.setString(3, p.getDescripcionLarga());
@@ -132,7 +156,9 @@ public class ProductoDAO {
 			ps.setInt(5, p.getStock());
 			ps.setString(6, p.getRutaImagen());
 			ps.setInt(7, p.getCategoria().getId());
-			
+			if(p.getId() != 0) {
+				ps.setInt(8, p.getId());
+			}
 			if(ps.executeUpdate() > 0) {
 				return true;
 			}else {

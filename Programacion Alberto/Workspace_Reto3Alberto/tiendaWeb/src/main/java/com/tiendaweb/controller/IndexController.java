@@ -46,6 +46,7 @@ public class IndexController extends HttpServlet {
 				response.addCookie(c);
 			}
 		}
+		request.getSession().removeAttribute("idUsuario");
 		response.sendRedirect("inicio");
 	}
 

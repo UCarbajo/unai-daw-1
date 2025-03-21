@@ -1,8 +1,7 @@
 package com.tiendaweb.service;
 
 import java.util.ArrayList;
-
-import javax.servlet.http.Cookie;
+import java.util.Map;
 
 import com.tiendaweb.dao.ProductoDAO;
 import com.tiendaweb.model.Producto;
@@ -25,9 +24,9 @@ public class ProductoService {
 		return productoDAO.getProductoByID(id);
 	}
 
-	public ArrayList<Producto> getProductoByIDArray(String[] productos) {
+	public Map<Producto, Integer> getProductoByIDArray(Map<String, String> carroItem) {
 		// TODO Auto-generated method stub
-		return productoDAO.getProductoByIDArray(productos);
+		return productoDAO.getProductoByIDArray(carroItem);
 	}
 
 	public boolean addOrUpdateProducto(Producto p) {

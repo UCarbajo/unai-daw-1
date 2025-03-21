@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -37,29 +39,36 @@ public class ListadoProductoController extends HttpServlet {
 			throws ServletException, IOException {
 
 		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie c : cookies) {
-				if ("carroCompra".equals(c.getName())) {
-					String id = request.getParameter("id");
-					// TODO primero Decoder, juntar y Encoder
-					String carroDecoder = URLDecoder.decode(c.getValue(), "UTF8");
-					String carro = carroDecoder + ";" + id;
-					String carroEncoder = URLEncoder.encode(carro, "UTF-8");
-					c.setValue(carroEncoder);
-					response.addCookie(c);
-				}else {
-					String id = request.getParameter("id");
-					Cookie cookie = new Cookie("carroCompra", id);
-					cookie.setMaxAge(60*60*24);
-					response.addCookie(cookie);
-				}
+		String carroCompra = "";
+		String productoID = request.getParameter("id");
+		
+		for (Cookie c : cookies) {
+			if ("carroCompra".equals(c.getName())) {
+				carroCompra = URLDecoder.decode(c.getValue(), "UTF-8");
+				break;
 			}
-		}else {
-			String id = request.getParameter("id");
-			Cookie cookie = new Cookie("carroCompra", id);
-			cookie.setMaxAge(60*60*24);
-			response.addCookie(cookie);
 		}
+		
+		Map<String, Integer> carro = new HashMap<String, Integer>();
+		if(!carroCompra.isEmpty()) {
+			String[] items = carroCompra.split(",");
+			for(String i : items) {
+				String[] partes = i.split(":");
+				carro.put(partes[0], Integer.parseInt(partes[1]));
+			}
+		}
+		carro.put(productoID, carro.getOrDefault(productoID, 0) + 1);
+		
+		StringBuilder strBuilder = new StringBuilder();
+		for(Map.Entry<String, Integer> entry: carro.entrySet()) {
+			if(strBuilder.length() > 0) strBuilder.append(",");
+			strBuilder.append(entry.getKey()).append(":").append(entry.getValue());
+		}
+		
+		Cookie cookie = new Cookie("carroCompra", URLEncoder.encode(strBuilder.toString(), "UTF-8"));
+		cookie.setMaxAge(60*60*24);
+		response.addCookie(cookie);
+		
 		response.sendRedirect("listadoProducto");
 	}
 

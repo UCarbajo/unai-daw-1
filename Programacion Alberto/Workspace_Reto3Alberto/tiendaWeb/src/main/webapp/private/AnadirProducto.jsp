@@ -8,29 +8,41 @@
 <title>Añadir producto</title>
 </head>
 <body>
+	<h1>
+	<c:choose>
+		<c:when test="${not empty producto }">
+			Editar producto
+		</c:when>
+		<c:otherwise>
+			Añadir producto
+		</c:otherwise>
+	</c:choose>
+	</h1>
 	<form action="anadirProducto" method="post" enctype="multipart/form-data">
 		<div class="input-group">
-			<label>Nombre</label> <input type="text" name="nombre" required>
+			<label>Nombre</label> <input type="text" name="nombre" value="${not empty producto ? producto.nombre:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Precio</label> <input type="text" name="precio" required>
+			<label>Precio</label> <input type="text" name="precio" value="${not empty producto ? producto.precio:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Descripcion</label> <input type="text" name="descripcionCorta" required>
+			<label>Descripcion</label> <input type="text" name="descripcionCorta" value="${not empty producto ? producto.descripcionCorta:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Descripcion larga</label> <input type="text" name="descripcionLarga" required>
+			<label>Descripcion larga</label> <input type="text" name="descripcionLarga" value="${not empty producto ? producto.descripcionLarga:'' }" required>
 		</div>
 		<div class="input-group">
-			<label>Stock</label> <input type="text" name="stock" required>
+			<label>Stock</label> <input type="text" name="stock" value="${not empty producto ? producto.stock:'' }" required>
 		</div>
 		<div>
-			<label>Imagen producto</label> <input type="file" name="rutaImagen" required>
+			<label>Imagen producto</label> <input type="file" name="rutaImagen" value="${not empty producto ? producto.rutaImagen:'' }">
 		</div>
-
+		<c:if test="${not empty producto}">
+			<input type="hidden" name="id" value="${producto.id }">
+		</c:if>
 		<select name="categoria">
 			<c:forEach var="categoria" items="${listaCategoria }">
-				<option value="${categoria.id }">${categoria.categoria }</option>
+				<option value="${categoria.id }" ${producto.categoria.id == categoria.id ? 'selected':'' }>${categoria.categoria }</option>
 			</c:forEach>
 		</select>
 		<button type="submit">Guardar</button>

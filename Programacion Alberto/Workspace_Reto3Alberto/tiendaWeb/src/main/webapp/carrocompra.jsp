@@ -17,6 +17,7 @@
 				<th>Descripción</th>
 				<th>Cantidad</th>
 				<th>Precio</th>
+				<th>Precio total</th>
 				<c:set var="total" value="0" scope="page"></c:set>
 			</tr>
 			<c:forEach var="entry" items="${carrito}">
@@ -32,6 +33,7 @@
  							<button type="submit" name="action" value="sumar">+</button>
 						</form>
 					</td>
+					<td>${entry.key.precio }</td>
 					<td>${entry.key.precio * entry.value} €</td>
 				</tr>
 				<c:set var="total" value="${total + (entry.key.precio * entry.value)}" scope="page"></c:set>

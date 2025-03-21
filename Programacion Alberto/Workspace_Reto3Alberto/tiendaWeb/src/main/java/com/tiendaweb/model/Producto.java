@@ -74,21 +74,6 @@ public class Producto {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		Producto producto = (Producto) o;
-		return Objects.equals(id, producto.id); // Usamos el id para comparar los productos
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id); // Usamos el id para generar el código hash
-	}
-
-	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", stock=" + stock + ", nombre=" + nombre + ", descripcionCorta="
 				+ descripcionCorta + ", descripcionLarga=" + descripcionLarga + ", rutaImagen=" + rutaImagen

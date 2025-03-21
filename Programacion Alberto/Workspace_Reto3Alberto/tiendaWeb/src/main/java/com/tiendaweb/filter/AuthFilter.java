@@ -38,17 +38,18 @@ public class AuthFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		
 		Cookie[] cookies = req.getCookies();
-		Usuario u = new Usuario();
+		Usuario u = null;
 		
 		if(cookies != null) {
 			for(Cookie c:cookies) {
 				if("usuario".equals(c.getName())) {
 					int id = Integer.parseInt(c.getValue());
+					u = new Usuario();
 					u = usuarioService.getUsuarioById(id);
 				}
 			}
 		}
-		if(u.getRol().getId() == 1) {
+		if(u != null && u.getRol().getId() == 1) {
 			System.out.println("he pasado por el filtro");
 			chain.doFilter(request, response);
 		}else {

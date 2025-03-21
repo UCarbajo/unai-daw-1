@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,13 +36,14 @@ public class CarroCompraController extends HttpServlet {
 				if ("carroCompra".equals(c.getName())) {
 					String carro = c.getValue();
 					String carroDecoder = URLDecoder.decode(carro, "UTF-8");
-					String[] productos = carroDecoder.split(";");
-					ArrayList<Producto> carroProducto = productoService.getProductoByIDArray(productos);
+					String[] productos = carroDecoder.split(",");
 
-					Map<Producto, Integer> carrito = new HashMap<>();
-					for (Producto p : carroProducto) {
-						carrito.put(p, carrito.getOrDefault(p, 0) + 1);
+					Map<String, String> carroItem = new HashMap<String, String>();
+					for (String producto : productos) {
+						String[] itemID = producto.split(":");
+						carroItem.put(itemID[0], itemID[1]);
 					}
+					Map<Producto, Integer> carrito = productoService.getProductoByIDArray(carroItem);
 					request.setAttribute("carrito", carrito);
 				}
 			}
@@ -85,37 +85,61 @@ public class CarroCompraController extends HttpServlet {
 
 	private void restarProducto(HttpServletResponse response, Cookie c, String id) throws UnsupportedEncodingException {
 		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF8");
-		String[] listaID = carroDecoder.split(";");
-		ArrayList<String> listaFiltrada = new ArrayList<>();
-		boolean idRestado = false;
-		for (String filtroID : listaID) {
-			if (filtroID != null && !filtroID.equals(id)) {
-				listaFiltrada.add(filtroID);
-			} else if (!idRestado) {
-				idRestado = true;
-			} else {
-				listaFiltrada.add(filtroID);
+		Map<String, String> listaFiltrada = new HashMap<String, String>();
+
+		String[] listaID = carroDecoder.split(",");
+
+		for (String item : listaID) {
+			String[] itemPart = item.split(":");
+			int cantidad = Integer.parseInt(itemPart[1]);
+			
+			if (cantidad != 0) {
+				listaFiltrada.put(itemPart[0], String.valueOf(cantidad - 1));
+			}
+			if ("0".equals(listaFiltrada.get(itemPart[0]))){
+				listaFiltrada.remove(itemPart[0]);
 			}
 		}
-
-		StringBuilder nuevaCookie = new StringBuilder();
-		for (String nuevoID : listaFiltrada) {
-			if (nuevaCookie.length() > 0) {
-				nuevaCookie.append(";");
-			}
-			nuevaCookie.append(nuevoID);
+		
+		StringBuilder str = new StringBuilder();
+		for(Map.Entry<String, String> entry : listaFiltrada.entrySet()) {
+			if(str.length() > 0) str.append(",");
+			str.append(entry.getKey()).append(":").append(entry.getValue());
 		}
-
-		String carroEncoder = URLEncoder.encode(nuevaCookie.toString(), "UTF-8");
-		c.setValue(carroEncoder);
-		response.addCookie(c);
+		
+		if(!str.isEmpty()) {
+			c.setValue(URLEncoder.encode(str.toString(), "UTF-8"));
+			response.addCookie(c);
+		}else {
+			c.setMaxAge(0);
+			response.addCookie(c);
+		}
+		
 	}
 
 	private void sumarProducto(HttpServletResponse response, Cookie c, String id) throws UnsupportedEncodingException {
-		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF-8");
-		String nuevoCarro = carroDecoder + ";" + id;
-		String carroEnconder = URLEncoder.encode(nuevoCarro, "UTF-8");
-		c.setValue(carroEnconder);
+		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF8");
+		Map<String, String> listaFiltrada = new HashMap<String, String>();
+		
+		String[] listaID = carroDecoder.split(",");
+		
+		for (String item : listaID) {
+			String[] itemPart = item.split(":");
+			if(id.equals(itemPart[0])) {
+				int cantidad = Integer.parseInt(itemPart[1]);
+				listaFiltrada.put(itemPart[0], String.valueOf(cantidad+1));
+				continue;
+			}
+			listaFiltrada.put(itemPart[0], itemPart[1]);
+			
+		}
+		
+		StringBuilder str = new StringBuilder();
+		for(Map.Entry<String, String> entry : listaFiltrada.entrySet()) {
+			if(str.length() > 0) str.append(",");
+			str.append(entry.getKey()).append(":").append(entry.getValue());
+		}
+		c.setValue(URLEncoder.encode(str.toString(), "UTF-8"));
 		response.addCookie(c);
 	}
 
