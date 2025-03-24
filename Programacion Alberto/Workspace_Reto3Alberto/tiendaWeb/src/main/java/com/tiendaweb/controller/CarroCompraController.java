@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.ServletConfig;
@@ -38,7 +38,7 @@ public class CarroCompraController extends HttpServlet {
 					String carroDecoder = URLDecoder.decode(carro, "UTF-8");
 					String[] productos = carroDecoder.split(",");
 
-					Map<String, String> carroItem = new HashMap<String, String>();
+					Map<String, String> carroItem = new LinkedHashMap<String, String>();
 					for (String producto : productos) {
 						String[] itemID = producto.split(":");
 						carroItem.put(itemID[0], itemID[1]);
@@ -49,7 +49,7 @@ public class CarroCompraController extends HttpServlet {
 			}
 
 		}
-		request.getRequestDispatcher("carrocompra.jsp").forward(request, response);
+		request.getRequestDispatcher("carroCompra.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -88,7 +88,7 @@ public class CarroCompraController extends HttpServlet {
 
 	private void eliminarProducto(HttpServletResponse response, Cookie c, String id) throws UnsupportedEncodingException {
 		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF-8");
-		Map<String, String> listaFiltrada = new HashMap<String, String>();
+		Map<String, String> listaFiltrada = new LinkedHashMap<String, String>();
 		String[] listaID = carroDecoder.split(",");
 		for (String item: listaID) {
 			String[] itemPart = item.split(":");
@@ -111,20 +111,21 @@ public class CarroCompraController extends HttpServlet {
 	
 	private void restarProducto(HttpServletResponse response, Cookie c, String id) throws UnsupportedEncodingException {
 		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF8");
-		Map<String, String> listaFiltrada = new HashMap<String, String>();
+		Map<String, String> listaFiltrada = new LinkedHashMap<String, String>();
 
 		String[] listaID = carroDecoder.split(",");
 
 		for (String item : listaID) {
 			String[] itemPart = item.split(":");
-			int cantidad = Integer.parseInt(itemPart[1]);
+			String idRestar = itemPart[0];
+			int cantidad = Integer.valueOf(itemPart[1]);
+			if(id.equals(idRestar)) {
+				cantidad = cantidad - 1;
+			}
+			if(cantidad != 0){
+				listaFiltrada.put(idRestar, String.valueOf(cantidad));
+			}
 			
-			if (cantidad != 0) {
-				listaFiltrada.put(itemPart[0], String.valueOf(cantidad - 1));
-			}
-			if ("0".equals(listaFiltrada.get(itemPart[0]))){
-				listaFiltrada.remove(itemPart[0]);
-			}
 		}
 		
 		StringBuilder str = new StringBuilder();
@@ -145,7 +146,7 @@ public class CarroCompraController extends HttpServlet {
 
 	private void sumarProducto(HttpServletResponse response, Cookie c, String id) throws UnsupportedEncodingException {
 		String carroDecoder = URLDecoder.decode(c.getValue(), "UTF8");
-		Map<String, String> listaFiltrada = new HashMap<String, String>();
+		Map<String, String> listaFiltrada = new LinkedHashMap<String, String>();
 		
 		String[] listaID = carroDecoder.split(",");
 		

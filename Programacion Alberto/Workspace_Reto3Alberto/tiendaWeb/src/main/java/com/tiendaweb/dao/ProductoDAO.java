@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.tiendaweb.model.Categoria;
@@ -94,7 +94,7 @@ public class ProductoDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		Map<Producto, Integer> listaProducto = new HashMap<Producto, Integer>();
+		Map<Producto, Integer> listaProducto = new LinkedHashMap<Producto, Integer>();
 		
 		try {
 			String sql = "SELECT p.* FROM producto p WHERE id = ?";

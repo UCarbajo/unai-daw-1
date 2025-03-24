@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.ServletConfig;
@@ -49,7 +49,7 @@ public class ListadoProductoController extends HttpServlet {
 			}
 		}
 		
-		Map<String, Integer> carro = new HashMap<String, Integer>();
+		Map<String, Integer> carro = new LinkedHashMap<String, Integer>();
 		if(!carroCompra.isEmpty()) {
 			String[] items = carroCompra.split(",");
 			for(String i : items) {
