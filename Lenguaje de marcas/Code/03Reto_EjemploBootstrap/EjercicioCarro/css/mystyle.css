@@ -15,3 +15,13 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+@media (max-width: 760px ) {
+  .btnCompra{
+    flex-direction: column-reverse;
+    gap: 1em;
+}
+  .centrar{
+    justify-content: center !important;
+  }
+}
