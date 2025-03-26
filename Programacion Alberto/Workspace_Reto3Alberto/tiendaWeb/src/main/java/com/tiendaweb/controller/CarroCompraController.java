@@ -49,7 +49,7 @@ public class CarroCompraController extends HttpServlet {
 			}
 
 		}
-		request.getRequestDispatcher("carroCompra.jsp").forward(request, response);
+		request.getRequestDispatcher("carrocompra.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
