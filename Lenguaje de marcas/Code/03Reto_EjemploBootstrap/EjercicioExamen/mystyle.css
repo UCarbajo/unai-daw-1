@@ -1,0 +1,63 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 8px;
+    margin: 3em;
+}
+    
+.div2 {
+    grid-column: span 5 / span 5;
+    margin: 3em;
+}
+
+.div3 {
+    grid-column: span 4 / span 4;
+    grid-row: span 3 / span 3;
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+.div5 {
+    grid-row: span 3 / span 3;
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+
+.div6 {
+    grid-column: span 5 / span 5;
+    grid-row-start: 5;
+}
+.voltereta {
+    transition: transform 0.5s;
+}
+.voltereta:hover{
+    animation: rotar 3s linear infinite;
+}
+
+.opacidad{
+    opacity: 1;
+}
+
+.opacidad:hover {
+    animation-name: opacidad;
+    animation-duration: 5s;
+    animation-timing-function: ease;
+}
+@keyframes rotar {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes opacidad {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
